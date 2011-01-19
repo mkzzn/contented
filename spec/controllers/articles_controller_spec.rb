@@ -24,9 +24,10 @@ describe ArticlesController do
   end
 
   describe "GET 'new'" do
-    it "should be successful" do
+    it "should build a new article" do
+      article = mock_model(Article, :save => false)
+      Article.should_receive(:new).and_return article
       get 'new'
-      response.should be_success
     end
   end
 
