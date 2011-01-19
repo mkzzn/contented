@@ -31,4 +31,14 @@ describe ArticlesController do
     end
   end
 
+  describe "POST 'create'" do
+    it "should create a new article" do
+      attributes = {"title" => "excellent", "body" => "nonsense"}
+      article = mock_model(Article, attributes)
+      Article.should_receive(:create).
+        with(attributes).and_return article
+      post :create, :article => attributes
+    end
+  end
+
 end

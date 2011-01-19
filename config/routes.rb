@@ -13,5 +13,7 @@ Contented::Application.routes.draw do
 
   get "articles/new"
 
+  post "articles/create"
+
   root :to => "home#index"
 end
