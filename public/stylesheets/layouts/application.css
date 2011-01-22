@@ -1,0 +1,113 @@
+/*
+Syntax error: Undefined mixin 'nobile-bold-italic'.
+        on line 22 of /home/rukkus/apps/contented/repo/contented/public/stylesheets/sass/layouts/application.sass, in `nobile-bold-italic'
+        from line 22 of /home/rukkus/apps/contented/repo/contented/public/stylesheets/sass/layouts/application.sass
+
+17:     color: white
+18:     border-bottom: 1px solid #222
+19:    
+20:     span.title
+21:       font-size: 6.2em
+22:       @include nobile-bold-italic
+23: 
+24:     span.tron
+25:       :padding 12px 0 7px 0
+26:       :margin-left -4px
+27:       font-size: 6.7em
+
+Backtrace:
+/home/rukkus/apps/contented/repo/contented/public/stylesheets/sass/layouts/application.sass:22:in `nobile-bold-italic'
+/home/rukkus/apps/contented/repo/contented/public/stylesheets/sass/layouts/application.sass:22
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/haml-3.0.25/lib/sass/tree/mixin_node.rb:62:in `perform!'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/haml-3.0.25/lib/sass/tree/node.rb:305:in `_perform'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/haml-3.0.25/lib/sass/tree/node.rb:213:in `perform'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/haml-3.0.25/lib/sass/tree/node.rb:327:in `perform_children'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/haml-3.0.25/lib/sass/tree/node.rb:327:in `map'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/haml-3.0.25/lib/sass/tree/node.rb:327:in `perform_children'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/haml-3.0.25/lib/sass/tree/node.rb:317:in `perform!'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/haml-3.0.25/lib/sass/tree/rule_node.rb:191:in `perform!'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/haml-3.0.25/lib/sass/tree/node.rb:305:in `_perform'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/haml-3.0.25/lib/sass/tree/node.rb:213:in `perform'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/haml-3.0.25/lib/sass/tree/node.rb:327:in `perform_children'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/haml-3.0.25/lib/sass/tree/node.rb:327:in `map'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/haml-3.0.25/lib/sass/tree/node.rb:327:in `perform_children'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/haml-3.0.25/lib/sass/tree/node.rb:317:in `perform!'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/haml-3.0.25/lib/sass/tree/rule_node.rb:191:in `perform!'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/haml-3.0.25/lib/sass/tree/node.rb:305:in `_perform'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/haml-3.0.25/lib/sass/tree/node.rb:213:in `perform'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/haml-3.0.25/lib/sass/tree/node.rb:327:in `perform_children'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/haml-3.0.25/lib/sass/tree/node.rb:327:in `map'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/haml-3.0.25/lib/sass/tree/node.rb:327:in `perform_children'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/haml-3.0.25/lib/sass/tree/node.rb:317:in `perform!'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/haml-3.0.25/lib/sass/tree/rule_node.rb:191:in `perform!'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/haml-3.0.25/lib/sass/tree/node.rb:305:in `_perform'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/haml-3.0.25/lib/sass/tree/node.rb:213:in `perform'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/haml-3.0.25/lib/sass/tree/node.rb:327:in `perform_children'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/haml-3.0.25/lib/sass/tree/node.rb:327:in `map'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/haml-3.0.25/lib/sass/tree/node.rb:327:in `perform_children'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/haml-3.0.25/lib/sass/tree/node.rb:317:in `perform!'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/haml-3.0.25/lib/sass/tree/root_node.rb:59:in `perform!'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/haml-3.0.25/lib/sass/tree/node.rb:305:in `_perform'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/haml-3.0.25/lib/sass/tree/node.rb:213:in `perform'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/haml-3.0.25/lib/sass/tree/root_node.rb:37:in `perform'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/haml-3.0.25/lib/sass/tree/root_node.rb:29:in `render'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/haml-3.0.25/lib/sass/plugin.rb:223:in `update_stylesheet'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/haml-3.0.25/lib/sass/plugin.rb:88:in `update_stylesheets'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/haml-3.0.25/lib/sass/plugin.rb:81:in `each'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/haml-3.0.25/lib/sass/plugin.rb:81:in `update_stylesheets'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/haml-3.0.25/lib/sass/plugin.rb:79:in `each'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/haml-3.0.25/lib/sass/plugin.rb:79:in `update_stylesheets'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/haml-3.0.25/lib/sass/plugin.rb:50:in `check_for_updates'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/haml-3.0.25/lib/sass/plugin/rack.rb:40:in `call'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/actionpack-3.0.3/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/actionpack-3.0.3/lib/action_dispatch/middleware/head.rb:14:in `call'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/rack-1.2.1/lib/rack/methodoverride.rb:24:in `call'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/actionpack-3.0.3/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/actionpack-3.0.3/lib/action_dispatch/middleware/flash.rb:182:in `call'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/actionpack-3.0.3/lib/action_dispatch/middleware/session/abstract_store.rb:149:in `call'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/actionpack-3.0.3/lib/action_dispatch/middleware/cookies.rb:295:in `call'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/activerecord-3.0.3/lib/active_record/query_cache.rb:32:in `call'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/activerecord-3.0.3/lib/active_record/connection_adapters/abstract/query_cache.rb:28:in `cache'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/activerecord-3.0.3/lib/active_record/query_cache.rb:12:in `cache'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/activerecord-3.0.3/lib/active_record/query_cache.rb:31:in `call'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/activerecord-3.0.3/lib/active_record/connection_adapters/abstract/connection_pool.rb:353:in `call'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/actionpack-3.0.3/lib/action_dispatch/middleware/callbacks.rb:46:in `call'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/activesupport-3.0.3/lib/active_support/callbacks.rb:415:in `_run_call_callbacks'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/actionpack-3.0.3/lib/action_dispatch/middleware/callbacks.rb:44:in `call'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/rack-1.2.1/lib/rack/sendfile.rb:107:in `call'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/actionpack-3.0.3/lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/actionpack-3.0.3/lib/action_dispatch/middleware/show_exceptions.rb:46:in `call'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/railties-3.0.3/lib/rails/rack/logger.rb:13:in `call'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/rack-1.2.1/lib/rack/runtime.rb:17:in `call'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/activesupport-3.0.3/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/rack-1.2.1/lib/rack/lock.rb:11:in `call'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/rack-1.2.1/lib/rack/lock.rb:11:in `synchronize'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/rack-1.2.1/lib/rack/lock.rb:11:in `call'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/actionpack-3.0.3/lib/action_dispatch/middleware/static.rb:30:in `call'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/railties-3.0.3/lib/rails/application.rb:168:in `call'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/railties-3.0.3/lib/rails/application.rb:77:in `send'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/railties-3.0.3/lib/rails/application.rb:77:in `method_missing'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/rack-1.2.1/lib/rack/lint.rb:48:in `_call'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/rack-1.2.1/lib/rack/lint.rb:36:in `call'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/rack-1.2.1/lib/rack/showexceptions.rb:24:in `call'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/rack-1.2.1/lib/rack/commonlogger.rb:18:in `call'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/unicorn-3.3.1/lib/unicorn/http_server.rb:532:in `process_client'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/unicorn-3.3.1/lib/unicorn/http_server.rb:607:in `worker_loop'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/unicorn-3.3.1/lib/unicorn/http_server.rb:605:in `each'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/unicorn-3.3.1/lib/unicorn/http_server.rb:605:in `worker_loop'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/unicorn-3.3.1/lib/unicorn/http_server.rb:496:in `spawn_missing_workers'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/unicorn-3.3.1/lib/unicorn/http_server.rb:493:in `fork'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/unicorn-3.3.1/lib/unicorn/http_server.rb:493:in `spawn_missing_workers'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/unicorn-3.3.1/lib/unicorn/http_server.rb:489:in `each'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/unicorn-3.3.1/lib/unicorn/http_server.rb:489:in `spawn_missing_workers'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/unicorn-3.3.1/lib/unicorn/http_server.rb:503:in `maintain_worker_count'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/unicorn-3.3.1/lib/unicorn/http_server.rb:161:in `start'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/unicorn-3.3.1/lib/unicorn.rb:13:in `run'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/gems/unicorn-3.3.1/bin/unicorn:120
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/bin/unicorn:19:in `load'
+/home/rukkus/.rvm/gems/ruby-1.8.7-p302@default/bin/unicorn:19
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Syntax error: Undefined mixin 'nobile-bold-italic'.\A         on line 22 of /home/rukkus/apps/contented/repo/contented/public/stylesheets/sass/layouts/application.sass, in `nobile-bold-italic'\A         from line 22 of /home/rukkus/apps/contented/repo/contented/public/stylesheets/sass/layouts/application.sass\A \A 17:     color: white\A 18:     border-bottom: 1px solid #222\A 19:    \A 20:     span.title\A 21:       font-size: 6.2em\A 22:       @include nobile-bold-italic\A 23: \A 24:     span.tron\A 25:       :padding 12px 0 7px 0\A 26:       :margin-left -4px\A 27:       font-size: 6.7em"; }

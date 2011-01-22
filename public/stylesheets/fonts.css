@@ -1,0 +1,24 @@
+@font-face {
+  font-family: "Ubuntu";
+  src: url("/fonts/ubuntu_bold.ttf");
+  font-weight: bold; }
+
+@font-face {
+  font-family: "Gauntlet";
+  src: url("/fonts/gauntlet_classic.otf");
+  font-weight: regular; }
+
+@font-face {
+  font-family: "Absolut";
+  src: url("/fonts/absolut_pro.otf");
+  font-weight: regular; }
+
+@font-face {
+  font-family: "Sansation";
+  src: url("/fonts/Sansation_Bold.ttf");
+  font-weight: bold; }
+
+@font-face {
+  font-family: "Nevis";
+  src: url("/fonts/nevis.ttf");
+  font-weight: bold; }
