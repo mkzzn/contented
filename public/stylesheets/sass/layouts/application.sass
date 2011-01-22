@@ -9,34 +9,26 @@ body
 #header
   padding: 0
   
-  a#title
+  a#branding
     display: block
     padding: 0 18px
     text-decoration: none
     margin-top: -8px
-    color: white
-    border-bottom: 1px solid #222
+    color: black
    
-    span.title
-      font-size: 6.2em
-      @include nobile-bold-italic
+    .title
+      font-size: 7.2em
+      font-family: Ubuntu
 
-    span.tron
-      :padding 12px 0 7px 0
-      :margin-left -4px
-      font-size: 6.7em
-      :font-family Sansation
-      :text-transform uppercase
-      :color #BEFF50
-    &:hover
-      :background #222
-      border-bottom: 1px solid #333
+    .subtitle
+      font-size: 2.4em
+      :font-family "Gauntlet Classic"
+      :margin -6px 0 0 6px
 
 #content
   padding: 16px 48px
   h1
-    @include serif-fonts
-    font-weight: normal
+    font-family: 'Absolut Pro'
     margin-top: 20px
     font-size: 6em
 
@@ -45,4 +37,4 @@ body
     text-transform: uppercase
     font-size: 1.6em
 
-@import ../forms.sass
+//@import ../forms.sass
