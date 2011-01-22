@@ -1,0 +1,17 @@
+!!!
+%html
+  %head
+    %title Coffeetron
+    = stylesheet_link_tag "layouts/application"
+    = stylesheet_link_tag "errors"
+    = javascript_include_tag "jquery"
+    = javascript_include_tag "plugins/autofade.jquery"
+    = javascript_include_tag "plugins/autoscroll.jquery"
+    = javascript_include_tag "application"
+  %body
+    #header
+      %a#branding{:href => "/"}
+        .title Contented
+        .subtitle Be Happy.
+    #flash!= show_flash
+    #content= yield
