@@ -1,0 +1,51 @@
+#content
+  form, .form
+    :padding 20px 
+    :background #111
+    :border 1px solid #222
+    :display block
+    :float left
+
+    .fields
+      :margin-bottom 8px
+      label
+        font-family: Nevis
+        font-size: 1.2em
+      input[type=text], input[type=password], select
+        font-family: Nevis
+        display: block
+        padding: 2px 4px
+        margin-top: 4px
+        font-size: 1.7em
+        font-weight: normal
+        background: #ddd
+        border: 1px solid #fff
+      input[type=submit]
+        font-family: Nevis
+        font-size: 1.6em 
+        margin-top: 12px
+
+    &.auth .fields
+      input[type=text], input[type=password], select
+        padding: 3px 6px
+        margin-top: 4px
+        font-size: 2.4em
+
+  .form_links
+    :float left
+    a
+      :float left
+      :clear left
+      :padding 4px 12px
+      :color #fff
+      :background #111
+      :display block
+      :font-size 1.2em
+      :margin 0 0 8px 8px
+      :border 1px solid #222
+      :text-decoration none
+      :font-family Nevis
+      &:hover
+        :background #BEFF50 - #222
+        :border 1px solid #BEFF50
+        :color black

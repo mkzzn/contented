@@ -1,0 +1,48 @@
+@import "fonts"
+
+body
+  margin: 0
+  background: white
+  color: black
+  font-size: 62.5%
+
+#header
+  padding: 0
+  
+  a#title
+    display: block
+    padding: 0 18px
+    text-decoration: none
+    margin-top: -8px
+    color: white
+    border-bottom: 1px solid #222
+   
+    span.title
+      font-size: 6.2em
+      @include nobile-bold-italic
+
+    span.tron
+      :padding 12px 0 7px 0
+      :margin-left -4px
+      font-size: 6.7em
+      :font-family Sansation
+      :text-transform uppercase
+      :color #BEFF50
+    &:hover
+      :background #222
+      border-bottom: 1px solid #333
+
+#content
+  padding: 16px 48px
+  h1
+    @include serif-fonts
+    font-weight: normal
+    margin-top: 20px
+    font-size: 6em
+
+  h2
+    font-family: Nevis
+    text-transform: uppercase
+    font-size: 1.6em
+
+@import ../forms.sass
