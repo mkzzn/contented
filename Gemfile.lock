@@ -34,6 +34,8 @@ GEM
       ZenTest (>= 4.4.1)
     autotest-rails (4.1.0)
       ZenTest
+    bind (0.2.8)
+      commander (>= 4.0.0)
     builder (2.1.2)
     cancan (1.5.0)
     capistrano (2.5.19)
@@ -54,6 +56,8 @@ GEM
     celerity (0.8.7)
     childprocess (0.1.6)
       ffi (~> 0.6.3)
+    commander (4.0.3)
+      highline (>= 1.5.0)
     configuration (1.2.0)
     culerity (0.2.14)
     diff-lcs (1.1.2)
@@ -78,6 +82,11 @@ GEM
     hpricot (0.8.3)
     i18n (0.5.0)
     json_pure (1.4.6)
+    jspec (4.3.3)
+      bind (>= 0.2.8)
+      commander (>= 4.0.1)
+      json_pure
+      sinatra
     kgio (2.1.1)
     launchy (0.3.7)
       configuration (>= 0.0.5)
@@ -140,9 +149,13 @@ GEM
       json_pure
       rubyzip
     sexp_processor (3.0.5)
+    sinatra (1.1.2)
+      rack (~> 1.1)
+      tilt (~> 1.2)
     test_notifier (0.3.6)
       notifier
     thor (0.14.6)
+    tilt (1.2.2)
     treetop (1.4.9)
       polyglot (>= 0.3.1)
     tzinfo (0.3.24)
@@ -170,6 +183,7 @@ DEPENDENCIES
   haml-rails
   hpricot
   i18n
+  jspec
   launchy
   pg
   rails (= 3.0.3)
