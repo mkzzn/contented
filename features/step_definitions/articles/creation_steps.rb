@@ -8,7 +8,7 @@ When /^I submit the article$/ do
 end
 
 Then /^I should see article "([^"]*)"$/ do |title|
-  pending # express the regexp above with the code you wish you had
+  page.should have_xpath("//h2[@class=title][contains(., #{title})]")
 end
 
 Then /^I should see a notice saying that article "([^"]*)" was created$/ do |title|

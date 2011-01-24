@@ -1,2 +1,4 @@
-%h1 Articles#index
-%p Find me in app/views/articles/index.html.haml
+- @articles.each do |article|
+  %div[article]
+    %h2.title= article.title
+    %p.body= article.body

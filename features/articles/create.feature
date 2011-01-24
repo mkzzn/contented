@@ -8,6 +8,7 @@ Feature: Create Article
     And I enter valid data for an article entitled "goats"
     When I submit the article
     Then I should be on the articles index page
+    Then show me the page
     And I should see article "goats"
     And I should see a notice saying that article "goats" was created
  
