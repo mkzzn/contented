@@ -4,6 +4,23 @@
   font-weight: bold; }
 
 @font-face {
+  font-family: "Ubuntu";
+  src: url("/fonts/ubuntu_regular.ttf");
+  font-weight: normal; }
+
+@font-face {
+  font-family: "Ubuntu";
+  src: url("/fonts/ubuntu_bold_italic.ttf");
+  font-weight: bold;
+  font-style: italic; }
+
+@font-face {
+  font-family: "Ubuntu";
+  src: url("/fonts/ubuntu_italic.ttf");
+  font-weight: normal;
+  font-style: italic; }
+
+@font-face {
   font-family: "Gauntlet";
   src: url("/fonts/gauntlet_classic.otf");
   font-weight: regular; }

@@ -1,0 +1,44 @@
+#content form, #content .form {
+  padding: 20px;
+  display: block;
+  float: left; }
+  #content form .fields, #content .form .fields {
+    margin-bottom: 8px; }
+    #content form .fields label, #content .form .fields label {
+      font-family: Nevis;
+      font-size: 1.1em; }
+    #content form .fields input[type=text], #content form .fields input[type=password], #content form .fields select, #content form .fields textarea, #content .form .fields input[type=text], #content .form .fields input[type=password], #content .form .fields select, #content .form .fields textarea {
+      font-family: Ubuntu;
+      display: block;
+      padding: 2px 4px;
+      margin-top: 4px;
+      font-size: 1.7em;
+      font-weight: normal;
+      background: #dddddd;
+      border: 1px solid white; }
+    #content form .fields input[type=submit], #content .form .fields input[type=submit] {
+      font-family: Ubuntu;
+      font-size: 1.6em;
+      margin-top: 12px; }
+  #content form.auth .fields input[type=text], #content form.auth .fields input[type=password], #content form.auth .fields select, #content .form.auth .fields input[type=text], #content .form.auth .fields input[type=password], #content .form.auth .fields select {
+    padding: 3px 6px;
+    margin-top: 4px;
+    font-size: 2.4em; }
+#content .form_links {
+  float: left; }
+  #content .form_links a {
+    float: left;
+    clear: left;
+    padding: 4px 12px;
+    color: white;
+    background: #111111;
+    display: block;
+    font-size: 1.2em;
+    margin: 0 0 8px 8px;
+    border: 1px solid #222222;
+    text-decoration: none;
+    font-family: Nevis; }
+    #content .form_links a:hover {
+      background: #9cdd2e;
+      border: 1px solid #beff50;
+      color: black; }
