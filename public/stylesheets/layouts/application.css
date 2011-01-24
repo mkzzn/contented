@@ -56,7 +56,8 @@ body {
     color: black; }
     #header a#branding .title {
       font-size: 7.2em;
-      font-family: Ubuntu; }
+      font-family: Ubuntu;
+      font-weight: bold; }
     #header a#branding .subtitle {
       font-size: 2.4em;
       font-family: "Gauntlet Classic";

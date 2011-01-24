@@ -19,7 +19,7 @@ gem 'sexp_processor'
 gem 'test_notifier'
 gem 'ZenTest'
 
-group :development, :test do
+group :test do
   gem 'rspec'
   gem 'rspec-rails'
   gem 'factory_girl'
@@ -29,4 +29,7 @@ group :development, :test do
   gem 'launchy'
   gem 'faker'
   gem 'capybara'
+  gem 'cucumber-rails'
+  gem 'capybara'
+  gem 'database_cleaner'
 end
