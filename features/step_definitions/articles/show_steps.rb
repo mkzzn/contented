@@ -10,3 +10,9 @@ Then /^I should be viewing the article "([^"]*)"$/ do |title|
   article = Article.find_by_title(title)
   current_path.should == article_path(article)
 end
+
+Given /^I am viewing the show article page for "([^"]*)"$/ do |title|
+  article = Article.find_by_title(title)
+  visit article_path(article)
+end
+
