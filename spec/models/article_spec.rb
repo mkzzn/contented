@@ -4,15 +4,16 @@ describe Article do
   context "validations" do
     context "attributes" do
       before(:each) do
-        @article = Factory :article, :title => nil, :body => nil 
+        @article = Factory.build :article, :title => nil, :body => nil 
+        @article.save
       end
 
       it "should validate presence of title" do
-        @article.should be_valid
+        @article.should_not be_valid
       end
 
       it "should validate presence of body" do
-        @article.should be_valid
+        @article.should_not be_valid
       end
     end
   end
