@@ -12,7 +12,7 @@ Then /^I should see article "([^"]*)"$/ do |title|
 end
 
 Then /^I should see a notice saying that article "([^"]*)" was created$/ do |title|
-  pending # express the regexp above with the code you wish you had
+  page.should have_xpath("//div[@class='flash notice'][contains(., #{title})][contains(., 'success')]")
 end
 
 Given /^I enter insufficient values for an article$/ do
