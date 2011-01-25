@@ -3,10 +3,10 @@ Given /^I have an article entitled "([^"]*)"$/ do |title|
 end
 
 When /^I click on the title for "([^"]*)"$/ do |title|
-  click_link("title")
+  click_link title
 end
 
 Then /^I should be viewing the article "([^"]*)"$/ do |title|
   article = Article.find_by_title(title)
-  current_path.should == view_article_path(article)
+  current_path.should == article_path(article)
 end
