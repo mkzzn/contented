@@ -15,7 +15,8 @@ class ArticlesController < ApplicationController
       flash[:notice] = "#{@article[:title]} was successfully created"
       redirect_to articles_path
     else
-      render :template => "new"
+      flash[:warning] = "Article creation failed"
+      render :action => "new"
     end
   end
 

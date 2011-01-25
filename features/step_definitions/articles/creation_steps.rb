@@ -16,9 +16,10 @@ Then /^I should see a notice saying that article "([^"]*)" was created$/ do |tit
 end
 
 Given /^I enter insufficient values for an article$/ do
-  pending # express the regexp above with the code you wish you had
+  fill_in "article_title", :with => ""
+  fill_in "article_body", :with => ""
 end
 
 Then /^I should see a warning saying that my article was not created$/ do
-  pending # express the regexp above with the code you wish you had
+  page.should have_xpath("//div[@class='flash warning'][contains(., 'failed')]")
 end
