@@ -12,6 +12,14 @@ describe ArticlesController do
       get 'index'
     end
   end
+  
+  describe "GET show" do
+    it "should return the relevant article" do
+      article = Factory :article
+      articles = Article.should_receive(:find).with(article[:id]).and_return article
+      get 'show', :id => article[:id]
+    end
+  end
 
   describe "GET 'new'" do
     it "should build a new article" do
@@ -23,9 +31,8 @@ describe ArticlesController do
 
   describe "POST 'create'" do
     it "should create a new article" do
-      article = mock_model(Article, @attributes)
-      Article.should_receive(:create).
-        with(@attributes).and_return article
+      article = Factory(:article, @attributes)
+      Article.should_receive(:create).with(@attributes).and_return article
       post :create, :article => @attributes
     end
   end

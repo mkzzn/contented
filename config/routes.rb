@@ -4,7 +4,8 @@ Contented::Application.routes.draw do
   get "categories/new"
 
   get "categories/edit"
-  resources :articles
 
+  resources :articles
+  get "articles/show"
   root :to => "articles#index"
 end
