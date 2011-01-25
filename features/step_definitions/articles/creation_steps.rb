@@ -23,3 +23,7 @@ end
 Then /^I should see a warning saying that my article was not created$/ do
   page.should have_xpath("//div[@class='flash warning'][contains(., 'failed')]")
 end
+
+Given /^I click the link for new article$/ do
+  find(:css, "a.new_article").click
+end

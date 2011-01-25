@@ -3,6 +3,11 @@ Feature: Create Article
   As a Snakewise Writer
   I want to be able to create articles
   
+  Scenario: User Navigates to the New Article Page
+    Given I am on the articles index page
+    When I click the link for new article
+    Then I should be on the new article page
+
   Scenario: User Successfully Creates an Article
     Given I am on the new article page
     And I enter valid data for an article entitled "goats"

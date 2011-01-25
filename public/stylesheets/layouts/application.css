@@ -47,7 +47,8 @@ body {
   font-size: 62.5%; }
 
 #header {
-  padding: 0; }
+  padding: 0;
+  margin-bottom: 20px; }
   #header a#branding {
     display: block;
     padding: 0 18px;
@@ -64,6 +65,7 @@ body {
       margin: -6px 0 0 6px; }
 
 #content {
+  float: left;
   padding: 16px 48px; }
   #content h1 {
     font-family: "Absolut Pro";

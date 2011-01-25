@@ -5,15 +5,18 @@
     = stylesheet_link_tag "layouts/application"
     = stylesheet_link_tag "errors"
     = stylesheet_link_tag "forms"
+    = stylesheet_link_tag "nav"
     = javascript_include_tag "jquery"
     = javascript_include_tag "plugins/autofade.jquery"
     = javascript_include_tag "plugins/autoscroll.jquery"
     = javascript_include_tag "application"
     = javascript_include_tag "flash"
+
   %body
     #header
       %a#branding{:href => "/"}
         .title Contented
         .subtitle Keep your content Happy.
     #flash!= show_flash
+    #navigation= render :partial => "nav/primary"
     #content= yield
