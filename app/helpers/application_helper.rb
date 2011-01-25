@@ -5,7 +5,9 @@ module ApplicationHelper
     
     # create a div for each available flash type and display its value
     [:notice, :warning, :message, :failure, :success].collect do |key|
-      content_tag(opts[:tag], flash[key], ({:class => "flash flash_#{key} #{key}"}.merge opts[:additional_attributes])) unless flash[key].blank?
+      next if flash[key].blank?
+      attributes = {:class => "flash flash_#{key} #{key}"}.merge opts[:additional_attributes]
+      content_tag(opts[:tag], flash[key], attributes)
     end.join
   end
 end
