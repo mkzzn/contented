@@ -1,7 +1,6 @@
 #content form, #content .form {
   padding: 20px;
-  display: block;
-  float: left; }
+  display: block; }
   #content form .fields, #content .form .fields {
     margin-bottom: 8px; }
     #content form .fields label, #content .form .fields label {

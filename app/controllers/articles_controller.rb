@@ -28,7 +28,7 @@ class ArticlesController < ApplicationController
   def destroy
     Article.delete params[:id]
     flash[:notice] = "Article was successfully destroyed"
-    render :nothing => true
+    redirect_to articles_path
   end
   
 end

@@ -14,11 +14,20 @@ describe ArticlesController do
   end
 
   describe "DELETE destroy" do
+    before(:each) do
+      @article = mock_model Article
+      @article.stub!(:id).and_return 2
+    end
+
     it "should destroy an article" do
-      article = mock_model Article
-      article.stub!(:id).and_return 2
-      Article.should_receive(:delete).with(article.id).and_return article
-      delete 'destroy', :id => article.id
+      Article.should_receive(:delete).with(@article.id).and_return @article
+      delete 'destroy', :id => @article.id
+    end
+    
+    it "should redirect to the articles index" do
+      delete 'destroy', :id => @article.id
+      response.code.should == "302"
+      response.should redirect_to(articles_path)
     end
   end
   

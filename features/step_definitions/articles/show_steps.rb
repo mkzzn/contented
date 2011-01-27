@@ -1,4 +1,4 @@
-Given /^I have an article entitled "([^"]*)"$/ do |title|
+Given /^an article entitled "([^"]*)"$/ do |title|
   Factory :article, :title => title
 end
 
