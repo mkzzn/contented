@@ -24,5 +24,11 @@ class ArticlesController < ApplicationController
   def new
     @article = Article.new
   end
+
+  def destroy
+    Article.delete params[:id]
+    flash[:notice] = "Article was successfully destroyed"
+    render :nothing => true
+  end
   
 end
