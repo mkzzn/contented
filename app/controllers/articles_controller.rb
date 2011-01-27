@@ -13,7 +13,7 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.create params[:article]
     if @article.valid?
-      flash[:notice] = "#{@article[:title]} was successfully created"
+      flash[:notice] = "#{@article.title} was successfully created"
       redirect_to articles_path
     else
       flash[:warning] = "Article creation failed"
@@ -30,5 +30,4 @@ class ArticlesController < ApplicationController
     flash[:notice] = "Article was successfully destroyed"
     redirect_to articles_path
   end
-  
 end
