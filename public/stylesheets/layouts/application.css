@@ -71,3 +71,7 @@ body {
     font-family: "Absolut Pro";
     margin-top: 20px;
     font-size: 6em; }
+  #content h2 {
+    font-family: "Nevis";
+    margin: 0;
+    font-size: 4em; }
