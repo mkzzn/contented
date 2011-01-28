@@ -6,7 +6,7 @@ When /^I click on the title for "([^"]*)"$/ do |title|
   click_link title
 end
 
-Then /^I should be viewing the article "([^"]*)"$/ do |title|
+Then /^I should be viewing article "([^"]*)"$/ do |title|
   article = Article.find_by_title(title)
   current_path.should == article_path(article)
 end

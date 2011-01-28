@@ -17,11 +17,6 @@ When /^I submit the changes$/ do
   find(:css, "#article_submit").click
 end
 
-Then /^I should be viewing article "([^"]*)"$/ do |title|
-  article = Article.find_by_title title
-  current_path.should == article_path(article)
-end
-
 Then /^article "([^"]*)" should have body "([^"]*)"$/ do |title, body|
   article = Article.find_by_title title
   article[:body].should == body
