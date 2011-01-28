@@ -32,3 +32,8 @@ end
 Given /^I click "([^"]*)"$/ do |text|
   click_link text
 end
+
+Given /^I cancel editing$/ do
+  find(:css, "#cancel_editing").click
+end
+

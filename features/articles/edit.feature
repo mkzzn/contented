@@ -1,4 +1,4 @@
-          Feature: Edit Article
+Feature: Edit Article
   In order to easily make changes to an article
   As a writer
   I want to be able to update the information of an existing article
@@ -20,3 +20,7 @@
       Given I clear the article title
       When I submit the changes
       And I should be shown that the title has an error
+
+    Scenario: User cancels editing
+      Given I cancel editing
+      Then I should be viewing article "jenkins"
