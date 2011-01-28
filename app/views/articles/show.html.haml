@@ -2,6 +2,7 @@
 
 %div[@article]
   = link_to @article.title, @article, :class => "title"
-  = button_to "Delete", @article, :method => :delete, :class => :destroy
-  = link_to "Edit", edit_article_path(@article)
+  .resource_links
+    = button_to "Delete", @article, :method => :delete, :class => :destroy
+    = link_to "Edit", edit_article_path(@article)
   %p.body= @article.body

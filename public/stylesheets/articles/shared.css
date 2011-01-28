@@ -11,8 +11,24 @@
     .article a.title:hover {
       text-decoration: underline; }
   .article p.body {
-    margin-top: 0;
+    margin-top: 20px;
     padding-top: 0;
     font-family: Ubuntu;
     font-weight: normal;
     font-size: 1.2em; }
+  .article .resource_links {
+    display: block;
+    margin-left: -6px; }
+    .article .resource_links a, .article .resource_links input {
+      background: white;
+      color: #666666;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      font-family: Ubuntu;
+      font-size: 1.1em; }
+      .article .resource_links a:hover, .article .resource_links input:hover {
+        text-decoration: underline; }
+    .article .resource_links form, .article .resource_links div {
+      display: inline; }

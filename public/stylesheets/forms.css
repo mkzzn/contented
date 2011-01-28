@@ -1,28 +1,25 @@
-#content form, #content .form {
-  padding: 20px;
-  display: block; }
-  #content form .fields, #content .form .fields {
-    margin-bottom: 8px; }
-    #content form .fields label, #content .form .fields label {
-      font-family: Nevis;
-      font-size: 1.1em; }
-    #content form .fields input[type=text], #content form .fields input[type=password], #content form .fields select, #content form .fields textarea, #content .form .fields input[type=text], #content .form .fields input[type=password], #content .form .fields select, #content .form .fields textarea {
-      font-family: Ubuntu;
-      display: block;
-      padding: 2px 4px;
-      margin-top: 4px;
-      font-size: 1.7em;
-      font-weight: normal;
-      background: #dddddd;
-      border: 1px solid white; }
-    #content form .fields input[type=submit], #content .form .fields input[type=submit] {
-      font-family: Ubuntu;
-      font-size: 1.6em;
-      margin-top: 12px; }
-  #content form.auth .fields input[type=text], #content form.auth .fields input[type=password], #content form.auth .fields select, #content .form.auth .fields input[type=text], #content .form.auth .fields input[type=password], #content .form.auth .fields select {
-    padding: 3px 6px;
+#content .fields {
+  margin-bottom: 8px; }
+  #content .fields label {
+    font-family: Nevis;
+    font-size: 1.1em; }
+  #content .fields input[type=text], #content .fields input[type=password], #content .fields select, #content .fields textarea {
+    font-family: Ubuntu;
+    display: block;
+    padding: 2px 4px;
     margin-top: 4px;
-    font-size: 2.4em; }
+    font-size: 1.7em;
+    font-weight: normal;
+    background: #dddddd;
+    border: 1px solid white; }
+  #content .fields input[type=submit] {
+    font-family: Ubuntu;
+    font-size: 1.6em;
+    margin-top: 12px; }
+#content.auth .fields input[type=text], #content.auth .fields input[type=password], #content.auth .fields select {
+  padding: 3px 6px;
+  margin-top: 4px;
+  font-size: 2.4em; }
 #content .form_links {
   float: left; }
   #content .form_links a {

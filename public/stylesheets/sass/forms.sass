@@ -1,32 +1,28 @@
 #content
-  form, .form
-    :padding 20px 
-    :display block
+  .fields
+    :margin-bottom 8px
+    label
+      font-family: Nevis
+      font-size: 1.1em
+    input[type=text], input[type=password], select, textarea
+      font-family: Ubuntu
+      display: block
+      padding: 2px 4px
+      margin-top: 4px
+      font-size: 1.7em
+      font-weight: normal
+      background: #ddd
+      border: 1px solid #fff
+    input[type=submit]
+      font-family: Ubuntu
+      font-size: 1.6em 
+      margin-top: 12px
 
-    .fields
-      :margin-bottom 8px
-      label
-        font-family: Nevis
-        font-size: 1.1em
-      input[type=text], input[type=password], select, textarea
-        font-family: Ubuntu
-        display: block
-        padding: 2px 4px
-        margin-top: 4px
-        font-size: 1.7em
-        font-weight: normal
-        background: #ddd
-        border: 1px solid #fff
-      input[type=submit]
-        font-family: Ubuntu
-        font-size: 1.6em 
-        margin-top: 12px
-
-    &.auth .fields
-      input[type=text], input[type=password], select
-        padding: 3px 6px
-        margin-top: 4px
-        font-size: 2.4em
+  &.auth .fields
+    input[type=text], input[type=password], select
+      padding: 3px 6px
+      margin-top: 4px
+      font-size: 2.4em
 
   .form_links
     :float left
