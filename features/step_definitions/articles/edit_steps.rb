@@ -19,7 +19,7 @@ end
 
 Then /^I should be viewing article "([^"]*)"$/ do |title|
   article = Article.find_by_title title
-  current_page.should == article_path(article)
+  current_path.should == article_path(article)
 end
 
 Then /^article "([^"]*)" should have body "([^"]*)"$/ do |title, body|

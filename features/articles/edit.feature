@@ -1,4 +1,4 @@
-Feature: Edit Article
+          Feature: Edit Article
   In order to easily make changes to an article
   As a writer
   I want to be able to update the information of an existing article
@@ -17,5 +17,4 @@ Feature: Edit Article
     Scenario: User submits invalid data
       Given I clear the article title
       When I submit the changes
-      Then I should be viewing article "jenkins"
       And I should be shown that the title has an error
