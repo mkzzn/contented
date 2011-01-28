@@ -1,7 +1,5 @@
 Contented::Application.routes.draw do
-  get "articles/show"
   resources :articles
-
 
   get "categories/index"
 

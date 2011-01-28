@@ -9,7 +9,8 @@
     When I edit article "jenkins"
 
     Scenario: User successfully updates article information
-      Given I change the title and body of "jenkins" to "snakebot" and "humon"
+      Given I fill in article "title" with "snakebot"
+      And I fill in article "body" with "humon"
       When I submit the changes
       Then I should be viewing article "snakebot"
       And article "snakebot" should have body "humon"

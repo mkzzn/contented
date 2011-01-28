@@ -8,18 +8,17 @@ When /^I edit article "([^"]*)"$/ do |title|
   visit edit_article_path(article)
 end
 
-Given /^I change the title and body of "([^"]*)" to "([^"]*)" and "([^"]*)"$/ do |orig_title, new_title, new_body|
-  article = Article.find_by_title orig_title
-  article.update_attributes :title => new_title, :body => new_body
+Given /^I fill in article "([^"]*)" with "([^"]*)"$/ do |attr, value|
+   fill_in "article_#{attr}", :with => value
 end
 
 When /^I submit the changes$/ do
   find(:css, "#article_submit").click
 end
 
-Then /^article "([^"]*)" should have body "([^"]*)"$/ do |title, body|
+Then /^article "([^"]*)" should have ([^"]*) "([^"]*)"$/ do |title, attr, value|
   article = Article.find_by_title title
-  article[:body].should == body
+  article[attr].should == value
 end
 
 Given /^I clear the article title$/ do
