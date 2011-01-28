@@ -47,6 +47,15 @@ describe ArticlesController do
       get 'new'
     end
   end
+  
+  describe "GET 'edit'" do
+    it "should get the provisioned article" do
+      article = mock_model Article
+      article.stub!(:id).and_return 2
+      Article.should_receive(:find).with(2).and_return article
+      get 'edit', :id => article.id
+    end
+  end
 
   describe "POST 'create'" do
     context "success" do
