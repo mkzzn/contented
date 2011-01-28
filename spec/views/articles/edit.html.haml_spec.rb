@@ -1,5 +1,7 @@
 require 'spec_helper'
 
 describe "articles/edit.html.haml" do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "should render the form" do
+    view.should render_partial("_form", :count => 1)
+  end
 end
