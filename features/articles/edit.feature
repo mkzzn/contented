@@ -6,7 +6,8 @@
   Background:
     Given an article entitled "jenkins"
     And article "jenkins" has body "wolfpack"
-    When I edit article "jenkins"
+    And I am viewing article "jenkins"
+    And I click "Edit"
 
     Scenario: User successfully updates article information
       Given I fill in article "title" with "snakebot"

@@ -28,3 +28,7 @@ end
 Then /^I should be shown that the title has an error$/ do
   page.should have_xpath("//div[@class='field_with_errors']//input[@id='article_title']")
 end
+
+Given /^I click "([^"]*)"$/ do |text|
+  click_link text
+end

@@ -12,6 +12,6 @@ Feature: View Article
     Then I should be viewing article "articlaus"
 
   Scenario: User reloads an article
-    Given I am viewing the show article page for "articlaus"
+    Given I am viewing article "articlaus"
     When I click on the title for "articlaus"
     Then I should be viewing article "articlaus"
