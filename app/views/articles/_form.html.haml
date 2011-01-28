@@ -1,4 +1,7 @@
-= link_to "Cancel", @article, :id => "cancel_editing"
+= stylesheet_link_tag "articles/shared"
+
+.resource_links
+  = link_to "Cancel", @article, :id => "cancel_editing"
 = form_for @article do |f|
   .fields
     = f.label :title
