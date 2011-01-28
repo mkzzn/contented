@@ -7,6 +7,7 @@ Contented::Application.routes.draw do
 
   get "categories/edit"
 
+  get "home/index"
 
   root :to => "articles#index"
 end

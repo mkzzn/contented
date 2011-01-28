@@ -1,4 +1,7 @@
 = stylesheet_link_tag "articles/shared"
-= render @article
-= button_to "Delete", @article, :method => :delete, :class => :destroy
-= link_to "Edit", edit_article_path(@article)
+
+%div[@article]
+  = link_to @article.title, @article, :class => "title"
+  = button_to "Delete", @article, :method => :delete, :class => :destroy
+  = link_to "Edit", edit_article_path(@article)
+  %p.body= @article.body
