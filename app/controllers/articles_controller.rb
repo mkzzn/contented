@@ -22,6 +22,17 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def update
+    @article = Article.find params[:id]
+    @article.update_attributes params[:article]
+
+    if @article.valid?
+      redirect_to(article_path(@article))
+    else
+      render :action => "new"
+    end
+  end
+
   def new
     @article = Article.new
   end

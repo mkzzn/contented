@@ -49,7 +49,7 @@ describe ArticlesController do
   end
   
   describe "GET 'edit'" do
-    it "should get the provisioned article" do
+    it "should get the article" do
       article = mock_model Article
       article.stub!(:id).and_return 2
       Article.should_receive(:find).with(2).and_return article
@@ -57,6 +57,32 @@ describe ArticlesController do
     end
   end
 
+  describe "PUT 'update'" do
+    before(:each) do
+      @article = mock_model Article
+      @article.stub!(:id).and_return 2
+      @attrs = { "body" => "bar", "title" => "foo" }
+      Article.should_receive(:find).with(2).and_return @article
+      @article.should_receive(:update_attributes).with(@attrs).and_return true
+    end
+
+    context "success" do
+      it "should redirect to show article page" do
+        @article.stub!(:valid?).and_return true
+        put 'update', :id => 2, :article => @attrs      
+        response.should redirect_to(article_path(@article))
+      end
+    end
+
+    context "failure" do
+      it "should render the new article template" do
+        @article.stub!(:valid?).and_return false
+        put 'update', :id => 2, :article => @attrs      
+        response.should render_template("new")
+      end
+    end
+  end
+  
   describe "POST 'create'" do
     context "success" do
       before(:each) do

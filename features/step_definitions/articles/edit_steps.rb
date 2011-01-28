@@ -14,7 +14,7 @@ Given /^I change the title and body of "([^"]*)" to "([^"]*)" and "([^"]*)"$/ do
 end
 
 When /^I submit the changes$/ do
-  click_button "update article"
+  find(:css, "#article_submit").click
 end
 
 Then /^I should be viewing article "([^"]*)"$/ do |title|
@@ -32,5 +32,5 @@ Given /^I clear the article title$/ do
 end
 
 Then /^I should be shown that the title has an error$/ do
-  page.should have_xpath("//div[@class=fieldWithErrors]//input[@id=article_title]")
+  page.should have_xpath("//div[@class='field_with_errors']//input[@id='article_title']")
 end
