@@ -3,11 +3,11 @@ require 'spec_helper'
 describe CommentsController do
   context "POST 'create'" do
     before(:each) do
-      @article = mock_model(Article, :id => "3")
+      @article = Factory :article, :id => "3"
       Article.should_receive(:find).with("3").and_return @article
       @params = {"article_id" => "3", "comment" => {"body" => "kwl!"}}
       @comment = mock_model(Comment, :body => "kwl!")
-      @article.should_receive(:create_comment).with(@params["comment"]).and_return @comment
+      @article.stub_chain(:comments, :create).and_return @comment
     end
 
     it "should redirect to the article on success" do
