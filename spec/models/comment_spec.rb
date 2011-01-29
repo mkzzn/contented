@@ -1,5 +1,14 @@
 require 'spec_helper'
 
 describe Comment do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context "associations" do
+    before(:each) do
+      @article = Factory :article
+      @comment = Factory :comment, :article => @article
+    end
+    
+    it "should belong to an article" do
+      @comment.article.should == @article
+    end
+  end
 end

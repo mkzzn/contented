@@ -17,4 +17,15 @@ describe Article do
       end
     end
   end
+
+  context "associations" do
+    before(:each) do
+      @article = Factory :article
+      @comment = Factory :comment, :article => @article
+    end
+
+    it "should have comments" do
+      @article.comments.first.should == @comment
+    end
+  end
 end
