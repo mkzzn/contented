@@ -8,6 +8,7 @@
   %p.body= @article.body
 
 #comments
+  = render :partial => @article.comments
   = form_for [@article, Comment.new] do |f|
     = f.label :body, "Comment"
     = f.text_area :body
