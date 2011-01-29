@@ -3,7 +3,7 @@ Given /^I enter the comment "([^"]*)"$/ do |comment|
 end
 
 Given /^I submit the comment$/ do
-  find(:css, "create_comment").click
+  find(:css, "#comment_submit").click
 end
 
 Then /^the comment "([^"]*)" should appear on the page$/ do |comment|
