@@ -17,6 +17,6 @@
 
 #content form .field_with_errors label {
   color: #df0019; }
-#content form .field_with_errors input, #content form .field_with_errors textarea {
+#content form .field_with_errors input, #content form .field_with_errors input[type=text], #content form .field_with_errors textarea, #content form .field_with_errors select {
   border: 1px solid #df0019;
   background: #ffbac2; }
