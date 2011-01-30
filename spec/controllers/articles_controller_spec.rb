@@ -37,7 +37,7 @@ describe ArticlesController do
       comment = mock_model Comment, :save => false
       article.stub!(:id).and_return 2
       Article.should_receive(:find).with(article.id).and_return article
-      article.should_receive(:build_comment).and_return comment
+      article.stub_chain(:comments, :build).and_return comment
       get 'show', :id => article.id
     end
   end
