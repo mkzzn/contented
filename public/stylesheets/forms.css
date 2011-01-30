@@ -1,5 +1,6 @@
 #content .fields {
-  margin-bottom: 8px; }
+  margin-bottom: 8px;
+  margin-top: 16px; }
   #content .fields label {
     font-family: Nevis;
     font-size: 1.1em; }
