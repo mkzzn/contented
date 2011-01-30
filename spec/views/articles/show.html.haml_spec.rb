@@ -9,9 +9,9 @@ describe "articles/show.html.haml" do
     comment = mock_model(Comment)
     comment.should_receive(:body)
 
-    article.stub!(:comments).and_return [stub_model(Comment), stub_model(Comment)]
-    assign(:article, article)
-    assign(:comment, comment)
+    assign :comments, [stub_model(Comment), stub_model(Comment)]
+    assign :article, article
+    assign :comment, comment
     render
     view.should render_template(:partial => "comments/_comment", :count => 2)
   end

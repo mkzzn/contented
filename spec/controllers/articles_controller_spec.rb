@@ -33,11 +33,19 @@ describe ArticlesController do
   
   describe "GET 'show'" do
     it "should return the relevant article and build a new comment" do
+      # Setup
       article = mock_model Article
-      comment = mock_model Comment, :save => false
       article.stub!(:id).and_return 2
+      new_comment = mock_model Comment, :save => false
+      comments = [ mock_model(Comment, :article_id => 2) ]
+
+      # Expectations
       Article.should_receive(:find).with(article.id).and_return article
-      article.stub_chain(:comments, :build).and_return comment
+      Comment.should_receive(:new).with({:article_id => 2}).and_return new_comment
+      article.should_receive(:id).and_return 2
+      article.should_receive(:comments).and_return comments
+
+      # Call
       get 'show', :id => article.id
     end
   end

@@ -1,6 +1,6 @@
 #comments
   %h2 Comments
-  = render :partial => @article.comments
+  = render :partial => @comments
   = form_for [@article, @comment] do |f|
     = f.label :body, "Comment"
     = f.text_area :body
