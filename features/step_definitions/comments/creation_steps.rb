@@ -11,11 +11,11 @@ Then /^the comment "([^"]*)" should appear on the page$/ do |comment|
 end
 
 Given /^I enter an empty comment$/ do
-  pending # express the regexp above with the code you wish you had
+  %Q{Given I enter the comment ""}
 end
 
 Then /^I should see errors on the comment field$/ do
-  pending # express the regexp above with the code you wish you had
+  page.should have_xpath("//div[@class='field_with_errors']//input[@id='comment_body']")
 end
 
 Then /^the comment should not be posted to the page$/ do

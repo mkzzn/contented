@@ -8,7 +8,6 @@ Feature: Article commenting
     And I am viewing article "bonobo"
 
   Scenario: User posts a valid comment
-    Then show me the page
     Given I enter the comment "This is great!"
     And I submit the comment
     Then the comment "This is great!" should appear on the page
