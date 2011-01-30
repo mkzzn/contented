@@ -15,9 +15,9 @@ Given /^I enter an empty comment$/ do
 end
 
 Then /^I should see errors on the comment field$/ do
-  page.should have_xpath("//div[@class='field_with_errors']//input[@id='comment_body']")
+  page.should have_xpath("//div[@class='field_with_errors']//textarea[@id='comment_body']")
 end
 
 Then /^the comment should not be posted to the page$/ do
-  pending # express the regexp above with the code you wish you had
+  page.should_not have_xpath("//div[@class='comment']//div[@class='body'][contains(.,'')]")
 end
