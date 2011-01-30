@@ -18,6 +18,7 @@ describe CommentsController do
 
     it "should render the view article action on failure" do
       @comment.stub!(:valid?).and_return false
+      @article.stub_chain(:comments, :reject)
       post 'create', @params
       response.should render_template("show")
     end
