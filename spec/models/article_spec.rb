@@ -27,5 +27,10 @@ describe Article do
     it "should have comments" do
       @article.comments.first.should == @comment
     end
+
+    it "should destroy dependent comments on deletion" do
+      @article.destroy
+      Comment.count(@comment[:id]).should == 0
+    end
   end
 end
