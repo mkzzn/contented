@@ -12,6 +12,6 @@ Then /^I should see a notice saying "([^"]*)"$/ do |message|
   page.should have_xpath("//div[@class='flash notice'][contains(., '#{message}')]")
 end
 
-Then /^I should not see comment "([^"]*)"$/ do |comment_body|
+Then /^I should not see the comment "([^"]*)"$/ do |comment_body|
   page.should_not have_xpath("//div[@class='comment']//div[@class='body'][contains(.,'#{comment_body}')]")
 end
