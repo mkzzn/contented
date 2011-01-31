@@ -4,8 +4,7 @@ Feature: Category Creation
   I want to be able to create categories
 
   Background:
-    Given I am on the homepage
-    And I go to the new category page
+    Given I go to the new category page
     
   Scenario: User successfully creates a category
     Given I enter valid data for new category "beckwith"
