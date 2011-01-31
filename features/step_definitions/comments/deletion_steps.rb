@@ -5,11 +5,11 @@ end
 
 When /^I click the delete link for comment "([^"]*)"$/ do |comment_body|
   comment = Comment.find_by_body comment_body
-  find(:xpath, "//div[@id='comment_#{comment[:id]}']//a[@class='delete']").click
+  find(:xpath, "//div[@id='comment_#{comment[:id]}']//input[contains(@class, 'delete')]").click
 end
 
 Then /^I should see a notice saying "([^"]*)"$/ do |message|
-  page.should have_xpath("//div[@class='flash notice'][contains(., #{message})]")
+  page.should have_xpath("//div[@class='flash notice'][contains(., '#{message}')]")
 end
 
 Then /^I should not see comment "([^"]*)"$/ do |comment_body|
