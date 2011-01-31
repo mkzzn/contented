@@ -1,4 +1,4 @@
-Feature: Article commenting                                                                                  
+Feature: Comment Creation                                                                                  
   In order to be able to give feedback on an article I've read
   As a site reader
   I want to be able to post a comment to an article
