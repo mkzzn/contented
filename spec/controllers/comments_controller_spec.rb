@@ -25,21 +25,31 @@ describe CommentsController do
   end
 
   context "DELETE 'destroy'" do
-    it "should destroy the comment" do
+    before(:each) do
       # Setup
-      article = mock_model(Article, :id => 2)
-      comment = mock_model(Comment, :article_id => article.id)
+      @article = mock_model(Article, :id => 2)
+      @comment = mock_model(Comment, :article_id => @article.id, :body => "doug")
 
       # Expectation
-      Comment.should_receive(:find).with(1).and_return comment
-      comment.should_receive(:article).and_return article
-      comment.stub!(:destroy).and_return true
+      Comment.should_receive(:find).with(1).and_return @comment
+      @comment.should_receive(:article).and_return @article
+    end
+      
+    context "comment is destroyed" do
+      it "should create a notice and redirect to the article" do
+        @comment.should_receive(:body).and_return "doug"
+        @comment.stub!(:destroy).and_return true
+        delete 'destroy', :id => 1
+        response.should redirect_to(@article)
+      end
+    end
 
-      # Request
-      delete 'destroy', :id => 1
-
-      # Response
-      response.should redirect_to(article_path(article))
+    context "comment is not destroyed" do
+      it "should just redirect to the article" do
+        @comment.stub!(:destroy).and_return false
+        delete 'destroy', :id => 1
+        response.should redirect_to(@article)
+      end
     end
   end
 end
