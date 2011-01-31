@@ -1,4 +1,4 @@
 %div[comment]
   .body= comment.body
   .resource_links
-    = button_to "Delete", @article, :method => :delete, :class => "destroy delete"
+    = button_to "Delete", { :action => "destroy", :controller => "comments", :id => comment.id }, :method => :delete , :class => "destroy delete"

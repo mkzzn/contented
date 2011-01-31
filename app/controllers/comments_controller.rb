@@ -10,4 +10,9 @@ class CommentsController < ApplicationController
       render "articles/show"
     end
   end
+
+  def destroy
+    @comment = Comment.find params[:id]
+    @comment.destroy and redirect_to article_path(@comment.article)
+  end
 end

@@ -23,4 +23,23 @@ describe CommentsController do
       response.should render_template("show")
     end
   end
+
+  context "DELETE 'destroy'" do
+    it "should destroy the comment" do
+      # Setup
+      article = mock_model(Article, :id => 2)
+      comment = mock_model(Comment, :article_id => article.id)
+
+      # Expectation
+      Comment.should_receive(:find).with(1).and_return comment
+      comment.should_receive(:article).and_return article
+      comment.stub!(:destroy).and_return true
+
+      # Request
+      delete 'destroy', :id => 1
+
+      # Response
+      response.should redirect_to(article_path(article))
+    end
+  end
 end
