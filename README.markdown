@@ -1,12 +1,10 @@
-Contented
-=========
+# Contented
 Contented aims to be an exceptionally stable and well-tested Rails app to serve
 as a basis for launching new apps (particularly ones that need content such as a
 blog, etc.) quickly without having to reinvent the wheel every time.
 
 
-Features
-========
+# Features
 Currently there is only basic CRUD functionality in place for Articles and
 Comments, but more functionality is forthcoming.
 
@@ -32,40 +30,37 @@ prioritized based on the need and whether your feature concept seems like it
 would be immediately useful to the goal of the project.
 
 
-Setup
-=====
+# Setup
 Contented is setup and tested to use a PostgreSQL database.  Here's how to set it
 up on a POSIX-like system:
 
-# login as the postgres user
+### login as the postgres user
 su - postgresql
 
-# access the postgres console
+### access the postgres console
 psql
 
-# create a new user with the password
+### create a new user with the password
 create user contented with password "M394P455W0Rd!!!";
 
-# create some databases
+### create some databases
 create database contented_development;
 create database contented_test;
 
-# grant permissions to the contented user
+### grant permissions to the contented user
 grant all privileges on database contented_development to contented;
 grant all privileges on database contented_test to contented;
 
-# run migrations from the Rails Root on the new database
+### run migrations from the Rails Root on the new database
 rake db:migrate && rake db:migrate RAILS_ENV=test
 
-# install the gem bundle
+### install the gem bundle
 rake bundle:install
 
 
-Tests
-=====
+# Tests
 
-Rspec 2
------
+## Rspec 2
 Testing with Rspec 2 is used in a pretty straightforward manner here.
 
 Run the entire suite with 'bundle exec rspec spec' from the application
@@ -75,8 +70,7 @@ run individual specs.
 I personally use the following BASH alias to save myself some time:
 alias ber='bundle exec rspec spec -c --format nested' 
 
-Cucumber
---------
+## Cucumber
 Cucumber features are nested in subdirectories in /features based on the
 controller or functionality to which they're relevant.  As such, it is
 okay to run the entire suite from root using 'bundle exec cucumber', but
@@ -91,11 +85,9 @@ As with Rspec, I use a BASH alias to simplify the process:
 alias bec='bundle exec cucumber --format pretty --require features'
 
 
-Contributing
-============
+# Contribute
 
-Test Coverage
--------------
+##Test Coverage
 Contented aims to be an *exceptionally well-tested* Rails application.  The goal
 is to grow slowly and prioritize stability and longevity over speed.
 
@@ -106,16 +98,14 @@ Please take a look at the existing test suite for a sense of the level to which
 Contented is being tested.
 
 
-Workflow
---------
+##Workflow
 If you have a patch or commit that you'd like to push upstream please fork
 Contented, and submit a pull request to one the maintainers.  We'll let you
 know if it's been accepted or if there's any additional work that needs to be
 done before it's merged upstream.
 
 
-Maintainers (name/role/github)
-===========
+##Maintainers (name/role/github)
 Mike Zazaian (Petrified Shark Osciallator, Lycanthropic Turbine Engineer)
 mkzzn
 
