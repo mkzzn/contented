@@ -1,4 +1,6 @@
 # Contented
+
+## About
 Contented aims to be an exceptionally stable and well-tested Rails app to serve
 as a basis for launching new apps (particularly ones that need content such as a
 blog, etc.) quickly without having to reinvent the wheel every time.
@@ -67,8 +69,8 @@ Run the entire suite with 'bundle exec rspec spec' from the application
 root directory, or just use 'bundle exec rspec path/to/some/spec.rb' to
 run individual specs.
 
-I personally use the following BASH alias to save myself some time:
-alias ber='bundle exec rspec spec -c --format nested' 
+**I personally use the following BASH alias to save myself some time:**
+_alias ber='bundle exec rspec spec -c --format nested'_
 
 ### Cucumber
 Cucumber features are nested in subdirectories in /features based on the
@@ -81,14 +83,14 @@ To properly run individual features that are nested within project
 subdirectories, use the '--require features' flag from the application
 root directory to properly require step definitions.
 
-As with Rspec, I use a BASH alias to simplify the process:
-alias bec='bundle exec cucumber --format pretty --require features'
+**As with Rspec, I use a BASH alias to simplify the process:**
+_alias bec='bundle exec cucumber --format pretty --require features'_
 
 
 ##Contribute
 
 ###Test Coverage
-Contented aims to be an *exceptionally well-tested* Rails application.  The goal
+Contented aims to be an **exceptionally well-tested** Rails application.  The goal
 is to grow slowly and prioritize stability and longevity over speed.
 
 Patches should be submitted with full Cucumber coverage, as well as RSpec
