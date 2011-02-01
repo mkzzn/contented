@@ -34,27 +34,27 @@ would be immediately useful to the goal of the project.
 Contented is setup and tested to use a PostgreSQL database.  Here's how to set it
 up on a POSIX-like system:
 
-#### login as the postgres user
+*login as the postgres user*  
 su - postgresql
 
-#### access the postgres console
+*access the postgres console*  
 psql
 
-#### create a new user with the password
+*create a new user with the password*  
 create user contented with password "M394P455W0Rd!!!";
 
-#### create some databases
+*create some databases*  
 create database contented_development;
 create database contented_test;
 
-#### grant permissions to the contented user
+*grant permissions to the contented user*  
 grant all privileges on database contented_development to contented;
 grant all privileges on database contented_test to contented;
 
-#### run migrations from the Rails Root on the new database
+*run migrations from the Rails Root on the new database*  
 rake db:migrate && rake db:migrate RAILS_ENV=test
 
-#### install the gem bundle
+*install the gem bundle*  
 rake bundle:install
 
 
