@@ -69,7 +69,7 @@ Run the entire suite with 'bundle exec rspec spec' from the application
 root directory, or just use 'bundle exec rspec path/to/some/spec.rb' to
 run individual specs.
 
-**I personally use the following BASH alias to save myself some time:**
+**I personally use the following BASH alias to save myself some time:**  
 _alias ber='bundle exec rspec spec -c --format nested'_
 
 ### Cucumber
@@ -83,7 +83,7 @@ To properly run individual features that are nested within project
 subdirectories, use the '--require features' flag from the application
 root directory to properly require step definitions.
 
-**As with Rspec, I use a BASH alias to simplify the process:**
+**As with Rspec, I use a BASH alias to simplify the process:**  
 _alias bec='bundle exec cucumber --format pretty --require features'_
 
 
