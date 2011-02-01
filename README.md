@@ -32,9 +32,11 @@ prioritized based on the need and whether your feature concept seems like it
 would be immediately useful to the goal of the project.
 
 
-## Setup
-Contented is setup and tested to use a PostgreSQL database.  Here's how to set it
-up on a POSIX-like system:
+##Setup
+
+###PostgreSQL
+Contented is setup and tested to use a PostgreSQL database.  To set it up on a
+POSIX-like system go to a BASH shell and enter the following:
 
 **login as the postgres user**  
 _su - postgresql_
@@ -46,12 +48,17 @@ _psql_
 _create user contented with password "M394P455W0Rd!!!";_
 
 **create some databases**  
-_create database contented_development;_
+_create database contented_development;_  
 _create database contented_test;_
 
 **grant permissions to the contented user**  
-_grant all privileges on database contented_development to contented;_
+_grant all privileges on database contented_development to contented;_  
 _grant all privileges on database contented_test to contented;_
+
+
+###Rake Tasks
+With the database setup exit out of the psql prompt, and then the postgresql
+user, and navigate to the root directory of Contented.  Then run:
 
 **run migrations from the Rails Root on the new database**  
 _rake db:migrate && rake db:migrate RAILS_ENV=test_
