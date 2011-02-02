@@ -3,7 +3,7 @@ Given /^category "([^"]*)" with description "([^"]*)"$/ do |title, desc|
 end
 
 Given /^category "([^"]*)" has an article entitled "([^"]*)"$/ do |category, article|
-  category = Category.find_by_name category
+  category = Category.find_by_title category
   category.articles.create :title => article
 end
 
