@@ -20,7 +20,7 @@ Feature: Categories Index
   Scenario: User sees the first three articles for each category
     Given article "rooster" is the third article in category "monster"
     And article "douglas" is the fourth article in category "monster"
-    When I visit the Categories index
+    When I go to the categories index
     Then I should see article "rooster" within category "monster"
     But I should not see article "douglas" within category "monster"
 
