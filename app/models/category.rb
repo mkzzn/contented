@@ -1,3 +1,3 @@
 class Category < ActiveRecord::Base
-  validate :title, :presence => true
+  validates :title, :presence => true
 end
