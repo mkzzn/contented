@@ -17,4 +17,4 @@ Feature: Category Creation
     Given I enter an empty category title
     When I submit the category
     Then I should see a warning saying "category was not created"
-    And I should errors on the category title
+    And I should see errors on the category title

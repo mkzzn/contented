@@ -22,6 +22,6 @@ Then /^I should see a warning saying "([^"]*)"$/ do |message|
   page.should have_xpath("//div[@class='flash warning'][contains(., '#{message}')]")
 end
 
-Then /^I should errors on the category title$/ do
-  page.should have_xpath("//div[@class='field_with_errors']//textarea[@id='category_title']")
+Then /^I should see errors on the category title$/ do
+  page.should have_xpath("//div[@class='field_with_errors']//input[@type='text'][@id='category_title']")
 end
