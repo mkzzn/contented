@@ -78,7 +78,7 @@ root directory, or just use **'bundle exec rspec path/to/some/spec.rb'** to
 run individual specs.
 
 **I personally use the following BASH alias to save myself some time:**   
-_alias ber='bundle exec rspec spec -c --format nested'_
+_alias ber='bundle exec rspec -c --format nested'_
 
 ### Cucumber
 Cucumber features are nested in subdirectories in /features based on the

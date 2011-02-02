@@ -12,7 +12,7 @@ class CategoriesController < ApplicationController
     if @category.valid?
       redirect_to categories_path
     else
-      render :action => "new"
+      render :action => "new", :warn => "Category was not created"
     end
   end
 

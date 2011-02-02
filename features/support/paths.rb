@@ -12,9 +12,10 @@ module NavigationHelpers
       '/'
     when /the articles index page/
       articles_path
-    # Add more mappings here.
-    # Here is an example that pulls values out of the Regexp:
-    #
+    when /the categories index page/
+      categories_path
+
+
     #   when /^(.*)'s profile page$/i
     #     user_profile_path(User.find_by_login($1))
 
