@@ -27,5 +27,5 @@ Feature: Categories Index
 
   Scenario: User navigates to categories index from homepage
     Given I am viewing the homepage
-    And I click the Categories navigation heading
-    Then I should be viewing the Categories index
+    And I click the categories navigation heading
+    Then I should be on the categories index

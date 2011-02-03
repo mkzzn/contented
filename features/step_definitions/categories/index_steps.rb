@@ -41,10 +41,6 @@ Given /^I am viewing the homepage$/ do
   visit articles_path
 end
 
-Given /^I click the Categories navigation heading$/ do
-  pending
-end
-
-Then /^I should be viewing the Categories index$/ do
-  pending # express the regexp above with the code you wish you had
+Given /^I click the categories navigation heading$/ do
+  find(:xpath, "//div[@class='navigation primary']//li[@class='title']//a[contains(@class, 'categories')]").click
 end
