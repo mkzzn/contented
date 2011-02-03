@@ -7,10 +7,6 @@ Given /^category "([^"]*)" has an article entitled "([^"]*)"$/ do |category, art
   Factory :article, :title => article, :category => category
 end
 
-Given /^I visit the Categories index$/ do
-  visit categories_path
-end
-
 Then /^I should see article "([^"]*)" within category "([^"]*)"$/ do |article, category|
   page.should have_xpath("//div[@class='category']//div[@class='article']//a[@class='title'][contains(.,'#{article}')]")
 end
@@ -19,7 +15,7 @@ Then /^I should not see article "([^"]*)" within category "([^"]*)"$/ do |articl
   page.should_not have_xpath("//div[@class='category']//div[@class='article']//div[@class='title'][contains(.,'#{article}')]")
 end
 
-When /^I click the link for article "([^"]*)"$/ do |article|
+When /^I click to visit article "([^"]*)"$/ do |article|
   click_link article
 end
 

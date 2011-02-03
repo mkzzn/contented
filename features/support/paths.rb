@@ -10,11 +10,10 @@ module NavigationHelpers
 
     when /the home\s?page/
       '/'
-    when /the articles index(?! page)/
+    when /the articles index page/
       articles_path
-    when /the categories index(?! page)/
+    when /the categories index/
       categories_path
-
 
     #   when /^(.*)'s profile page$/i
     #     user_profile_path(User.find_by_login($1))
