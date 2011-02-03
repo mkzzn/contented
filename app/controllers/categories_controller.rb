@@ -11,6 +11,7 @@ class CategoriesController < ApplicationController
     @category = Category.create params[:category]
     
     if @category.valid?
+      flash[:notice] = @category[:title] + " was created"
       redirect_to categories_path
     else
       flash[:warning] = "category was not created"
