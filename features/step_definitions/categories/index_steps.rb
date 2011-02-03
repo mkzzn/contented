@@ -24,17 +24,17 @@ Then /^I should be viewing the article entitled "([^"]*)"$/ do |article|
   current_path.should == article_path(article)
 end
 
-Given /^article "([^"]*)" is the (.*) article in category "([^"]*)"$/ do |number, article, category|
-  order = {"third" => 3, "fourth" => 4}
+Given /^article "([^"]*)" is the (.*) article in category "([^"]*)"$/ do |article, number, category|
+  order = {"third" => 2, "fourth" => 3}
   @category = Category.find_by_title category
-  (order[number] - 1 - @category.articles.count).times do
-    @category.articles.create :title => Faker::Lorem.sentence
+  (order[number] - @category.articles.count).times do
+    Factory :article, :category => @category
   end
-  @category.articles.create :title => article
+  Factory :article, :category => @category, :title => article
 end
 
 Then /^I should not see article "([^"]*)" within category "([^"]*)"$/ do |article, category|
-  page.should have_xpath("//div[@class='category']//div[@class='article']//div[@class='title'][contains(.,'#{article}')'")
+  page.should have_xpath("//div[@class='category']//div[@class='article']//div[@class='title'][contains(.,'#{article}')]")
 end
 
 Given /^I am viewing the homepage$/ do

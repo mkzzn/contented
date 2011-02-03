@@ -10,9 +10,9 @@ module NavigationHelpers
 
     when /the home\s?page/
       '/'
-    when /the articles index page/
+    when /the articles index(?! page)/
       articles_path
-    when /the categories index page/
+    when /the categories index(?! page)/
       categories_path
 
 
