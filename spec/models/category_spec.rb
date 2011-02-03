@@ -25,4 +25,16 @@ describe Category do
       end
     end
   end
+
+  context "associations" do
+    context "has many" do
+      context "articles" do
+        it "should be able to have many articles" do
+          category = Factory :category
+          2.times { Factory :article, :category => category }
+          category.articles.size.should == 2
+        end
+      end
+    end
+  end
 end
