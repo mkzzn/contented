@@ -14,7 +14,6 @@ Feature: Categories Index
 
   Scenario: User visits article
     Given I visit the Categories index
-    Then show me the page
     When I click the link for article "weasel"
     Then I should be viewing the article entitled "weasel"
 
@@ -22,6 +21,7 @@ Feature: Categories Index
     Given article "rooster" is the third article in category "monster"
     And article "douglas" is the fourth article in category "monster"
     When I go to the categories index
+    Then show me the page
     Then I should see article "rooster" within category "monster"
     But I should not see article "douglas" within category "monster"
 

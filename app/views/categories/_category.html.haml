@@ -1,4 +1,4 @@
 %div[category]
   .title= category.title
   .description= category.description
-  .articles= render :partial => "articles/article", :collection => category.articles
+  .articles= render :partial => "articles/article", :collection => category.articles(:limit => 3)
