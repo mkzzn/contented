@@ -15,6 +15,10 @@ Then /^I should see article "([^"]*)" within category "([^"]*)"$/ do |article, c
   page.should have_xpath("//div[@class='category']//div[@class='article']//a[@class='title'][contains(.,'#{article}')]")
 end
 
+Then /^I should not see article "([^"]*)" within category "([^"]*)"$/ do |article, category|
+  page.should_not have_xpath("//div[@class='category']//div[@class='article']//div[@class='title'][contains(.,'#{article}')]")
+end
+
 When /^I click the link for article "([^"]*)"$/ do |article|
   click_link article
 end
@@ -31,10 +35,6 @@ Given /^article "([^"]*)" is the (.*) article in category "([^"]*)"$/ do |articl
     Factory :article, :category => @category
   end
   Factory :article, :category => @category, :title => article
-end
-
-Then /^I should not see article "([^"]*)" within category "([^"]*)"$/ do |article, category|
-  page.should have_xpath("//div[@class='category']//div[@class='article']//div[@class='title'][contains(.,'#{article}')]")
 end
 
 Given /^I am viewing the homepage$/ do
