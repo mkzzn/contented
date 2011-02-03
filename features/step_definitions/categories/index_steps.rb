@@ -8,7 +8,7 @@ Given /^category "([^"]*)" has an article entitled "([^"]*)"$/ do |category, art
 end
 
 Given /^I visit the Categories index$/ do
-  visit categories_index
+  visit categories_path
 end
 
 Then /^I should see article "([^"]*)" within category "([^"]*)"$/ do |article, category|
