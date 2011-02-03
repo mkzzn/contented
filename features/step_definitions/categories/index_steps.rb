@@ -1,10 +1,10 @@
 Given /^category "([^"]*)" with description "([^"]*)"$/ do |title, desc|
-  Category.create :title => title, :description => desc
+  Factory :category, :title => title, :description => desc
 end
 
 Given /^category "([^"]*)" has an article entitled "([^"]*)"$/ do |category, article|
   category = Category.find_by_title category
-  category.articles.create :title => article
+  Factory :article, :title => article, :category => category
 end
 
 Given /^I visit the Categories index$/ do
@@ -12,7 +12,7 @@ Given /^I visit the Categories index$/ do
 end
 
 Then /^I should see article "([^"]*)" within category "([^"]*)"$/ do |article, category|
-  page.should have_xpath("//div[@class='category']//div[@class='article']//div[@class='title'][contains(.,'#{article}')'")
+  page.should have_xpath("//div[@class='category']//div[@class='article']//a[@class='title'][contains(.,'#{article}')]")
 end
 
 When /^I click the link for article "([^"]*)"$/ do |article|

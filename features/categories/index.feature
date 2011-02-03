@@ -4,8 +4,8 @@ Feature: Categories Index
   I want to be able to see all of the categories at once
 
   Background:
-    Given category "foo" with description "bar"
-    And category "foo" has an article entitled "weasel"
+    Given category "monster" with description "bar"
+    And category "monster" has an article entitled "weasel"
     
   Scenario: User views all categories
     Given I visit the Categories index
@@ -14,6 +14,7 @@ Feature: Categories Index
 
   Scenario: User visits article
     Given I visit the Categories index
+    Then show me the page
     When I click the link for article "weasel"
     Then I should be viewing the article entitled "weasel"
 
