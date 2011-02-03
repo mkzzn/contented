@@ -14,9 +14,17 @@ describe CategoriesController do
     end
   end
 
+  context "GET index" do
+    it "should get all existing categories" do
+      categories = (1..2).collect { mock_category }
+      Category.should_receive(:all) { categories }
+      get "index"
+    end
+  end
+
   context "GET new" do
     it "should build a new category" do
-      Category.should_receive(:new).and_return mock_category(:save => false)
+      Category.should_receive(:new) { mock_category(:save => false) }
       get "new"
     end
   end
