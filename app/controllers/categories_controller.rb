@@ -1,4 +1,6 @@
 class CategoriesController < ApplicationController
+  before_filter :fetch_category, :only => [:edit]
+
   def index
     @categories = Category.all
   end
@@ -22,4 +24,8 @@ class CategoriesController < ApplicationController
   def edit
   end
 
+  protected
+  def fetch_category
+    @category = Category.find params[:id]
+  end
 end
