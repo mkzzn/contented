@@ -31,3 +31,8 @@ end
 Then /^I should be shown that the category (.*) has an error$/ do |attribute|
   page.should have_xpath("//div[@class='field_with_errors']//input[@id='category_#{attribute}']")
 end
+
+Given /^I cancel editing the category$/ do
+  find(:css, "#cancel_editing").click
+end
+

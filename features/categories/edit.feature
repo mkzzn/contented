@@ -25,5 +25,5 @@ Feature: Edit Category
       And I should be shown that the category title has an error
 
     Scenario: User cancels editing
-      Given I cancel editing
+      Given I cancel editing the category
       Then I should be viewing the categories index page

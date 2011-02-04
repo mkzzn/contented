@@ -32,4 +32,3 @@ end
 Given /^I cancel editing$/ do
   find(:css, "#cancel_editing").click
 end
-

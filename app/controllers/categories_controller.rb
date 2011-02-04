@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  before_filter :fetch_category, :only => [:edit, :update]
+  before_filter :fetch_category, :only => [:edit, :update, :show]
 
   def index
     @categories = Category.all
@@ -22,6 +22,9 @@ class CategoriesController < ApplicationController
   end
 
   def edit
+  end
+
+  def show
   end
 
   def update
