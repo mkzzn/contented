@@ -22,6 +22,13 @@ describe CategoriesController do
     end
   end
 
+  context "GET edit" do
+    it "should get the target category" do
+      Category.should_receive(:find).with(2) { mock_category :id => 2 }
+      get "edit", :id => 2
+    end
+  end
+  
   context "GET new" do
     it "should build a new category" do
       Category.should_receive(:new) { mock_category(:save => false) }

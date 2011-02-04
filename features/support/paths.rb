@@ -15,9 +15,8 @@ module NavigationHelpers
     when /the categories index/
       categories_path
 
-    #   when /^(.*)'s profile page$/i
-    #     user_profile_path(User.find_by_login($1))
-
+    when /^the edit page for category "(.*)"$/
+      edit_category_path(Category.find_by_title($1))
     else
       begin
         page_name =~ /the (.*) page/
