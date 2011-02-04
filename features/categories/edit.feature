@@ -1,4 +1,3 @@
-@wip
 Feature: Edit Category
   In order to better refine information about categories
   As a publication editor
