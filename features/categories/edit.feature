@@ -22,7 +22,7 @@ Feature: Edit Category
     Scenario: User submits invalid data
       Given I clear the category title
       When I submit the changes
-      And I should be shown that the title has an error
+      And I should be shown that the category title has an error
 
     Scenario: User cancels editing
       Given I cancel editing

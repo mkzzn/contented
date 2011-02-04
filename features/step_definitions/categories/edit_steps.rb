@@ -27,3 +27,7 @@ end
 Given /^I clear the category title$/ do
   fill_in "category_title", :with => ""
 end
+
+Then /^I should be shown that the category (.*) has an error$/ do |attribute|
+  page.should have_xpath("//div[@class='field_with_errors']//input[@id='category_#{attribute}']")
+end
