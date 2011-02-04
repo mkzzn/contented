@@ -12,10 +12,6 @@ Given /^I fill in article "([^"]*)" with "([^"]*)"$/ do |attr, value|
    fill_in "article_#{attr}", :with => value
 end
 
-When /^I submit the changes$/ do
-  find(:css, "#article_submit").click
-end
-
 Then /^article "([^"]*)" should have ([^"]*) "([^"]*)"$/ do |title, attr, value|
   article = Article.find_by_title title
   article[attr].should == value

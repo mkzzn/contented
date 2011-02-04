@@ -28,7 +28,31 @@ describe CategoriesController do
       get "edit", :id => 2
     end
   end
-  
+
+  context "PUT update" do
+    before(:each) do
+      @params = { "description" => "herman", "title" => "craig" }
+      @category = mock_category(:id => 2)
+      Category.should_receive(:find).with(2) { @category }
+    end
+
+    context "success" do
+      it "should update and redirect to the categories index" do
+        @category.stub!(:update_attributes) { true }
+        put "update", :id => 2, :category => @params
+        response.should redirect_to(categories_path)
+      end
+    end
+
+    context "failure" do
+      it "should fail to update and render the form template" do
+        @category.stub!(:update_attributes) { false }
+        put "update", :id => 2, :category => @params
+        response.should render_template("new")
+      end
+    end
+  end
+
   context "GET new" do
     it "should build a new category" do
       Category.should_receive(:new) { mock_category(:save => false) }
@@ -42,7 +66,7 @@ describe CategoriesController do
       @category = mock_category(@params)
       Category.should_receive(:create).with(@params) { @category }
     end
-    
+
     it "should redirect to the categories index on success" do
       @category.stub!(:valid?) { true }
       post "create", :category => @params

@@ -21,7 +21,7 @@ Then /^I should see category "([^"]*)" with description "([^"]*)"$/ do |category
 end
 
 Then /^I should not see category "([^"]*)"$/ do |category|
-  page.should_not have_xpath("//div[@class='category']//div[@class='description'][contains(.,'#{description}')]")
+  page.should_not have_xpath("//div[@class='category']//div[@class='description'][contains(.,'#{category}')]")
 end
 
 Given /^I clear the category title$/ do
