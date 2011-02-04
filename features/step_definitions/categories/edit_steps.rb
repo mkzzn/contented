@@ -1,10 +1,10 @@
 Given /^I am viewing the categories index page$/ do
-  visit catgories_path
+  visit categories_path
 end
 
 When /^I click to edit category "([^"]*)"$/ do |category|
   category = Category.find_by_title category
-  find(:xpath, "//div[@id='category_#{category[:id]}']//a[contains(.,'edit')]").click
+  find(:xpath, "//div[@id='category_#{category[:id]}']//a[@class='edit']").click
 end
 
 Given /^I enter category title "([^"]*)" and description "([^"]*)"$/ do |title, description|

@@ -2,3 +2,4 @@
   .title= category.title
   .description= category.description
   .articles= render :partial => "articles/article", :collection => category.recent_articles
+  .resource_links= link_to "Edit", edit_category_path(category), :class => "edit"
