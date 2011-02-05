@@ -14,17 +14,41 @@ describe CategoriesController do
     end
   end
 
+  def mock_and_expect_all_categories
+    mock_all_categories and expect_all_categories
+  end
+  
+  def mock_all_categories
+    @categories = (1..2).collect { mock_category }
+  end
+
+  def expect_all_categories
+    Category.should_receive(:all) { @categories }
+  end
+
   context "GET index" do
     it "should get all existing categories" do
-      categories = (1..2).collect { mock_category }
-      Category.should_receive(:all) { categories }
+      mock_and_expect_all_categories
       get "index"
     end
   end
 
   context "GET edit" do
+    before(:each) do
+      @category = mock_category(:id => 2)
+    end
+
+    it "should get all existing categories" do
+      @categories = [ @category, mock_category ]
+      expect_all_categories
+      Category.stub!(:find) { @category }
+    end
+
     it "should fetch the target category" do
-      Category.should_receive(:find).with(2) { mock_category :id => 2 }
+      Category.should_receive(:find).with(2) { @category }
+    end
+
+    after(:each) do
       get "edit", :id => 2
     end
   end
@@ -56,13 +80,33 @@ describe CategoriesController do
   context "GET new" do
     it "should build a new category" do
       Category.should_receive(:new) { mock_category(:save => false) }
+    end
+
+    it "should get all existing categories" do
+      mock_and_expect_all_categories
+    end
+
+    after(:each) do
       get "new"
     end
   end
 
   context "GET show" do
+    before(:each) do
+      @category = mock_category(:id => 2)
+    end
+
+    it "should get all existing categories" do
+      @categories = [ @category, mock_category ]
+      expect_all_categories
+      Category.stub!(:find) { @category }
+    end
+
     it "should fetch the target category" do
-      Category.should_receive(:find).with(2) { mock_category :id => 2 }
+      Category.should_receive(:find).with(2) { @category }
+    end
+
+    after(:each) do
       get "show", :id => 2
     end
   end

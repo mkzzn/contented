@@ -5,11 +5,11 @@ Feature: Categories Sidebar
 
   Background:
     Given category "foo"
-    And category "foo" contains article "bar"
+    And category "foo" has article "bar"
     And category "foo" has 3 other articles
     
   Scenario: User sees category in sidebar
-    When I visit the homepage
+    When I go to the homepage
     Then I should see category "foo" in the sidebar
     And category "foo" should show that it has 4 articles
 
