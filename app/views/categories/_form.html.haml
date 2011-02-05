@@ -1,5 +1,5 @@
 .resource_links
-  = link_to "Cancel", @category, :id => "cancel_editing"
+  = link_to "Cancel", categories_path, :id => "cancel_editing"
 = form_for @category do |f|
   .fields
     = f.label :title

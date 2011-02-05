@@ -35,4 +35,3 @@ end
 Given /^I cancel editing the category$/ do
   find(:css, "#cancel_editing").click
 end
-
