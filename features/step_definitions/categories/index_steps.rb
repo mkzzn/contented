@@ -8,7 +8,8 @@ Given /^category "([^"]*)" has an article entitled "([^"]*)"$/ do |category, art
 end
 
 Then /^I should see article "([^"]*)" within category "([^"]*)"$/ do |article, category|
-  page.should have_xpath("//div[@class='category']//div[@class='article']//a[@class='title'][contains(.,'#{article}')]")
+  category = Category.find_by_title category
+  page.should have_xpath("//div[@id='category_#{category[:id]}']//div[@class='article']//a[@class='title'][contains(.,'#{article}')]")
 end
 
 Then /^I should not see article "([^"]*)" within category "([^"]*)"$/ do |article, category|
