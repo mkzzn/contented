@@ -63,7 +63,7 @@ describe CategoriesController do
   context "GET show" do
     it "should fetch the target category" do
       Category.should_receive(:find).with(2) { mock_category :id => 2 }
-      get "edit", :id => 2
+      get "show", :id => 2
     end
   end
 

@@ -1,0 +1,6 @@
+%div[@category]
+  .title= @category.title
+  .description= @category.description
+  .resource_links
+    = link_to "Edit", edit_category_path(@category), :class => "edit"
+  .articles= render @category.articles
