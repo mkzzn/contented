@@ -92,8 +92,15 @@ describe ArticlesController do
   end
 
   describe "GET 'new'" do
+    it "should get all categories" do
+      mock_and_expect_all_categories
+    end
+
     it "should build a new article" do
       Article.should_receive(:new) { mock_article :save => false }
+    end
+
+    after(:each) do
       get 'new'
     end
   end

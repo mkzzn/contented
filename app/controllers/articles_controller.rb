@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   before_filter :fetch_article, :only => [:show, :update, :edit]
-  before_filter :fetch_all_categories, :only => [:index, :show]
+  before_filter :fetch_all_categories, :only => [:index, :show, :new]
 
   def index
     @articles = Article.all
