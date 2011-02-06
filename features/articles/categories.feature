@@ -11,7 +11,7 @@ Feature: Article Categories
 
   Scenario: User sees article categories
     Then these article categories should be available:
-      | Category      |
+      | category      |
       | douglas       |
       | macarthur     |
       | Uncategorized |

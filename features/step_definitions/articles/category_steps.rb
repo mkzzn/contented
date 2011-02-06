@@ -3,22 +3,23 @@ Given /^I am editing (article "\w+")$/ do |article|
 end
 
 Then /^these article categories should be available:$/ do |table|
-  # table is a Cucumber::Ast::Table
-  pending # express the regexp above with the code you wish you had
+  table.hashes.each do |hash|
+    page.should have_xpath("//select//option[contains(.,'#{hash["category"]}')]")
+  end
 end
 
-Given /^I select category "([^"]*)"$/ do |arg1|
-  pending # express the regexp above with the code you wish you had
+Given /^I select category "([^"]*)"$/ do |category_name|
+  select category_name, :from => "#article_category"
 end
 
-Then /^I should see a notice saying that article "([^"]*)" was saved to category "([^"]*)"$/ do |arg1, arg2|
-  pending # express the regexp above with the code you wish you had
+Then /^I should see a notice saying that article "([^"]*)" was saved to category "([^"]*)"$/ do |article, category|
+  page.should have_xpath("//div[@class='notice'][contains(.,'article #{article} was saved')][contains(.,'category #{category}')]")
 end
 
-Then /^article "([^"]*)" should belong to category "([^"]*)"$/ do |arg1, arg2|
-  pending # express the regexp above with the code you wish you had
+Then /^(article "\w+") should belong to (category "\w+")$/ do |article, category|
+  article.category.should == category
 end
 
-Then /^article "([^"]*)" should be uncategorized$/ do |arg1|
-  pending # express the regexp above with the code you wish you had
+Then /^(article "\w+") should be uncategorized$/ do |article|
+  article.uncategorized?.should == true
 end
