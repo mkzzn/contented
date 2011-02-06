@@ -28,6 +28,7 @@ class ArticlesController < ApplicationController
   def update
     @article.update_attributes params[:article]
     if @article.valid?
+      flash[:notice] = "#{@article.title} was saved to category #{@article.category_name}"
       redirect_to(article_path(@article))
     else
       render :action => "new"

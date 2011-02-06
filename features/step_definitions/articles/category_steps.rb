@@ -9,7 +9,7 @@ Then /^these article categories should be available:$/ do |table|
 end
 
 Given /^I select category "([^"]*)"$/ do |category_name|
-  select category_name, :from => "#article_category_id"
+  select category_name, :from => "article_category_id"
 end
 
 Then /^I should see a notice saying that article "([^"]*)" was saved to category "([^"]*)"$/ do |article, category|
