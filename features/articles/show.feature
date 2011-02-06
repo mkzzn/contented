@@ -15,3 +15,14 @@ Feature: View Article
     Given I am viewing article "articlaus"
     When I click on the title for "articlaus"
     Then I should be viewing article "articlaus"
+
+  Scenario: User sees the article category
+    Given article "articlaus" is within category "fluevog"
+    Given I am viewing article "articlaus"
+    Then I should see category "fluevog" within article "articlaus"
+
+  Scenario: User visits article category
+    Given article "articlaus" is within category "fluevog"
+    And I am viewing article "articlaus"
+    When I click the link to category "fluevog" within article "articlaus"
+    Then I should be viewing category "fluevog"

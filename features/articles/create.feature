@@ -1,6 +1,6 @@
 Feature: Create Article
   In order to publish content
-  As a Snakewise Writer
+  As a site writer
   I want to be able to create articles
   
   Scenario: User Navigates to the New Article Page
