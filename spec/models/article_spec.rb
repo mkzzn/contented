@@ -44,6 +44,17 @@ describe Article do
       it "should be able to belong to a category" do
         @article.category.should == @category
       end
+
+      context "uncategorized" do
+        it "should be uncategorized if it has no category" do
+          article = Factory :article
+          article.uncategorized?.should == true
+        end
+
+        it "should not be uncategorized if it has a category" do
+          @article.uncategorized?.should == false
+        end
+      end
       
       context "category name" do
         it "should return the category name if it has a category" do

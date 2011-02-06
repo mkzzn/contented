@@ -1,4 +1,5 @@
-Given /^I am editing (article "\w+")$/ do |article|
+Given /^I am editing article "([^"]*)"$/ do |title|
+  article = Factory :article, :title => title
   visit edit_article_path(article)
 end
 
@@ -13,13 +14,14 @@ Given /^I select category "([^"]*)"$/ do |category_name|
 end
 
 Then /^I should see a notice saying that article "([^"]*)" was saved to category "([^"]*)"$/ do |article, category|
-  page.should have_xpath("//div[@class='notice'][contains(.,'article #{article} was saved')][contains(.,'category #{category}')]")
+  page.should have_xpath("//div[@class='flash notice'][contains(.,'#{article} was saved')][contains(.,'category #{category}')]")
 end
 
-Then /^(article "\w+") should belong to (category "\w+")$/ do |article, category|
-  article.category.should == category
+Then /^article "([^"]*)" should belong to category "([^"]*)"$/ do |article, category|
+  Article.find_by_title(article).category[:title].should == category
 end
 
-Then /^(article "\w+") should be uncategorized$/ do |article|
+Then /^article "([^"]*)" should be uncategorized$/ do |article|
+  article = Article.find_by_title article
   article.uncategorized?.should == true
 end
