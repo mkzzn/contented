@@ -13,13 +13,38 @@ describe ArticlesController do
     end
   end
 
+  def mock_category(stubs={})
+    (@mock_category ||= mock_model(Category).as_null_object).tap do |category|
+      category.stub(stubs) unless stubs.empty?
+    end
+  end
+
+  def mock_and_expect_all_categories
+    mock_all_categories and expect_all_categories
+  end
+  
+  def mock_all_categories
+    @categories = (1..2).collect { mock_category }
+  end
+
+  def expect_all_categories
+    Category.should_receive(:all) { @categories }
+  end
+
   before(:each) do
     @attributes = {"title" => "excellent", "body" => "nonsense"}
   end
   
   describe "GET 'index'" do
+    it "should get all categories" do
+      mock_and_expect_all_categories
+    end
+
     it "should return available articles" do
       Article.should_receive(:all) { mock_article @attributes }
+    end
+
+    after(:each) do
       get 'index'
     end
   end

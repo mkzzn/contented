@@ -1,16 +1,17 @@
 class ArticlesController < ApplicationController
+  before_filter :fetch_article, :only => [:show, :update, :edit]
+  before_filter :fetch_all_categories, :only => [:index]
+
   def index
     @articles = Article.all
   end
 
   def show
-    @article = Article.find params[:id]
     @comments = @article.comments
     @comment = Comment.new :article_id => @article.id
   end
 
   def edit
-    @article = Article.find params[:id]
   end
 
   def create
@@ -25,9 +26,7 @@ class ArticlesController < ApplicationController
   end
 
   def update
-    @article = Article.find params[:id]
     @article.update_attributes params[:article]
-
     if @article.valid?
       redirect_to(article_path(@article))
     else
@@ -43,5 +42,10 @@ class ArticlesController < ApplicationController
     Article.delete params[:id]
     flash[:notice] = "Article was successfully destroyed"
     redirect_to articles_path
+  end
+
+  protected
+  def fetch_article
+    @article = Article.find params[:id]
   end
 end

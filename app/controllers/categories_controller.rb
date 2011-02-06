@@ -41,8 +41,4 @@ class CategoriesController < ApplicationController
   def fetch_category
     @category = Category.find params[:id]
   end
-
-  def fetch_all_categories
-    @categories = Category.all
-  end
 end
