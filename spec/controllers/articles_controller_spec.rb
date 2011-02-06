@@ -68,20 +68,26 @@ describe ArticlesController do
   end
   
   describe "GET 'show'" do
+    before(:each) do
+      @article = mock_article(:id => 2)
+    end
+    
+    it "should get all categories" do
+      mock_and_expect_all_categories
+      Article.stub!(:find) { @article }
+    end
+
     it "should return the relevant article and build a new comment" do
-      # Setup
-      article = mock_article
-      article.stub!(:id) { 2 }
       new_comment = mock_comment :save => false
       comments = [ mock_comment(:article_id => 2) ]
 
-      # Expectations
-      Article.should_receive(:find).with(article.id) { article }
+      Article.should_receive(:find).with(2) { @article }
       Comment.should_receive(:new).with({:article_id => 2}) { new_comment }
-      article.should_receive(:comments) { comments }
+      @article.should_receive(:comments) { comments }
+    end
 
-      # Call
-      get 'show', :id => article.id
+    after(:each) do
+      get 'show', :id => 2
     end
   end
 
