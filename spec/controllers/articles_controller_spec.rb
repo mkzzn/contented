@@ -106,11 +106,21 @@ describe ArticlesController do
   end
   
   describe "GET 'edit'" do
+    before(:each) do
+      @article = mock_article :id => 2
+    end
+    
     it "should get the article" do
-      article = mock_article
-      article.stub!(:id) { 2 }
-      Article.should_receive(:find).with(2) { article }
-      get 'edit', :id => article.id
+      Article.should_receive(:find).with(2) { @article }
+    end
+
+    it "should get all categories" do
+      mock_and_expect_all_categories
+      Article.stub!(:find) { @article }
+    end
+    
+    after(:each) do
+      get 'edit', :id => 2
     end
   end
 
