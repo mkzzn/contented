@@ -1,45 +1,11 @@
 require 'spec_helper'
 
 describe ArticlesController do
-  def mock_article(stubs={})
-    (@mock_article ||= mock_model(Article).as_null_object).tap do |article|
-      article.stub(stubs) unless stubs.empty?
-    end
-  end
-
-  def mock_comment(stubs={})
-    (@mock_comment ||= mock_model(Comment).as_null_object).tap do |comment|
-      comment.stub(stubs) unless stubs.empty?
-    end
-  end
-
-  def mock_category(stubs={})
-    (@mock_category ||= mock_model(Category).as_null_object).tap do |category|
-      category.stub(stubs) unless stubs.empty?
-    end
-  end
-
-  def mock_and_expect_all_categories
-    mock_all_categories and expect_all_categories
-  end
-  
-  def mock_all_categories
-    @categories = (1..2).collect { mock_category }
-  end
-
-  def expect_all_categories
-    Category.should_receive(:all) { @categories }
-  end
-
   before(:each) do
     @attributes = {"title" => "excellent", "body" => "nonsense"}
   end
   
   describe "GET 'index'" do
-    it "should get all categories" do
-      mock_and_expect_all_categories
-    end
-
     it "should return available articles" do
       Article.should_receive(:all) { mock_article @attributes }
     end
@@ -71,11 +37,6 @@ describe ArticlesController do
     before(:each) do
       @article = mock_article(:id => 2)
     end
-    
-    it "should get all categories" do
-      mock_and_expect_all_categories
-      Article.stub!(:find) { @article }
-    end
 
     it "should return the relevant article and build a new comment" do
       new_comment = mock_comment :save => false
@@ -92,10 +53,6 @@ describe ArticlesController do
   end
 
   describe "GET 'new'" do
-    it "should get all categories" do
-      mock_and_expect_all_categories
-    end
-
     it "should build a new article" do
       Article.should_receive(:new) { mock_article :save => false }
     end
@@ -112,11 +69,6 @@ describe ArticlesController do
     
     it "should get the article" do
       Article.should_receive(:find).with(2) { @article }
-    end
-
-    it "should get all categories" do
-      mock_and_expect_all_categories
-      Article.stub!(:find) { @article }
     end
     
     after(:each) do
@@ -183,6 +135,18 @@ describe ArticlesController do
         response.should_not redirect_to(articles_path)
         response.code.should == "200"
       end
+    end
+  end
+
+  def mock_article(stubs={})
+    (@mock_article ||= mock_model(Article).as_null_object).tap do |article|
+      article.stub(stubs) unless stubs.empty?
+    end
+  end
+
+  def mock_comment(stubs={})
+    (@mock_comment ||= mock_model(Comment).as_null_object).tap do |comment|
+      comment.stub(stubs) unless stubs.empty?
     end
   end
 end
