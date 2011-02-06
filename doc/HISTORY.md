@@ -1,3 +1,6 @@
+v0.3.3
+- Add/pass feature for site branding redirecting to homepage
+
 v0.3.2
 ------
 - Add/pass feature to assert presence of homepage articles
