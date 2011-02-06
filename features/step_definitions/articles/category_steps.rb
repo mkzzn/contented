@@ -4,12 +4,12 @@ end
 
 Then /^these article categories should be available:$/ do |table|
   table.hashes.each do |hash|
-    page.should have_xpath("//select//option[contains(.,'#{hash["category"]}')]")
+    page.should have_xpath("//select[@id='article_category_id']//option[.='#{hash["category"]}']")
   end
 end
 
 Given /^I select category "([^"]*)"$/ do |category_name|
-  select category_name, :from => "#article_category"
+  select category_name, :from => "#article_category_id"
 end
 
 Then /^I should see a notice saying that article "([^"]*)" was saved to category "([^"]*)"$/ do |article, category|
