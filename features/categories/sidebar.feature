@@ -14,6 +14,6 @@ Feature: Categories Sidebar
     And category "foo" should show that it has 4 articles
 
   Scenario: User visits category via sidebar
-    When I visit the homepage
+    When I go to the homepage
     And I click category "foo" in the sidebar
     Then I should be viewing category "foo"    

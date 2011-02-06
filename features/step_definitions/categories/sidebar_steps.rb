@@ -3,14 +3,14 @@ Given /^category "([^"]*)" has (\d+) other articles$/ do |category, articles|
   articles.to_i.times { Factory :article, :category => category }
 end
 
-Then /^I should see category "([^"]*)" in the sidebar$/ do |arg1|
-  pending # express the regexp above with the code you wish you had
+Then /^I should see category "([^"]*)" in the sidebar$/ do |category|
+  page.should have_xpath("//ul[@class='categories']//li//a[contains(.,'#{category}')]")
 end
 
-Then /^category "([^"]*)" should show that it has (\d+) articles$/ do |arg1, arg2|
-  pending # express the regexp above with the code you wish you had
+Then /^category "([^"]*)" should show that it has (\d+) articles$/ do |category, article_count|
+  page.should have_xpath("//ul[@class='categories']//li//a[contains(.,'#{category}')][contains(.,'(#{article_count})')]")
 end
 
-When /^I click category "([^"]*)" in the sidebar$/ do |arg1|
-  pending # express the regexp above with the code you wish you had
+When /^I click category "([^"]*)" in the sidebar$/ do ||
+ find(:xpath, "//ul[@class='categories']//li//a[contains(.,'#{category}')]").click
 end
