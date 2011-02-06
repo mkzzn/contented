@@ -1,5 +1,5 @@
-Given /^I am editing article "([^"]*)"$/ do |arg1|
-  pending # express the regexp above with the code you wish you had
+Given /^I am editing (article "\w+")$/ do |article|
+  visit edit_article_path(article)
 end
 
 Then /^these article categories should be available:$/ do |table|
