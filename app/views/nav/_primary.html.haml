@@ -7,4 +7,4 @@
     %li.title= link_to "Categories", categories_path, :class => "categories title"
     %li= link_to "Index", categories_path, :class => "categories"
     %li= link_to "New", new_category_path, :class => "new_category"
-    = render :partial => "nav/category", :collection => @categories
+    = render :partial => "nav/category", :collection => Category.all
