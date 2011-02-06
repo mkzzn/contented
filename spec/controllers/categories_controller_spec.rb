@@ -1,34 +1,9 @@
 require 'spec_helper'
 
 describe CategoriesController do
-
-  def mock_category(stubs={})
-    (@mock_category ||= mock_model(Category).as_null_object).tap do |category|
-      category.stub(stubs) unless stubs.empty?
-    end
-  end
-
-  def mock_article(stubs={})
-    (@mock_article ||= mock_model(Article).as_null_object).tap do |article|
-      article.stub(stubs) unless stubs.empty?
-    end
-  end
-
-  def mock_and_expect_all_categories
-    mock_all_categories and expect_all_categories
-  end
-  
-  def mock_all_categories
-    @categories = (1..2).collect { mock_category }
-  end
-
-  def expect_all_categories
-    Category.should_receive(:all) { @categories }
-  end
-
   context "GET index" do
     it "should get all existing categories" do
-      mock_and_expect_all_categories
+      Category.should_receive(:all) { [mock_category, mock_category] }
       get "index"
     end
   end
@@ -36,12 +11,6 @@ describe CategoriesController do
   context "GET edit" do
     before(:each) do
       @category = mock_category(:id => 2)
-    end
-
-    it "should get all existing categories" do
-      @categories = [ @category, mock_category ]
-      expect_all_categories
-      Category.stub!(:find) { @category }
     end
 
     it "should fetch the target category" do
@@ -82,10 +51,6 @@ describe CategoriesController do
       Category.should_receive(:new) { mock_category(:save => false) }
     end
 
-    it "should get all existing categories" do
-      mock_and_expect_all_categories
-    end
-
     after(:each) do
       get "new"
     end
@@ -94,12 +59,6 @@ describe CategoriesController do
   context "GET show" do
     before(:each) do
       @category = mock_category(:id => 2)
-    end
-
-    it "should get all existing categories" do
-      @categories = [ @category, mock_category ]
-      expect_all_categories
-      Category.stub!(:find) { @category }
     end
 
     it "should fetch the target category" do
@@ -128,6 +87,18 @@ describe CategoriesController do
       @category.stub!(:valid?) { false }
       post "create", :category => @params
       response.should render_template("new")
+    end
+  end
+
+  def mock_category(stubs={})
+    (@mock_category ||= mock_model(Category).as_null_object).tap do |category|
+      category.stub(stubs) unless stubs.empty?
+    end
+  end
+
+  def mock_article(stubs={})
+    (@mock_article ||= mock_model(Article).as_null_object).tap do |article|
+      article.stub(stubs) unless stubs.empty?
     end
   end
 end

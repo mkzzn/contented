@@ -1,8 +1,8 @@
 class CategoriesController < ApplicationController
   before_filter :fetch_category, :only => [:edit, :update, :show]
-  before_filter :fetch_all_categories, :only => ACTIONS[:get]
 
   def index
+    @categories = Category.all
   end
 
   def new
