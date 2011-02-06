@@ -11,6 +11,6 @@ Then /^category "([^"]*)" should show that it has (\d+) articles$/ do |category,
   page.should have_xpath("//ul[@class='categories']//li//a[contains(.,'#{category}')][contains(.,'(#{article_count})')]")
 end
 
-When /^I click category "([^"]*)" in the sidebar$/ do ||
+When /^I click category "([^"]*)" in the sidebar$/ do |category|
  find(:xpath, "//ul[@class='categories']//li//a[contains(.,'#{category}')]").click
 end
