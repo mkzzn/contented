@@ -1,3 +1,7 @@
+v0.3.2
+------
+- Add/pass feature to assert presence of homepage articles
+
 v0.3.1
 ------
 - Test/implement simple version module in /extras
