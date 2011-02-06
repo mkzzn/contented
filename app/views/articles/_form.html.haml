@@ -8,7 +8,7 @@
     = f.text_field :title
   .fields
     = f.label :category
-    = f.collection_select :category_id, @categories, :id, :title, {:include_blank => "Uncategorized"}
+    = f.collection_select :category_id, Category.all, :id, :title, {:include_blank => "Uncategorized"}
   .fields
     = f.label :body
     = f.text_area :body

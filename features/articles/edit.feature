@@ -18,6 +18,7 @@ Feature: Edit Article
 
     Scenario: User submits invalid data
       Given I clear the article title
+      Then show me the page
       When I submit the changes
       And I should be shown that the title has an error
 
