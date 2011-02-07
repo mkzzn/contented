@@ -15,5 +15,5 @@ Given /^(article "\w+") within (category "\w+")$/ do |article, category|
 end
 
 When /^I delete (category "\w+")$/ do |category|
-  category.destroy  
+  category.delete  
 end
