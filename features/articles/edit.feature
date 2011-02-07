@@ -4,7 +4,7 @@ Feature: Edit Article
   I want to be able to update the information of an existing article
 
   Background:
-    Given an article entitled "jenkins"
+    Given article "jenkins"
     And article "jenkins" has body "wolfpack"
     And I am viewing article "jenkins"
     And I click "Edit"

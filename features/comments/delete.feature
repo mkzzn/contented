@@ -4,7 +4,7 @@ Feature: Comment Deletion
   I want to be able to delete articles
 
   Background:
-    Given an article entitled "bonobo"
+    Given article "bonobo"
     And article "bonobo" has comment "mucus!"
     When I am viewing article "bonobo"
 

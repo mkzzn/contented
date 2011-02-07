@@ -4,7 +4,7 @@ Feature: Comment Creation
   I want to be able to post a comment to an article
 
   Background:
-    Given an article entitled "bonobo"
+    Given article "bonobo"
     And I am viewing article "bonobo"
 
   Scenario: User posts a valid comment

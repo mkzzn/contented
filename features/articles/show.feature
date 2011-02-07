@@ -4,7 +4,7 @@ Feature: View Article
   I want to be able to view the entirety of an article
   
   Background:
-    Given an article entitled "articlaus"
+    Given article "articlaus"
    
   Scenario: User successfully views an article
     Given I am on the articles page

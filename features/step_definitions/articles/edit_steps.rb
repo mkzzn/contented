@@ -1,10 +1,8 @@
-Given /^article "([^"]*)" has body "([^"]*)"$/ do |title, body|
-  article = Article.find_by_title title
+Given /^(article "\w+") has body "([^"]*)"$/ do |article, body|
   article.update_attributes :body => body
 end
 
-When /^I edit article "([^"]*)"$/ do |title|
-  article = Article.find_by_title title
+When /^I edit (article "\w+")$/ do |article|
   visit edit_article_path(article)
 end
 
@@ -12,8 +10,7 @@ Given /^I fill in article "([^"]*)" with "([^"]*)"$/ do |attr, value|
    fill_in "article_#{attr}", :with => value
 end
 
-Then /^article "([^"]*)" should have ([^"]*) "([^"]*)"$/ do |title, attr, value|
-  article = Article.find_by_title title
+Then /^(article "\w+") should have ([^"]*) "([^"]*)"$/ do |article, attr, value|
   article[attr].should == value
 end
 

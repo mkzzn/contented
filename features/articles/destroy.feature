@@ -4,10 +4,10 @@ Feature: Destroy Article
   I want to be able to destroy articles
 
   Scenario: User destroys an article
-    Given an article entitled "hogwash"
+    Given article "hogwash"
     When I view article "hogwash"
     And I click delete
     Then I should be on the articles index page
     And I should see a notice seeing that "hogwash" was deleted
-    And article "hogwash" should not exist
+    And there should be no article called "hogwash" 
     
