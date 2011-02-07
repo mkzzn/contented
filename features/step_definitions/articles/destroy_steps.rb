@@ -1,5 +1,4 @@
-When /^I view the article entitled "([^"]*)"$/ do |title|
-  article = Article.find_by_title title
+When /^I view (article "\w+")$/ do |article|
   visit article_path(article)
 end
 

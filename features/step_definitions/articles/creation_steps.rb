@@ -1,6 +1,6 @@
 Given /^I enter valid data for an article entitled "([^"]*)"$/ do |title|
   fill_in "article_title", :with => title
-  fill_in "article_body", :with => "Something Else"
+  fill_in "article_body", :with => Faker::Lorem.sentence
 end
 
 When /^I submit the article$/ do
