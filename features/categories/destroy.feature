@@ -10,7 +10,7 @@ Feature: Destroy Categories
   Scenario: User deletes a category
     Given I am viewing category "walruses"
     When I click to delete the category
-    Then I should be on the categories index
+    Then I should be sent to the categories index
     And I should not see category "walruses"
     And category "walruses" should not exist
 

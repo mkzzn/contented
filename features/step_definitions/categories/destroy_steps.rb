@@ -15,5 +15,10 @@ Given /^(article "\w+") within (category "\w+")$/ do |article, category|
 end
 
 When /^I delete (category "\w+")$/ do |category|
-  category.delete  
+  Category.delete category[:id]
+end
+
+Then /^I should be sent to the categories index$/ do
+#  page.driver.status_code.should == 302
+  current_path.should == categories_path
 end

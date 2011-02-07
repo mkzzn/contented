@@ -25,8 +25,7 @@ describe CategoriesController do
   context "DELETE destroy" do
     it "should destroy the target category" do
       category = mock_category :id => 2
-      Category.should_receive(:find).with(2) { category }
-      category.should_receive(:delete) { category }
+      Category.should_receive(:delete).with(2) { category }
       delete "destroy", :id => 2
     end
   end

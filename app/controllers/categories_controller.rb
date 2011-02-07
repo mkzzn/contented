@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  before_filter :fetch_category, :only => [:edit, :update, :show, :destroy]
+  before_filter :fetch_category, :only => [:edit, :update, :show]
 
   def index
     @categories = Category.all
@@ -38,8 +38,8 @@ class CategoriesController < ApplicationController
   end
 
   def destroy
-    @category.delete
-    flash[:notice] = "category #{@category[:title]} was successfully deleted"
+    Category.delete params[:id]
+    flash[:notice] = "category was successfully destroyed"
     redirect_to categories_path
   end
 
