@@ -16,11 +16,13 @@ Feature: View Article
     When I click on the title for "articlaus"
     Then I should be viewing article "articlaus"
 
+  @todo
   Scenario: User sees the article category
     Given article "articlaus" is within category "fluevog"
     Given I am viewing article "articlaus"
     Then I should see category "fluevog" within article "articlaus"
 
+  @todo
   Scenario: User visits article category
     Given article "articlaus" is within category "fluevog"
     And I am viewing article "articlaus"

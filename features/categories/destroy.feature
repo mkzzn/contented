@@ -1,3 +1,4 @@
+@todo
 Feature: Destroy Categories
   In order to get rid of categories that I don't need
   As a site maintainer
