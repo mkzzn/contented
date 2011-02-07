@@ -1,7 +1,7 @@
 module Version
   MAJOR = 0
   MINOR = 3
-  MICRO = 1
+  MICRO = 6
 
   def self.print
     [ MAJOR, MINOR, MICRO ].join(".")
