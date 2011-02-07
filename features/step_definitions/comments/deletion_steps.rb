@@ -1,10 +1,8 @@
-Given /^article "([^"]*)" has comment "([^"]*)"$/ do |article, comment|
-  article = Article.find_by_title article
+Given /^(article "\w+") has comment "([^"]*)"$/ do |article, comment|
   article.comments.create :body => comment
 end
 
-When /^I click the delete link for comment "([^"]*)"$/ do |comment_body|
-  comment = Comment.find_by_body comment_body
+When /^I click the delete link for (comment "\w+")$/ do |comment|
   find(:xpath, "//div[@id='comment_#{comment[:id]}']//input[contains(@class, 'delete')]").click
 end
 

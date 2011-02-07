@@ -2,8 +2,7 @@ Given /^I am viewing the categories index page$/ do
   visit categories_path
 end
 
-When /^I click to edit category "([^"]*)"$/ do |category|
-  category = Category.find_by_title category
+When /^I click to edit (category "\w+")$/ do |category|
   find(:xpath, "//div[@id='category_#{category[:id]}']//a[@class='edit']").click
 end
 

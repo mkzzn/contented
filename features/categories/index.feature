@@ -15,7 +15,7 @@ Feature: Categories Index
   Scenario: User visits article
     Given I go to the categories index
     When I click to visit article "weasel"
-    Then I should be viewing the article entitled "weasel"
+    Then I should be viewing article "weasel"
 
   Scenario: User sees the first three articles for each category
     Given article "rooster" is the third article in category "monster"
