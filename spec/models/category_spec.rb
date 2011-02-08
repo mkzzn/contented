@@ -50,4 +50,16 @@ describe Category do
       category.recent_articles.size.should == 3
     end
   end
+  
+  context "callbacks" do
+    context "after destroy" do
+      it "should uncategorize all associated articles" do
+        category = Factory :category
+        article = Factory :article, :category => category
+        article[:category_id].should == category[:id]
+        category.destroy
+        Article.where(:id => article[:id], :category_id => category[:id]).should be_empty
+      end
+    end
+  end
 end

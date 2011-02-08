@@ -15,7 +15,7 @@ Given /^(article "\w+") within (category "\w+")$/ do |article, category|
 end
 
 When /^I delete (category "\w+")$/ do |category|
-  Category.delete category[:id]
+  category.destroy
 end
 
 Then /^I should be sent to the categories index$/ do
