@@ -26,4 +26,4 @@ Feature: Article Categories
     Given I select category "Uncategorized"
     And I submit the changes
     Then I should see a notice saying that article "humon" was saved to category "Uncategorized"
-    And article "humon" should be uncategorized
+    And article "humon" should not be categorized
