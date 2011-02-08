@@ -6,7 +6,6 @@ Feature: Destroy Categories
   Background:
     Given category "walruses"
 
-  @wip
   Scenario: User deletes a category
     Given I am viewing category "walruses"
     When I click to delete the category
@@ -18,4 +17,4 @@ Feature: Destroy Categories
   Scenario: Articles are uncategorized after category deletion
     Given article "munchhausen" within category "walruses"
     When I delete category "walruses"
-    Then article "munchhausen" should be uncategorized
+    Then article "munchhausen" should not be categorized

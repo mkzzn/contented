@@ -20,6 +20,6 @@ Then /^(article "\w+") should belong to category "([^"]*)"$/ do |article, catego
   article.category[:title].should == category
 end
 
-Then /^(article "\w+") should be uncategorized$/ do |article|
-  article.uncategorized?.should == true
+Then /^(article "\w+") should not be categorized$/ do |article|
+  article.categorized?.should == false
 end

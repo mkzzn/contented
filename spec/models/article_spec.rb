@@ -36,29 +36,28 @@ describe Article do
     end
 
     context "categories" do
-      before(:each) do
+      it "should be able to belong to a category" do
         @category = Factory :category
         @article = Factory :article, :category => @category
-      end
-      
-      it "should be able to belong to a category" do
         @article.category.should == @category
       end
 
       context "uncategorized" do
-        it "should be uncategorized if it has no category" do
-          article = Factory :article
-          article.uncategorized?.should == true
+        it "should not be categorized if it has no category" do
+          Factory(:article).categorized?.should == false
         end
 
         it "should not be uncategorized if it has a category" do
-          @article.uncategorized?.should == false
+          article = Factory :categorized_article
+          article.categorized?.should == true
         end
       end
       
       context "category name" do
         it "should return the category name if it has a category" do
-          @article.category_name.should == @category[:title]
+          category = Factory :category
+          article = Factory :article, :category => category
+          article.category_name.should == category[:title]
         end
         
         it "should return 'Uncategorized' if it has no category" do

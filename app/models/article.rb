@@ -8,10 +8,10 @@ class Article < ActiveRecord::Base
   validates_presence_of :body, :allow_blank => false
 
   def category_name
-    uncategorized? ? "Uncategorized" : category[:title]
+    categorized? ? category[:title] : "Uncategorized"
   end
 
-  def uncategorized?
-    category_id ? false : true
+  def categorized?
+    category_id ? true : false
   end
 end

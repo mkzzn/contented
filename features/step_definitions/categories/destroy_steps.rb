@@ -19,6 +19,5 @@ When /^I delete (category "\w+")$/ do |category|
 end
 
 Then /^I should be sent to the categories index$/ do
-#  page.driver.status_code.should == 302
   current_path.should == categories_path
 end
