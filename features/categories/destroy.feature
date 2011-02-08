@@ -13,8 +13,8 @@ Feature: Destroy Categories
     And I should not see category "walruses"
     And category "walruses" should not exist
 
-  @wip
   Scenario: Articles are uncategorized after category deletion
-    Given article "munchhausen" within category "walruses"
-    When I delete category "walruses"
-    Then article "munchhausen" should not be categorized
+    Given article "mutumbo" within category "walruses"
+    And I am viewing category "walruses"
+    When I click to delete the category
+    Then article "mutumbo" should not be categorized
