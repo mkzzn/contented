@@ -6,8 +6,8 @@ When /^I click to delete the category$/ do
   find(:css, "input.destroy").click
 end
 
-Then /^(category "\w+") should not exist$/ do |category|
-  category.should be_nil
+Then /^category "([^"]*)" should not exist$/ do |category|
+  Category.find_by_title(category).should be_nil
 end
 
 Given /^(article "\w+") within (category "\w+")$/ do |article, category|
