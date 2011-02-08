@@ -1,3 +1,8 @@
+## v0.3.8
+- add basic destroy functionality to categories
+- categorized articles are uncategorized on category deletion
+- refactored uncategorized? article logic into categorized?
+
 ## v0.3.7
 - refactor all cuke steps to use resource transforms where pertinent
 - remove commit hashes from all versions in HISTORY
