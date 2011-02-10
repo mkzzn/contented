@@ -21,14 +21,21 @@ Feature: View Article
     Given I am viewing article "articlaus"
     Then I should see category "fluevog" within article "articlaus"
 
-  Scenario: User sees no link for uncategorized article
+  Scenario: User sees uncategorized article categorization
     Given article "articlaus" is uncategorized
     Given I am viewing article "articlaus"
     Then article "articlaus" should show that it is uncategorized
 
-  @todo
   Scenario: User visits article category
     Given article "articlaus" is within category "fluevog"
     And I am viewing article "articlaus"
     When I click the link to category "fluevog" within article "articlaus"
     Then I should be viewing category "fluevog"
+
+  @todo
+  Scenario: User clicks uncategorized article link
+    Given article "articlaus" is uncategorized
+    Given I am viewing article "articlaus"
+    When I click "uncategorized" within article "articlaus"
+    Then I should be on the uncategorized articles page
+ 
