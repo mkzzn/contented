@@ -23,15 +23,3 @@ end
 Then /^(article "\w+") should not be categorized$/ do |article|
   article.categorized?.should == false
 end
-
-Given /^(article "\w+") is within (category "\w+")$/ do |article, category|
-  article.update_attributes :category_id => category[:id]
-end
-
-Then /^I should see category "([^"]*)" within article "([^"]*)"$/ do |article, category|
-  page.should have_xpath("//div[@id='article_#{article[:id]}']//div[@class='category'][contains(.,'#{category[:title]}')]")
-end
-
-When /^I click the link to category "([^"]*)" within article "([^"]*)"$/ do |arg1, arg2|
-  find(:xpath, "//div[@id='article_#{article[:id]}']//div[@class='category']//a").click
-end

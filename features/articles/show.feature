@@ -23,6 +23,12 @@ Feature: View Article
     Then I should see category "fluevog" within article "articlaus"
 
   @todo
+  Scenario: User sees no link for uncategorized article
+    Given article "articlaus" is uncategorized
+    Given I am viewing article "articlaus"
+    Then article "articlaus" should show that it is uncategorized
+
+  @todo
   Scenario: User visits article category
     Given article "articlaus" is within category "fluevog"
     And I am viewing article "articlaus"
