@@ -17,6 +17,7 @@ necessity and utility to a generic content-driven application:
 - Authentication (via AuthLogic: https://github.com/binarylogic/authlogic)
 - Authorization (via CanCan: https://github.com/ryanb/cancan)
 - Search
+- Avatars
 - Image attachments (via Dragonfly: https://github.com/markevans/dragonfly)
 - Video attachement
 - URL Slugs (via friendly_id: https://github.com/norman/friendly_id)
