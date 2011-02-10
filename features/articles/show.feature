@@ -16,7 +16,7 @@ Feature: View Article
     When I click on the title for "articlaus"
     Then I should be viewing article "articlaus"
 
-  @todo
+  @wip
   Scenario: User sees the article category
     Given article "articlaus" is within category "fluevog"
     Given I am viewing article "articlaus"
