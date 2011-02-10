@@ -21,3 +21,11 @@ end
 When /^I click the link to category "([^"]*)" within article "([^"]*)"$/ do |arg1, arg2|
   find(:xpath, "//div[@id='article_#{article[:id]}']//div[@class='category']//a").click
 end
+
+Given /^(article "\w+") is uncategorized$/ do |article|
+  article.update_attributes :category_id => nil
+end
+
+Then /^(article "\w+") should show that it is uncategorized$/ do |article|
+  page.should have_xpath("//div[@id='article_#{article[:id]}']//div[@class='resource_links'][.='Uncategorized']")
+end
