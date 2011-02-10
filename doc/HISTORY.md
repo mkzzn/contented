@@ -1,3 +1,6 @@
+## v0.3.9
+- add/pass specs for associated category link on show article view
+
 ## v0.3.8
 - add basic destroy functionality to categories
 - categorized articles are uncategorized on category deletion
