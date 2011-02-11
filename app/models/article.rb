@@ -7,6 +7,8 @@ class Article < ActiveRecord::Base
   validates_presence_of :title, :allow_blank => false
   validates_presence_of :body, :allow_blank => false
 
+  scope :uncategorized, where(:category_id => nil)
+
   def category_name
     categorized? ? category[:title] : "Uncategorized"
   end

@@ -18,6 +18,16 @@ describe Article do
     end
   end
 
+  context "scopes" do
+    context "uncategorized" do
+      it "should be able to filter categorized articles" do
+        article1 = Factory :categorized_article
+        article2 = Factory :categorized_article, :category => nil
+        Article.uncategorized.should == [ article2 ]
+      end
+    end
+  end
+
   context "associations" do
     context "comments" do
       before(:each) do
