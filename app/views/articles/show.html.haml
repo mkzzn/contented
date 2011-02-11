@@ -4,7 +4,7 @@
   -if @article.categorized?
     .active_category= link_to @article.category_name, @article.category, :class => "category"
   - else
-    .active_category Uncategorized
+    .active_category= uncategorized_articles_path, Uncategorized
   = link_to @article.title, @article, :class => "title"
   .resource_links
     = button_to "Delete", @article, :method => :delete, :class => :destroy

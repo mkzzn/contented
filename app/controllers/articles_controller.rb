@@ -11,6 +11,7 @@ class ArticlesController < ApplicationController
   end
 
   def uncategorized
+    @articles = Article.uncategorized
     render :template => "articles/index"
   end
 
