@@ -12,7 +12,6 @@ class ArticlesController < ApplicationController
 
   def uncategorized
     @articles = Article.uncategorized
-    render :template => "articles/index"
   end
 
   def edit
