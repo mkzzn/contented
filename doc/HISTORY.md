@@ -1,3 +1,7 @@
+## v0.3.10
+- add uncategorized articles landing page
+- add link to uncategorized articles page on show view for uncategorized articles
+
 ## v0.3.9
 - add/pass specs for associated category link on show article view
 
