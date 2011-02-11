@@ -15,11 +15,11 @@ Given /^(article "\w+") is within (category "\w+")$/ do |article, category|
 end
 
 Then /^I should see (category "\w+") within (article "\w+")$/ do |category, article|
-  page.should have_xpath("//div[@id='article_#{article[:id]}']//a[@class='category'][contains(.,'#{category[:title]}')]")
+  page.should have_xpath("//div[@id='article_#{article[:id]}']//div[@class='active_category']//a[@class='category'][contains(.,'#{category[:title]}')]")
 end
 
 When /^I click the link to (category "\w+") within (article "\w+")$/ do |category, article|
-  find(:xpath, "//div[@id='article_#{article[:id]}']//div[@class='resource_links']//a[@class='category']").click
+  find(:xpath, "//div[@id='article_#{article[:id]}']//div[@class='active_category']//a[@class='category']").click
 end
 
 Given /^(article "\w+") is uncategorized$/ do |article|
@@ -27,5 +27,5 @@ Given /^(article "\w+") is uncategorized$/ do |article|
 end
 
 Then /^(article "\w+") should show that it is uncategorized$/ do |article|
-  page.should have_xpath("//div[@id='article_#{article[:id]}']//div[@class='resource_links'][.='Uncategorized']")
+  page.should have_xpath("//div[@id='article_#{article[:id]}']//div[@class='active_category'][.='Uncategorized']")
 end

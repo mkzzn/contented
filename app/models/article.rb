@@ -12,6 +12,6 @@ class Article < ActiveRecord::Base
   end
 
   def categorized?
-    category_id ? true : false
+    category ? true : false
   end
 end

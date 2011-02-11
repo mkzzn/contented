@@ -2,9 +2,9 @@
 
 %div[@article]
   -if @article.categorized?
-    .resource_links= link_to @article.category_name, @article.category, :class => "category"
+    .active_category= link_to @article.category_name, @article.category, :class => "category"
   - else
-    .resource_links Uncategorized
+    .active_category Uncategorized
   = link_to @article.title, @article, :class => "title"
   .resource_links
     = button_to "Delete", @article, :method => :delete, :class => :destroy
