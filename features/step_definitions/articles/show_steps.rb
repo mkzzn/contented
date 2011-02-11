@@ -27,5 +27,10 @@ Given /^(article "\w+") is uncategorized$/ do |article|
 end
 
 Then /^(article "\w+") should show that it is uncategorized$/ do |article|
-  page.should have_xpath("//div[@id='article_#{article[:id]}']//div[@class='active_category'][.='Uncategorized']")
+  page.should have_xpath("//div[@id='article_#{article[:id]}']//div[@class='active_category']//a[.='Uncategorized']")
+end
+
+When /^I click "uncategorized" within (article "\w+")$/ do |article|
+    find(:xpath, "//div[@id='article_#{article[:id]}']//div[@class='active_category']//a[.='Uncategorized']")
+  pending # express the regexp above with the code you wish you had
 end

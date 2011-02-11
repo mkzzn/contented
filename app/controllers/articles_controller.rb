@@ -10,6 +10,10 @@ class ArticlesController < ApplicationController
     @comment = Comment.new :article_id => @article.id
   end
 
+  def uncategorized
+    render :template => "articles/index"
+  end
+
   def edit
   end
 

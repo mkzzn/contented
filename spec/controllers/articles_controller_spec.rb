@@ -15,6 +15,18 @@ describe ArticlesController do
     end
   end
 
+  describe "GET 'uncategorized'" do
+    before(:each) do
+      @article1 = mock_article :category_id => 1
+      @article2 = mock_article :category_id => nil
+    end
+
+    it "should return only uncategorized articles" do
+      Article.should_receive(:uncategorized) { [ @article2 ] }
+      get 'uncategorized'
+    end
+  end
+
   describe "DELETE 'destroy'" do
     before(:each) do
       @article = mock_article
