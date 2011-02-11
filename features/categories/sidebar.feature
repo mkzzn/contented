@@ -17,3 +17,15 @@ Feature: Categories Sidebar
     When I go to the homepage
     And I click category "foo" in the sidebar
     Then I should be viewing category "foo"    
+
+  Scenario: User clicks 'Uncategorized' link
+    Given article "walrussiez" is uncategorized
+    When I go to the homepage
+    Then I should see "Uncategorized" in the categories sidebar
+    And when I click "Uncategorized" in the categories sidebar
+    Then I should be on the uncategorized articles page
+
+  Scenario: No 'Uncategorized' link is present
+    Given no uncategorized articles exist
+    When I go to the homepage
+    Then I should not see "Uncategorized" in the categories sidebar
