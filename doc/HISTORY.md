@@ -1,3 +1,6 @@
+## v0.3.11
+- display 'Uncategorized' link in sidebar when uncategorized articles exist
+
 ## v0.3.10
 - add uncategorized articles landing page
 - add link to uncategorized articles page on show view for uncategorized articles
