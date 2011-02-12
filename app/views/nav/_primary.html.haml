@@ -7,4 +7,6 @@
     %li.title= link_to "Categories", categories_path, :class => "categories title"
     %li= link_to "Index", categories_path, :class => "categories"
     %li= link_to "New", new_category_path, :class => "new_category"
+    = if Article.uncategorized.count > 0
+      %li.category= link_to "Uncategorized (#{Article.uncategorized.count})", uncategorized_articles_path
     = render :partial => "nav/category", :collection => Category.all
