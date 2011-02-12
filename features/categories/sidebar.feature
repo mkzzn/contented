@@ -21,13 +21,11 @@ Feature: Categories Sidebar
   Scenario: User clicks 'Uncategorized' link
     Given an uncategorized article exists
     When I go to the homepage
-    Then show me the page
     Then I should see 'Uncategorized' in the categories sidebar
     And when I click 'Uncategorized' in the categories sidebar
     Then I should be on the uncategorized articles page
 
-  @todo
   Scenario: No 'Uncategorized' link is present
     Given no uncategorized articles exist
     When I go to the homepage
-    Then I should not see "Uncategorized" in the categories sidebar
+    Then I should not see 'Uncategorized' in the categories sidebar

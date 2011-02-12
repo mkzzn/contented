@@ -26,3 +26,12 @@ end
 Then /^when I click 'Uncategorized' in the categories sidebar$/ do
   find(:xpath, "//div[@class='navigation primary']//ul[@class='categories']//li//a[.='Uncategorized (1)']").click
 end
+
+Given /^no uncategorized articles exist$/ do
+  Article.where(:category_id => nil).destroy_all
+  Article.where(:category_id => nil).count.should == 0
+end
+
+Then /^I should not see 'Uncategorized' in the categories sidebar$/ do
+ page.should_not have_xpath("//div[@class='navigation primary']//ul[@class='categories']//li//a[contains(.,'Uncategorized (1)')]")
+end
