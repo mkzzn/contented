@@ -37,4 +37,3 @@ Feature: View Article
     And I am viewing article "articlaus"
     When I click the uncategorized link within article "articlaus"
     Then I should be on the uncategorized articles page
- 

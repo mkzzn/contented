@@ -14,3 +14,15 @@ end
 When /^I click category "([^"]*)" in the sidebar$/ do |category|
  find(:xpath, "//ul[@class='categories']//li//a[contains(.,'#{category}')]").click
 end
+
+Given /^an uncategorized article exists$/ do
+  Factory :article, :category => nil
+end
+
+Then /^I should see 'Uncategorized' in the categories sidebar$/ do
+  page.should have_xpath("//div[@class='navigation_primary']//ul[@class='categories']//li//a[.='Uncategorized']")
+end
+
+Then /^when I click 'Uncategorized' in the categories sidebar$/ do
+  find(:xpath, "//div[@class='navigation_primary']//ul[@class='categories']//li//a[.='Uncategorized']").click
+end
