@@ -21,13 +21,13 @@ describe "/nav/_primary.html.haml" do
     it "should have one if an uncategorized article exists" do
       Article.stub_chain(:uncategorized, :count) { 3 }
       render
-      rendered.should =~ "<li class='category'><a href=\"/articles/uncategorized\">Uncategorized (3)</a></li>"
+      rendered.should include("<li class='category'><a href=\"/articles/uncategorized\">Uncategorized (3)</a></li>")
     end
 
     it "should not have one if no uncategorized articles exists" do
       Article.stub_chain(:uncategorized, :count) { 0 }
       render
-      rendered.should_not =~ /Uncategorized/
+      rendered.should_not include("Uncategorized")
     end
   end
 
