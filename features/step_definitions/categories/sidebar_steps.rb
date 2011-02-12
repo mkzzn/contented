@@ -20,9 +20,9 @@ Given /^an uncategorized article exists$/ do
 end
 
 Then /^I should see 'Uncategorized' in the categories sidebar$/ do
-  page.should have_xpath("//div[@class='navigation_primary']//ul[@class='categories']//li//a[.='Uncategorized']")
+  page.should have_xpath("//div[@class='navigation primary']//ul[@class='categories']//li//a[.='Uncategorized (1)']")
 end
 
 Then /^when I click 'Uncategorized' in the categories sidebar$/ do
-  find(:xpath, "//div[@class='navigation_primary']//ul[@class='categories']//li//a[.='Uncategorized']").click
+  find(:xpath, "//div[@class='navigation primary']//ul[@class='categories']//li//a[.='Uncategorized (1)']").click
 end
