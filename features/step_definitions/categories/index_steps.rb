@@ -31,5 +31,5 @@ Given /^I am viewing the homepage$/ do
 end
 
 Given /^I click the categories navigation heading$/ do
-  find(:xpath, "//div[@class='navigation primary']//li[@class='title']//a[contains(@class, 'categories')]").click
+  find(:css, "#navigation div.section.categories a.categories.title").click
 end
