@@ -1,5 +1,5 @@
 %div[category]
   .title= link_to category.title, category
+  .resource_links= link_to "Edit", edit_category_path(category), :class => "edit"
   .description= category.description
   .articles= render :partial => "articles/article", :collection => category.recent_articles
-  .resource_links= link_to "Edit", edit_category_path(category), :class => "edit"

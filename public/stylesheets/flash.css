@@ -1,0 +1,12 @@
+.flash {
+  font-family: Ubuntu, Nevis, Sans;
+  width: 100%;
+  padding: 5px 16px;
+  left: 0;
+  color: white;
+  font-weight: bold;
+  font-size: 1.4em; }
+  .flash.notice {
+    background: #007736; }
+  .flash.warning {
+    background: #8f0000; }

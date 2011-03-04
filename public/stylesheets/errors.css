@@ -4,19 +4,19 @@
   left: 0;
   color: white;
   padding: 0;
-  background: #df0019; }
+  background: #8f0000; }
   #error_explanation h2, #error_explanation p, #errorExplanation h2, #errorExplanation p {
     display: none; }
   #error_explanation ul, #errorExplanation ul {
     list-style-type: none;
-    font-size: 1.8em;
+    font-size: 1.4em;
     padding: 0 0 0 24px;
-    margin: 16px 0; }
+    margin: 8px 0; }
     #error_explanation ul li, #errorExplanation ul li {
       margin: 3px; }
 
 #content form .field_with_errors label {
-  color: #df0019; }
-#content form .field_with_errors input, #content form .field_with_errors input[type=text], #content form .field_with_errors textarea, #content form .field_with_errors select {
-  border: 1px solid #df0019;
-  background: #ffbac2; }
+  color: #8f0000; }
+#content form .field_with_errors input, #content form .field_with_errors input[type=text], #content form .field_with_errors textarea, #content form .field_with_errors select, #content form .field_with_errors input[type=password] {
+  border: 1px solid #8f0000;
+  background: #ffe2e2; }

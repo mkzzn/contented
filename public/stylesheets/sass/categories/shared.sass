@@ -1,6 +1,7 @@
-.article
-  :margin-bottom 24px
-  a.title
+#content .category
+  :margin-top 40px
+  .title
+    margin-top: 12px
     font:
       family: Nevis
       size: 2.8em
@@ -11,16 +12,36 @@
     padding: 0
     &:hover
       text-decoration: underline
-  p.body
-    :padding-top 0
-    :margin-top 0
+
+  .description
+    :padding 0
+    :margin 0
+    :font-family Ubuntu
+    :font-weight normal
+    :font-size 1.6em
+
+  .article
+    margin-top: 16px
+    a
+      font:
+        family: Nevis
+        size: 1.6em
+      color: black
+      text-transform: uppercase
+      text-decoration: none
+      margin: 0
+      padding: 0
+      &:hover
+        text-decoration: underline
+  .body
+    :padding 0
+    :margin 0
     :font-family Ubuntu
     :font-weight normal
     :font-size 1.2em
 
 .resource_links, .active_category
   :display block
-  :margin-bottom 20px
   a, input
     :background white
     :color #666
