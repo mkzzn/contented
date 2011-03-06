@@ -65,8 +65,9 @@ body {
       margin: -6px 0 0 6px; }
 
 #content {
+  width: 96%%;
   float: left;
-  padding: 16px 48px; }
+  padding: 24px 2%; }
   #content h1 {
     font-family: "Absolut Pro";
     margin-top: 20px;
@@ -86,3 +87,39 @@ body {
     font-size: 2.1em; }
   #content h5 {
     font-size: 1.6em; }
+  #content #primary, #content #secondary, #content #tertiary {
+    float: left;
+    padding: 20px 2%; }
+  #content #primary {
+    width: 39%; }
+    #content #primary #articles, #content #primary #testimonials {
+      width: 100%; }
+  #content #secondary {
+    width: 28%;
+    border-left: 2px solid #cccccc; }
+    #content #secondary #links {
+      width: 100%; }
+  #content #tertiary {
+    width: 20%;
+    background: #efefef;
+    border-left: 2px solid #aaaaaa;
+    font-family: Ubuntu;
+    font-size: 1.2em; }
+    #content #tertiary .title {
+      font-size: 1.4em;
+      margin-top: 8px; }
+    #content #tertiary ul {
+      list-style-type: none;
+      padding: 0 0 0 12px; }
+      #content #tertiary ul li {
+        margin-bottom: 12px; }
+
+#categories a.category {
+  font-family: Ubuntu, Nevis, Sans;
+  text-decoration: none;
+  color: #0065ba;
+  margin: 4px 0;
+  font-size: 1.2em;
+  display: block; }
+  #categories a.category:hover {
+    text-decoration: underline; }

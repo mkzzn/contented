@@ -4,15 +4,15 @@ Given /^category "([^"]*)" has (\d+) other articles$/ do |category, articles|
 end
 
 Then /^I should see category "([^"]*)" in the sidebar$/ do |category|
-  page.should have_xpath("//ul[@class='categories']//li//a[contains(.,'#{category}')]")
+  page.should have_xpath("//div[@id='categories']//a[contains(@class,'category')][contains(.,'#{category}')]")
 end
 
 Then /^category "([^"]*)" should show that it has (\d+) articles$/ do |category, article_count|
-  page.should have_xpath("//ul[@class='categories']//li//a[contains(.,'#{category}')][contains(.,'(#{article_count})')]")
+  page.should have_xpath("//div[@id='categories']//a[contains(@class,'category')][contains(.,'#{category}')][contains(.,'(#{article_count})')]")
 end
 
 When /^I click category "([^"]*)" in the sidebar$/ do |category|
- find(:xpath, "//ul[@class='categories']//li//a[contains(.,'#{category}')]").click
+ find(:xpath, "//div[@id='categories']//a[contains(@class,'category')][contains(.,'#{category}')]").click
 end
 
 Given /^an uncategorized article exists$/ do
@@ -20,11 +20,11 @@ Given /^an uncategorized article exists$/ do
 end
 
 Then /^I should see 'Uncategorized' in the categories sidebar$/ do
-  page.should have_xpath("//div[@class='navigation primary']//ul[@class='categories']//li//a[.='Uncategorized (1)']")
+  page.should have_xpath("//div[@id='categories']//a[contains(@class,'category')][.='Uncategorized (1)']")
 end
 
 Then /^when I click 'Uncategorized' in the categories sidebar$/ do
-  find(:xpath, "//div[@class='navigation primary']//ul[@class='categories']//li//a[.='Uncategorized (1)']").click
+  find(:xpath, "//div[@id='categories']//a[contains(@class,'category')][.='Uncategorized (1)']").click
 end
 
 Given /^no uncategorized articles exist$/ do

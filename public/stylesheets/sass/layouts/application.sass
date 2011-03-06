@@ -27,8 +27,9 @@ body
       :margin -6px 0 0 6px
 
 #content
+  width: 96%%
   float: left
-  padding: 16px 48px
+  padding: 24px 2%
   h1
     font-family: 'Absolut Pro'
     margin-top: 20px
@@ -50,3 +51,41 @@ body
     font-size: 2.1em
   h5
     font-size: 1.6em
+  #primary, #secondary, #tertiary
+    :float left
+    :padding 20px 2%
+  #primary
+    :width 39%
+    #articles, #testimonials
+      :width 100%
+  #secondary
+    :width 28%
+    :border-left 2px solid #ccc
+    #links
+      :width 100%
+  #tertiary
+    :width 20%
+    :background #efefef
+    :border-left 2px solid #aaa
+    :font-family Ubuntu
+    :font-size 1.2em
+    .title
+      :font-size 1.4em
+      :margin-top 8px
+    ul
+      list-style-type: none
+      padding: 0 0 0 12px
+      li
+        :margin-bottom 12px
+
+
+#categories
+  a.category
+    :font-family Ubuntu, Nevis, Sans
+    :text-decoration none
+    :color #0065BA
+    :margin 4px 0
+    :font-size 1.2em
+    :display block
+    &:hover
+      :text-decoration underline
