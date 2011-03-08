@@ -1,3 +1,6 @@
+## v0.3.15
+- Add/pass view specs for primary nav link activation
+
 ## v0.3.14
 - Add/pass specs for show_flash helper
   
