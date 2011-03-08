@@ -1,3 +1,6 @@
+## v0.3.14
+- Add/pass specs for show_flash helper
+  
 ## v0.3.13
 - Move nav helpers dedicated file
 - Add/pass helper specs for ActionParser helpers
