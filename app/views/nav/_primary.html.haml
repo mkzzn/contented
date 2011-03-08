@@ -1,14 +1,12 @@
 .section.home
-  = link_to "Home", root_path, :class => "home title"
-  -#, :class => active_on("home title", :pages => [:homepage])
+  = link_to "Home", root_path, :class => active_on("home title", :pages => [:homepage])
 .section.articles
-  = link_to "Articles", articles_path, :class => "articles title"
-  -# , :class => active_on("articles title", :articles => true)
+  = link_to "Articles", articles_path, :class => active_on("articles title", :articles => true)
   = link_to "New", new_article_path, :class => "new_article"
-  -# - if current_user and can?(:create, Article)
 .section.categories
-  = link_to "Categories", categories_path, :class => "categories title"
+  = link_to "Categories", categories_path, :class => active_on("categories title", :categories => true)
   = link_to "New", new_category_path, :class => "new_category"
+
 
 -# .section.testimonials
 -#   = link_to "Testimonials", testimonials_path, :class => active_on("testimonials title", :testimonials => true)
