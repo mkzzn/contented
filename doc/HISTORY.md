@@ -1,3 +1,7 @@
+## v0.3.13
+- Move nav helpers dedicated file
+- Add/pass helper specs for ActionParser helpers
+
 ## v0.3.12
 - Add ActionParser, add/pass model specs for it
 - Integrate new style and layout from downstream 'Incentive'
