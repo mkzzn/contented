@@ -1,0 +1,4 @@
+%h5 Categories
+= render :partial => "nav/category", :collection => Category.all
+- if Article.uncategorized.count > 0
+  = link_to "Uncategorized (#{Article.uncategorized.count})", uncategorized_articles_path, :class => "category"
