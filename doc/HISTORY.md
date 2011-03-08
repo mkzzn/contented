@@ -1,3 +1,8 @@
+## v0.3.12
+- Add ActionParser, add/pass model specs for it
+- Integrate new style and layout from downstream 'Incentive'
+- Move categories from primary nav to categories/sidebar partial
+
 ## v0.3.11
 - display 'Uncategorized' link in sidebar when uncategorized articles exist
 
