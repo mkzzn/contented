@@ -14,7 +14,8 @@ module NavigationHelpers
       articles_path
     when /the categories index/
       categories_path
-
+    when /the user registration page/
+      new_user_path
     when /^the edit page for category "(.*)"$/
       edit_category_path(Category.find_by_title($1))
     else

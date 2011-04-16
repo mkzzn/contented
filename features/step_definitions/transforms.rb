@@ -12,3 +12,8 @@ Transform /^comment "\w+"$/ do |capture|
   body = capture.gsub(/(^comment|\")/,"").strip
   Comment.find_by_body(body) || Factory(:comment, :body => body)
 end
+
+Transform /^comment "\w+"$/ do |capture|
+  login = capture.gsub(/(^user|\")/,"").strip
+  User.find_by_login(login) || Factory(:user, :login => login)
+end

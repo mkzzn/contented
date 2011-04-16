@@ -12,6 +12,8 @@ Contented::Application.routes.draw do
 
   resources :comments
 
+  resources :users
+
   get "home/index"
 
   root :to => "articles#index"

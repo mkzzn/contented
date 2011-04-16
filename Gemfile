@@ -1,6 +1,7 @@
 # Gemfile for Coffeetron
 source 'http://rubygems.org'
 
+gem 'authlogic'
 gem 'rake'
 gem 'rails', '3.0.3'
 gem 'cancan'
@@ -19,9 +20,10 @@ gem 'sexp_processor'
 gem 'test_notifier'
 gem 'ZenTest'
 
-group :test do
+group :development, :test do
   gem 'rspec'
   gem 'rspec-rails'
+  gem 'watchr'
   gem 'factory_girl'
   gem 'factory_girl_rails'
   gem 'autotest'
@@ -32,4 +34,5 @@ group :test do
   gem 'cucumber-rails'
   gem 'capybara'
   gem 'database_cleaner'
+  gem 'spork', '0.9.0.rc5'
 end
