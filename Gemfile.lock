@@ -166,6 +166,7 @@ GEM
     sinatra (1.1.2)
       rack (~> 1.1)
       tilt (~> 1.2)
+    spork (0.9.0.rc5)
     term-ansicolor (1.0.5)
     test_notifier (0.3.6)
       notifier
@@ -211,6 +212,7 @@ DEPENDENCIES
   rspec-rails
   ruby_parser
   sexp_processor
+  spork (= 0.9.0.rc5)
   test_notifier
   unicorn
   watchr
