@@ -6,7 +6,7 @@ default_opts = "--strict --tags ~@wip --tags ~@todo"
 shared_opts = "--format pretty --require features"
 %>
 
-default: --drb <%= shared_opts %> <%= default_opts %> "#{Rails.root}/features"
-wip: --drb <%= shared_opts %> --tags @wip --wip "#{Rails.root}/features"
-todo: --drb <%= shared_opts %> --tags @todo "#{Rails.root}/features"
-rerun: --drb <%= rerun_opts %> --format rerun --out rerun.txt --strict --tags ~@wip "#{Rails.root}/features"
+default: --drb <%= shared_opts %> <%= default_opts %> features
+wip: --drb <%= shared_opts %> --tags @wip --wip features
+todo: --drb <%= shared_opts %> --tags @todo features
+rerun: --drb <%= rerun_opts %> --format rerun --out rerun.txt --strict --tags ~@wip features
