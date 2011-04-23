@@ -3,7 +3,7 @@ source 'http://rubygems.org'
 
 gem 'authlogic'
 gem 'rake'
-gem 'rails', '3.0.3'
+gem 'rails', '3.0.7'
 gem 'cancan'
 gem 'dynamic_form'
 gem 'faker'
