@@ -12,7 +12,11 @@ Contented::Application.routes.draw do
 
   resources :comments
 
-  resources :users
+  resources :users do
+    collection do
+      get :confirm
+    end
+  end
 
   get "home/index"
 

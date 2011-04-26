@@ -33,7 +33,7 @@ describe UsersController do
       it "should redirect to the articles path" do
         post "create", :user => @user_attrs
         response.code.should == "302"
-        response.should redirect_to(user_confirmation_path)
+        response.should redirect_to(confirm_users_path)
       end
     end
 
@@ -49,7 +49,7 @@ describe UsersController do
 
       it "should redirect to the articles path" do
         post "create", :user => {}
-        response.should_not redirect_to(user_confirmation_path)
+        response.should_not redirect_to(confirm_users_path)
         response.code.should == "200"
       end
     end
