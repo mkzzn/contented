@@ -17,7 +17,8 @@ Feature: Categories Sidebar
     When I go to the homepage
     And I click category "foo" in the sidebar
     Then I should be viewing category "foo"    
-
+    
+  @wip
   Scenario: User clicks 'Uncategorized' link
     Given an uncategorized article exists
     When I go to the homepage
