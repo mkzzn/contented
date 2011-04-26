@@ -1,0 +1,29 @@
+%h2 Sign Up: Be Contented
+
+= form_for(resource,
+  :as => resource_name,
+  :url => registration_path(resource_name),
+  :html => {:class => "auth"}) do |f|
+  .fields
+    = f.label :login
+    = f.text_field :login
+  .fields
+    = f.label :email
+    = f.text_field :email
+  .fields
+    = f.label :first_name
+    = f.text_field :first_name
+  .fields
+    = f.label :last_name
+    = f.text_field :last_name
+
+  %br
+  .fields
+    = f.label :password
+    = f.password_field :password
+  .fields
+    = f.label :password_confirmation
+    = f.password_field :password_confirmation
+
+  .fields= f.submit "Sign up"
+= render :partial => "links"

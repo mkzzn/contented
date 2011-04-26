@@ -12,3 +12,8 @@ Transform /^comment "\w+"$/ do |capture|
   body = capture.gsub(/(^comment|\")/,"").strip
   Comment.find_by_body(body) || Factory(:comment, :body => body)
 end
+
+# Transform /^user "\w+"$/ do |capture|
+#   email = capture.gsub(/(^user|\")/,"").strip
+#   User.find_by_email(email) || Factory(:user, :email => email)
+# end
