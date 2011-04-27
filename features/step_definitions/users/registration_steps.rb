@@ -13,9 +13,17 @@ When /^I submit the registration form$/ do
 end
 
 Given /^I fail to enter all valid data for user registration$/ do
-  pending # express the regexp above with the code you wish you had
+  fill_in "user_login", :with => ""
 end
 
 Then /^I should not be logged in$/ do
   pending # express the regexp above with the code you wish you had
+end
+
+Then /^there should be a user called "([^"]*)"$/ do |login|
+  User.find_by_login(login).class.should == User
+end
+
+Then /^there should not be a user called "([^"]*)"$/ do |login|
+  User.find_by_login(login).should be_nil
 end

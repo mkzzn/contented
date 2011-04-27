@@ -12,11 +12,8 @@ Contented::Application.routes.draw do
 
   resources :comments
 
-  resources :users do
-    collection do
-      get :confirm
-    end
-  end
+  resources :users
+  resources :confirmations, :only => [:new, :create]
 
   get "home/index"
 

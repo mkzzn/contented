@@ -1,0 +1,10 @@
+%h2 Confirm User
+= form_tag confirmations_path, :method => :post do
+  .fields
+    = label_tag :email
+    = text_field_tag :email
+  .fields
+    = label_tag :confirmation_token
+    = text_field_tag :confirmation_token
+  .fields= submit_tag "Confirm User"
+= render :partial => "shared/form_links"
