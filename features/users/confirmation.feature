@@ -4,17 +4,18 @@ Feature: User Confirmation
   I want to be able to enter a confirmation token that was emailed to me
 
   Background:
-    Given I am on the user confirmation page
-    And user "goliath" with confirmation token "alphasauce"
+    Given user "goliath"
+    And I am on the user confirmation page
+
 
   Scenario: User successfully confirms registration
-    Given I enter login "goliath" and confirmation token "alphasauce"
+    Given I enter login "goliath" and its confirmation token
     When I submit the confirmation
-    Then I should be on the site homepage
+    Then I should be on the homepage
     And I should see that I'm logged in as user "goliath"
 
   Scenario: User enters bogus confirmation
-    Given I enter login "goliath" and confirmation token "wolfpack"
+    Given I enter login "goliath" and an invalid confirmation token
     When I submit the confirmation
-    Then I should be on the user confirmation page
+    Then I should still be on the confirmation page
     And I should see that I am not logged in
