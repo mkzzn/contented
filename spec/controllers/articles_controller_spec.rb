@@ -4,7 +4,7 @@ describe ArticlesController do
   before(:each) do
     @attributes = {"title" => "excellent", "body" => "nonsense"}
   end
-  
+
   describe "GET 'index'" do
     it "should return available articles" do
       Article.should_receive(:all) { mock_article @attributes }
@@ -37,14 +37,14 @@ describe ArticlesController do
       Article.should_receive(:delete).with(@article.id) { @article }
       delete 'destroy', :id => @article.id
     end
-    
+
     it "should redirect to the articles index" do
       delete 'destroy', :id => @article.id
       response.code.should == "302"
       response.should redirect_to(articles_path)
     end
   end
-  
+
   describe "GET 'show'" do
     before(:each) do
       @article = mock_article(:id => 2)
@@ -73,16 +73,16 @@ describe ArticlesController do
       get 'new'
     end
   end
-  
+
   describe "GET 'edit'" do
     before(:each) do
       @article = mock_article :id => 2
     end
-    
+
     it "should get the article" do
       Article.should_receive(:find).with(2) { @article }
     end
-    
+
     after(:each) do
       get 'edit', :id => 2
     end
@@ -113,18 +113,18 @@ describe ArticlesController do
       end
     end
   end
-  
+
   describe "POST 'create'" do
     context "success" do
       before(:each) do
         @article = mock_article @attributes
       end
-      
+
       it "should create a new article" do
         Article.should_receive(:create).with(@attributes) { @article }
         post :create, :article => @attributes
       end
-      
+
       it "should redirect to the articles path" do
         post :create, :article => @attributes
         response.code.should == "302"

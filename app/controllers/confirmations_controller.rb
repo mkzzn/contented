@@ -1,7 +1,12 @@
 class ConfirmationsController < ApplicationController
-  def new
-  end
+  def create
+    @user = User.find_by_perishable_token params[:confirmation]
 
-  def update
+    if @user
+      @user.confirm!
+      redirect_to articles_path
+    else
+      render :action => "new"
+    end
   end
 end

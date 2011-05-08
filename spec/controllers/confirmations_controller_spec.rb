@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe ConfirmationsController do
   def mock_user(stubs={})
-    (@mock_user ||= mock_model(User).as_null_object).tap do |user|
+    (mock_model(User).as_null_object).tap do |user|
       user.stub(stubs) unless stubs.empty?
     end
   end
@@ -10,20 +10,24 @@ describe ConfirmationsController do
 
   describe "POST 'create'" do
     before(:each) do
-      @user = mock_user(:perishable_token => "waffles")
-      User.should_receive(:find_using_perishable_token).with(["waffles", 1.week]) { @user }
-    end
-    
-    context "confirmation creates successfully" do
-      @user.stub!(:activate!) { true }
-      post 'create', :perishable_token => "waffles"
-      response.should redirect
+      @user = mock_user :perishable_token => "waffles"
     end
 
-    context "confirmation fails to create" do
-      @user.stub!(:activate!) { false }
-      post 'create', :perishable_token => "waffles"
-      response.should render_template("new")
+    context "valid token provided" do
+      it "should confirm the user and redirect to the homepage" do
+        User.stub!(:find_by_perishable_token).with("waffles") { @user }
+        @user.should_receive(:confirm!) { true }
+        post 'create', :confirmation => "waffles"
+        response.should redirect_to(articles_path)
+      end
+    end
+
+    context "invalid token provided" do
+      it "should render the confirmation template again" do
+        User.stub!(:find_by_perishable_token).with("belgians") { nil }
+        post 'create', :confirmation => "belgians"
+        response.should render_template("new")
+      end
     end
   end
 end
