@@ -1,25 +1,29 @@
 .section.home
   = link_to "Home", root_path, :class => active_on("home title", :pages => [:homepage])
+
 .section.articles
   = link_to "Articles", articles_path, :class => active_on("articles title", :articles => true)
   = link_to "New", new_article_path, :class => "new_article"
+
 .section.categories
   = link_to "Categories", categories_path, :class => active_on("categories title", :categories => true)
   = link_to "New", new_category_path, :class => "new_category"
+
+.section.session
+  - if current_user
+    = link_to "My Account (#{current_user[:email]})", edit_user_registration_path, :class => "title"
+    = link_to "Sign out", destroy_user_session_path, :class => "title"
+  - else
+    = link_to "Sign In", new_user_session_path, :class => "title"
+    = link_to "Register", new_user_registration_path, :class => "title"
 
 
 -# .section.testimonials
 -#   = link_to "Testimonials", testimonials_path, :class => active_on("testimonials title", :testimonials => true)
 -#   - if current_user and can?(:create, Testimonial)
 -#     = link_to "New", new_article_path
+
 -# .section.links
 -#   = link_to "Links", links_path, :class => active_on("links title", :links => true)
 -#   - if current_user and can?(:create, Link)
 -#     = link_to "New", new_link_path
--# .section.session
--#   - if current_user
--#     = link_to "My Account (#{current_user[:email]})", edit_user_registration_path, :class => "title"
--#     = link_to "Sign out", destroy_user_session_path, :class => "title"
--#   - else
--#     = link_to "Sign In", new_user_session_path, :class => "title"
--#     = link_to "Register", new_user_registration_path, :class => "title"
