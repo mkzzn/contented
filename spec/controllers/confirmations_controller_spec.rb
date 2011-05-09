@@ -15,16 +15,16 @@ describe ConfirmationsController do
 
     context "valid token provided" do
       it "should confirm the user and redirect to the homepage" do
-        User.stub!(:find_by_perishable_token).with("waffles") { @user }
+        User.stub!(:find_using_perishable_token).with("waffles") { @user }
         @user.should_receive(:confirm!) { true }
         post 'create', :confirmation => "waffles"
-        response.should redirect_to(articles_path)
+        response.should redirect_to(root_path)
       end
     end
 
     context "invalid token provided" do
       it "should render the confirmation template again" do
-        User.stub!(:find_by_perishable_token).with("belgians") { nil }
+        User.stub!(:find_using_perishable_token).with("belgians") { nil }
         post 'create', :confirmation => "belgians"
         response.should render_template("new")
       end

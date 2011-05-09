@@ -1,16 +1,16 @@
 Given /^user "([^"]*)"$/ do |login|
-  Factory :user, :login => login
+  Factory :user, :login => login, :password => "bees", :password_confirmation => "bees"
 end
 
 Given /^I enter login "([^"]*)" and its confirmation token$/ do |login|
-  fill_in :login, :with => login
+  fill_in "login", :with => login
   user = User.find_by_login login
-  fill_in :confirmation, :with => user.perishable_token
+  fill_in "confirmation", :with => user.perishable_token
 end
 
 Given /^I enter login "([^"]*)" and an invalid confirmation token$/ do |login|
-  fill_in :login, :with => login
-  fill_in :confirmation, :with => "invalid!!!"
+  fill_in "login", :with => login
+  fill_in "confirmation", :with => "invalid!!!"
 end
 
 When /^I submit the confirmation$/ do
