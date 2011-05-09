@@ -9,13 +9,13 @@ Feature: User Confirmation
 
 
   Scenario: User successfully confirms registration
-    Given I enter login "goliath" and its confirmation token
+    Given I enter the correct confirmation token for user "goliath"
     When I submit the confirmation
     Then I should be on the homepage
     And I should see that I'm logged in as user "goliath"
 
   Scenario: User enters bogus confirmation
-    Given I enter login "goliath" and an invalid confirmation token
+    Given I enter an invalid confirmation token
     When I submit the confirmation
     Then I should still be on the confirmation page
     And I should see that I am not logged in

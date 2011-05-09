@@ -1,9 +1,6 @@
 %h2 Confirm User
 = form_tag confirmations_path, :method => :post do
   .fields
-    = label_tag :login
-    = text_field_tag :login
-  .fields
     = label_tag :confirmation
     = text_field_tag :confirmation
   .fields= submit_tag "Confirm User"
