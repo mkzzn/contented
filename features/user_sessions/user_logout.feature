@@ -1,3 +1,4 @@
+@wip
 Feature: User Logout
   In order to prevent others from changing my private account data
   As any site user

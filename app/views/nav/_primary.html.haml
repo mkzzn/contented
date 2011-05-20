@@ -9,13 +9,13 @@
   = link_to "Categories", categories_path, :class => active_on("categories title", :categories => true)
   = link_to "New", new_category_path, :class => "new_category"
 
--# .section.session
--#   - if current_user
--#     = link_to "My Account (#{current_user[:email]})", edit_user_registration_path, :class => "title"
--#     = link_to "Sign out", destroy_user_session_path, :class => "title"
--#   - else
--#     = link_to "Sign In", new_user_session_path, :class => "title"
--#     = link_to "Register", new_user_registration_path, :class => "title"
+.section.session
+  - if current_user
+    = link_to "My Account (#{current_user[:email]})", edit_user_registration_path, :class => "title"
+    = link_to "Sign out", destroy_user_session_path, :class => "title"
+  - else
+    = link_to "Sign In", new_user_session_path, :class => "title"
+    = link_to "Register", new_user_registration_path, :class => "title"
 
 
 -# .section.testimonials

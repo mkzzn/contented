@@ -1,3 +1,4 @@
+@wip
 Feature: User Registration
   In order to better participate in the site
   As a site reader

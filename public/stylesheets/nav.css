@@ -53,3 +53,12 @@
       color: #8f0000; }
       #navigation .section.categories a.title:hover, #navigation .section.categories a.title.active {
         border-bottom: 2px solid #8f0000; }
+    #navigation .section.session {
+      float: right; }
+      #navigation .section.session a.title {
+        color: black; }
+        #navigation .section.session a.title.title {
+          padding-top: 16px;
+          font-size: 1.4em; }
+          #navigation .section.session a.title.title:hover {
+            text-decoration: underline; }

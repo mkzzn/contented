@@ -1,3 +1,4 @@
+@wip
 Feature: User Confirmation
   In order to confirm that I am who I say that I am
   As a newly registered site user
