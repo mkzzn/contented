@@ -1,10 +1,10 @@
 # Gemfile for Coffeetron
 source 'http://rubygems.org'
 
-gem 'authlogic'
 gem 'rake'
 gem 'rails', '3.0.7'
 gem 'cancan'
+gem 'devise'
 gem 'dynamic_form'
 gem 'faker'
 gem 'i18n'
