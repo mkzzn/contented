@@ -12,12 +12,6 @@ Contented::Application.routes.draw do
 
   resources :comments
 
-  # User Routes
-  resource :user_session
-  resource :account, :controller => "users"
-  resources :users
-  resources :confirmations, :only => [:new, :create]
-
   get "home/index"
 
   root :to => "articles#index"
