@@ -12,8 +12,10 @@ Feature: User Login
     Given I try to login as "snakeberry" with password "multipass"
     Then I should be on the homepage
     And I should see that I am logged in as user "snakeberry"
+    And I should see a notice saying that I was signed in successfully
 
   Scenario: User logs in with invalid credentials
     Given I try to login as "wafflehorse" with password "mutantlarvae"
     Then I should be on the user login page
     And I should see that I am not logged in
+    And I should see a warning saying that I was not signed in

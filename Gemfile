@@ -1,7 +1,7 @@
 # Gemfile for Coffeetron
 source 'http://rubygems.org'
 
-gem 'rake'
+gem 'rake', '~> 0.8.7'
 gem 'rails', '3.0.7'
 gem 'cancan'
 gem 'devise'
