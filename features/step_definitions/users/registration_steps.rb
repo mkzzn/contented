@@ -15,8 +15,12 @@ Given /^I fail to enter all valid data for user registration$/ do
   fill_in "user_email", :with => ""
 end
 
-Then /^I should not be logged in$/ do
-  pending # express the regexp above with the code you wish you had
+Then /^I should see a notice saying that my account was created$/ do
+  page.should have_xpath("//div[contains(., 'successfully')][contains(@class, 'notice')]")
+end
+
+Then /^I should see a warning on the page$/ do
+  page.should have_xpath("//div[@id='error_explanation'][contains(.,'blank')]")
 end
 
 Then /^there should be a user called "([^"]*)"$/ do |email|
