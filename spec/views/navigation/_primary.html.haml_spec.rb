@@ -80,7 +80,7 @@ describe '/nav/_primary.html.haml' do
     context "logged in" do
       before(:each) do
         controller.stub!(:current_user) { mock_user }
-        controller.stub!(:user_signed_in?) { mock_user }
+        controller.stub!(:user_signed_in?) { true }
         render
       end
 
@@ -88,14 +88,13 @@ describe '/nav/_primary.html.haml' do
         rendered.should include("Sign Out")
       end
 
-      it "should have a link to sign out" do
+      it "should have an account link" do
         rendered.should include("My Account")
       end
     end
 
     context "not logged in" do
       before(:each) do
-        controller.stub!(:current_user) { false }
         controller.stub!(:user_signed_in?) { false }
         render
       end
