@@ -14,8 +14,10 @@ module NavigationHelpers
       articles_path
     when /the categories index/
       categories_path
+    when /the users page/
+      "/users"
     when /the user registration page/
-      new_user_path
+      new_user_registration_path
     when /the user confirmation page/
       new_confirmation_path
     when /^the edit page for category "(.*)"$/
