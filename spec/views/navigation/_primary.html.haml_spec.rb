@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe '/nav/_primary.html.haml' do
+  #include Devise::TestHelpers
+
   def mock_user(stubs={})
     (mock_model(User).as_null_object).tap do |user|
       user.stub(stubs) unless stubs.empty?
@@ -77,8 +79,8 @@ describe '/nav/_primary.html.haml' do
   context "user" do
     context "logged in" do
       before(:each) do
-        @mock_user = mock_user :login => "monkey", :id => 22
-        controller.stub!(:current_user) { @mock_user }
+        controller.stub!(:current_user) { mock_user }
+        controller.stub!(:user_signed_in?) { mock_user }
         render
       end
 
@@ -94,6 +96,7 @@ describe '/nav/_primary.html.haml' do
     context "not logged in" do
       before(:each) do
         controller.stub!(:current_user) { false }
+        controller.stub!(:user_signed_in?) { false }
         render
       end
 
