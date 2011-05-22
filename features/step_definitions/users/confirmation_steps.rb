@@ -1,9 +1,9 @@
-Given /^user "([^"]*)"$/ do |login|
-  Factory :user, :login => login
+Given /^user "([^"]*)"$/ do |email|
+  Factory :user, :email => email
 end
 
-Given /^I enter the correct confirmation token for user "([^"]*)"$/ do |login|
-  user = User.find_by_login login
+Given /^I enter the correct confirmation token for user "([^"]*)"$/ do |email|
+  user = User.find_by_email email
   fill_in "confirmation", :with => user.perishable_token
 end
 
@@ -19,7 +19,7 @@ Then /^I should still be on the confirmation page$/ do
   current_path.should == confirmations_path
 end
 
-Then /^I should see that I'm logged in as user "([^"]*)"$/ do |login|
+Then /^I should see that I'm logged in as user "([^"]*)"$/ do |email|
   pending
 end
 

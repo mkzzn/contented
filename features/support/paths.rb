@@ -18,6 +18,8 @@ module NavigationHelpers
       "/users"
     when /the user registration page/
       new_user_registration_path
+    when /the user sign-in page/
+      new_user_session_path
     when /the user confirmation page/
       new_confirmation_path
     when /^the edit page for category "(.*)"$/

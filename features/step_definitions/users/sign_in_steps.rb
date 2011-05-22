@@ -1,0 +1,26 @@
+Given /^confirmed user with email "([^"]*)" and password "([^"]*)"$/ do |email, password|
+  user = Factory :user, :email => email, :password => password, :password_confirmation => password
+  user.confirm!
+end
+
+Given /^I try to sign in as "([^"]*)" with password "([^"]*)"$/ do |email, password|
+  fill_in "user_email", :with => email
+  fill_in "user_password", :with => password
+  click_button "user_submit"
+end
+
+Then /^I should see that I am not signed in$/ do
+  pending # express the regexp above with the code you wish you had
+end
+
+Then /^I should see that I am signed in as user "([^"]*)"$/ do |email|
+  page.should have_xpath("//div[@class='section session']//a[@class='title'][contains(.,'#{email}')]")
+end
+
+Then /^I should see a notice saying that I was signed in successfully$/ do
+  page.should have_xpath("//div[contains(@class,'notice')][contains(.,'Signed in successfully')]")
+end
+
+Then /^I should see a warning saying that I was not signed in$/ do
+  pending # express the regexp above with the code you wish you had
+end

@@ -1,5 +1,4 @@
-
-@wip
+@todo
 Feature: Resend Confirmation
   In order to be able to confirm an already-created user account
   As a user who hasn't doesn't have a confirmation number for whatever reason

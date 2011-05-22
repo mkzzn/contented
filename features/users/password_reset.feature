@@ -1,4 +1,4 @@
-@wip
+@todo
 Feature: Password Reset
   In order to log back into my user account
   As a user who's already been emailed a reset password link
