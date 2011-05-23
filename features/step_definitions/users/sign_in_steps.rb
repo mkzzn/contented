@@ -25,3 +25,12 @@ end
 Then /^I should see a warning saying that I was not signed in$/ do
   page.should have_xpath("//div[contains(@class,'alert')][contains(.,'blank')]")
 end
+
+Given /^unconfirmed user with email "([^"]*)" and password "([^"]*)"$/ do |email, password|
+  attrs = Factory.attributes_for(:user, :password => password, :password_confirmation => password)
+  User.find_or_create_by_email(email, attrs)
+end
+
+Then /^I should see a notice saying that my account is not confirmed$/ do
+  page.should have_xpath("//div[contains(@class,'notice')][contains(.,'Signed in successfully')]")
+end
