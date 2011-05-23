@@ -1,5 +1,6 @@
 Given /^confirmed user with email "([^"]*)" and password "([^"]*)"$/ do |email, password|
-  user = Factory :user, :email => email, :password => password, :password_confirmation => password
+  attrs = Factory.attributes_for(:user, :password => password, :password_confirmation => password)
+  user = User.find_or_create_by_email(email, attrs)
   user.confirm!
 end
 
@@ -10,7 +11,7 @@ Given /^I try to sign in as "([^"]*)" with password "([^"]*)"$/ do |email, passw
 end
 
 Then /^I should see that I am not signed in$/ do
-  pending # express the regexp above with the code you wish you had
+  page.should have_xpath("//div[@class='section session']//a[@class='title'][contains(.,'Sign In')]")
 end
 
 Then /^I should see that I am signed in as user "([^"]*)"$/ do |email|
@@ -22,5 +23,5 @@ Then /^I should see a notice saying that I was signed in successfully$/ do
 end
 
 Then /^I should see a warning saying that I was not signed in$/ do
-  pending # express the regexp above with the code you wish you had
+  page.should have_xpath("//div[contains(@class,'alert')][contains(.,'blank')]")
 end
