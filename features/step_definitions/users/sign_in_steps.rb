@@ -4,7 +4,7 @@ Given /^confirmed user with email "([^"]*)" and password "([^"]*)"$/ do |email, 
   user.confirm!
 end
 
-Given /^I try to sign in as "([^"]*)" with password "([^"]*)"$/ do |email, password|
+Given /^I sign in with email "([^"]*)" and password "([^"]*)"$/ do |email, password|
   fill_in "user_email", :with => email
   fill_in "user_password", :with => password
   click_button "user_submit"

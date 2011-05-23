@@ -6,7 +6,7 @@ Feature: User Login
   Scenario: Confirmed User logs in with valid credentials
     Given confirmed user with email "snake@berry.net" and password "multipass"
     And I am on the user sign-in page
-    When I try to sign in as "snake@berry.net" with password "multipass"
+    When I sign in with email "snake@berry.net" and password "multipass"
     Then I should be on the homepage
     And I should see that I am signed in as user "snake@berry.net"
     And I should see a notice saying that I was signed in successfully
@@ -14,7 +14,7 @@ Feature: User Login
   Scenario: Unconfirmed User logs in with valid credentials
     Given unconfirmed user with email "dogma@berry.net" and password "multipass"
     And I am on the user sign-in page
-    When I try to sign in as "dogma@berry.net" with password "multipass"
+    When I sign in with email "dogma@berry.net" and password "multipass"
     Then I should be on the user sign-in page
     And I should see that I am not signed in
     # And I should see a notice saying that my account is not confirmed 
@@ -22,7 +22,7 @@ Feature: User Login
   Scenario: User logs in with invalid credentials
     Given confirmed user with email "snake@berry.net" and password "multipass"
     And I am on the user sign-in page
-    When I try to sign in as "wafflehorse" with password "mutantlarvae"
+    When I sign in with email "wafflehorse" and password "mutantlarvae"
     Then I should be on the user sign-in page
     And I should see that I am not signed in
     # And I should see a warning saying that I was not signed in
