@@ -8,5 +8,5 @@
   font-size: 1.4em; }
   .flash.notice {
     background: #007736; }
-  .flash.warning {
+  .flash.warning, .flash.alert {
     background: #8f0000; }

@@ -22,8 +22,8 @@ Then /^I should see a notice saying that I was signed in successfully$/ do
   page.should have_xpath("//div[contains(@class,'notice')][contains(.,'Signed in successfully')]")
 end
 
-Then /^I should see a warning saying that I was not signed in$/ do
-  page.should have_xpath("//div[contains(@class,'alert')][contains(.,'blank')]")
+Then /^I should see an alert saying that I was not signed in$/ do
+  page.should have_xpath("//div[contains(@class,'alert')][contains(.,'Invalid email or password')]")
 end
 
 Given /^unconfirmed user with email "([^"]*)" and password "([^"]*)"$/ do |email, password|
@@ -31,6 +31,6 @@ Given /^unconfirmed user with email "([^"]*)" and password "([^"]*)"$/ do |email
   User.find_or_create_by_email(email, attrs)
 end
 
-Then /^I should see a notice saying that my account is not confirmed$/ do
-  page.should have_xpath("//div[contains(@class,'notice')][contains(.,'Signed in successfully')]")
+Then /^I should see an alert saying that my account is not confirmed$/ do
+  page.should have_xpath("//div[contains(@class,'alert')][contains(.,'You have to confirm your account before continuing')]")
 end
