@@ -1,5 +1,5 @@
-## v0.3.15
-- Add/pass view specs for primary nav link activation
+## v0.3.16
+- Implement Devise, integrate with tests for sign in, sign out, registration
 
 ## v0.3.14
 - Add/pass specs for show_flash helper
