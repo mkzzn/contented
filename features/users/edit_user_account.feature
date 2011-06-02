@@ -5,7 +5,7 @@ Feature: Edit User Account
 
   Background:
     Given confirmed reader user "mung@bean.org" with password "multiplex" 
-    When I log in as user "mung@bean.org" with password "multiplex"
+    When I sign in as user "mung@bean.org" with password "multiplex"
     And I visit my user account page
     
   Scenario: User successfully updates their account

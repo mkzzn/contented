@@ -18,6 +18,8 @@ module NavigationHelpers
       "/users"
     when /the user registration page/
       new_user_registration_path
+    when /the users overview page/
+      users_path
     when /the user account page/
       edit_user_registration_path
     when /the user sign-in page/

@@ -3,7 +3,7 @@ Given /^confirmed reader user "([^"]*)" with password "([^"]*)"$/ do |email, pas
   user.confirm!
 end
 
-When /^I log in as user "([^"]*)" with password "([^"]*)"$/ do |email, password|
+When /^I sign in as user "([^"]*)" with password "([^"]*)"$/ do |email, password|
   visit new_user_session_path
   fill_in "user_email", :with => email
   fill_in "user_password", :with => password
