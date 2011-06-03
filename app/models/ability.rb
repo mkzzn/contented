@@ -2,11 +2,23 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    case user.role
-    when "owner", "editor", "author"
+    @user = user || User.new
+    set_abilities_by_role
+  end
+
+  def set_abilities_by_role
+    case @user.role
+    when "admin"
       can :manage, :all
     when "reader"
       can :read, :all
+      can_manage_self
+    end
+  end
+
+  def can_manage_self
+    can [:manage], User, ["id = ?", @user.id] do |current_user|
+      current_user.id == @user.id
     end
   end
 end
