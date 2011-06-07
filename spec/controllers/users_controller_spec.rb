@@ -3,31 +3,20 @@ require 'spec_helper'
 describe UsersController do
 
   describe "GET 'index'" do
-    it "should be successful" do
-      get 'index'
-      response.should be_success
+    context "admin user" do
+      it "should render the index" do
+        controller.stub!(:current_user) { Factory :user, :role => "admin" }
+        get :index
+        response.should render_template("index")
+      end
+    end
+
+    context "reader user" do
+      it "should redirect to the homepage" do
+        controller.stub!(:current_user) { Factory :user, :role => "reader" }
+        get :index
+        response.should redirect_to("/")
+      end
     end
   end
-
-  describe "GET 'edit'" do
-    it "should be successful" do
-      get 'edit'
-      response.should be_success
-    end
-  end
-
-  describe "GET 'update'" do
-    it "should be successful" do
-      get 'update'
-      response.should be_success
-    end
-  end
-
-  describe "GET 'create'" do
-    it "should be successful" do
-      get 'create'
-      response.should be_success
-    end
-  end
-
 end

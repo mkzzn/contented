@@ -11,13 +11,12 @@ class Ability
     when "admin"
       can :manage, :all
     when "reader"
-      can :read, :all
       can_manage_self
     end
   end
 
   def can_manage_self
-    can [:manage], User, ["id = ?", @user.id] do |current_user|
+    can [:edit], User, ["id = ?", @user.id] do |current_user|
       current_user.id == @user.id
     end
   end
