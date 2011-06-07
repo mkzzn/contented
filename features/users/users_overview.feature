@@ -17,6 +17,8 @@ Feature: View Users
     And I should see a warning saying that I cannot access that page
 
   Scenario: Admin sees all users in the system
-    Given there are three users in the system
-    When I login as a confirmed admin user and visit the users overview page
+    Given I login as a confirmed admin user
+    And there are three users in the system
+    When I visit the users overview page
+    Then show me the page
     Then I should see three users on the page

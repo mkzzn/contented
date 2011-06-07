@@ -4,10 +4,19 @@ describe UsersController do
 
   describe "GET 'index'" do
     context "admin user" do
-      it "should render the index" do
+      before(:each) do
         controller.stub!(:current_user) { Factory :user, :role => "admin" }
+      end
+      
+      it "should render the index" do
         get :index
         response.should render_template("index")
+      end
+
+      it "should get all users" do
+        users = (1..2).collect { Factory :user }
+        User.should_receive(:all) { users }
+        get :index
       end
     end
 

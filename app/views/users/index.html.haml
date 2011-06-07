@@ -1,2 +1,5 @@
-%h1 Users#index
-%p Find me in app/views/users/index.html.haml
+= stylesheet_link_tag "users/shared"
+
+%table#users
+  %tbody
+    = render @users

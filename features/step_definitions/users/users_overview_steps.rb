@@ -15,10 +15,11 @@ Given /^there are three users in the system$/ do
   (3 - User.count).times { Factory :user }
 end
 
-When /^I login as a confirmed admin user and visit the users overview page$/ do
+When /^I login as a confirmed admin user$/ do
+  Given %{confirmed admin user "waldorf@salad.biz" with password "cambodia"}
   Given %{I sign in as user "waldorf@salad.biz" with password "cambodia"}
 end
 
 Then /^I should see three users on the page$/ do
-  page.should have_xpath("//*[contains(@class,'user')][3]")
+  page.should have_xpath("//tr[contains(@class,'user')][3]")
 end
