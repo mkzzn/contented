@@ -1,0 +1,10 @@
+#users {
+  font-family: Ubuntu;
+  font-size: 1.3em; }
+  #users thead {
+    font-weight: bold; }
+  #users tbody tr.even {
+    background: #efefef; }
+  #users tbody td {
+    padding: 4px 8px;
+    margin: 0; }

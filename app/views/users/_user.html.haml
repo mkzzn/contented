@@ -1,4 +1,4 @@
-%tr.user
+%tr.user{:class => cycle("odd", "even"), :name => "user rows"}
   %td.email= user.email
   %td.role= user.role
   %td.first_name= user.first_name

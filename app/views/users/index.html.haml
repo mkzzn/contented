@@ -1,5 +1,13 @@
-= stylesheet_link_tag "users/shared"
+= stylesheet_link_tag "users/index"
 
 %table#users
+  %thead
+    %th Email
+    %th Role
+    %th First
+    %th Last
+    %th Last Sign-In
+    %th Last IP
+    %th Failed Attempts
   %tbody
     = render @users
