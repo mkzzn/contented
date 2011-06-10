@@ -1,2 +1,39 @@
-%h1 Users#edit
-%p Find me in app/views/users/edit.html.haml
+%h2
+  Edit #{resource_name.to_s.humanize}
+= form_for(resource,
+  :as => resource_name,
+  :url => registration_path(resource_name),
+  :html => { :method => :put, :class => "auth"}) do |f|
+  = devise_error_messages!
+  .fields
+    = f.label :email
+    = f.text_field :email
+  .fields
+    = f.label :first_name
+    = f.text_field :first_name
+  .fields
+    = f.label :last_name
+    = f.text_field :last_name
+  .fields
+    = f.label :display_name
+    %i (name that other users will see you by)
+    = f.text_field :display_name
+
+  %br
+  .fields
+    = f.label :password
+    %i (leave blank if you don't want to change it)
+    = f.password_field :password
+  .fields
+    = f.label :password_confirmation
+    = f.password_field :password_confirmation
+  .fields
+    = f.label :current_password
+    %i (we need your current password to confirm your changes)
+    = f.password_field :current_password
+  .fields= f.submit "Update"
+
+- if current_user and can?(:delete, current_user)
+  %br
+  %h4 Tired of fighting the good fight?
+  %h4= link_to "Cancel your account.", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete
