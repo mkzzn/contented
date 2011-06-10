@@ -1,4 +1,4 @@
-Feature: View Users
+Feature: Users Overview
   In order to maintain the application's user base
   As a system administrator
   I want to be able to see all users in the system
@@ -20,14 +20,13 @@ Feature: View Users
     Given I login as a confirmed admin user
     And there are three users in the system
     When I visit the users overview page
-    Then show me the page
     Then I should see three users on the page
 
   Scenario: Admin edits a specific user
-    Given confirmed reader user "bezzle@marbles.biz"
+    Given confirmed reader user "mongo@tongue.com"
     When I login as a confirmed admin user with email "wafflepox@magnus.biz"
     And I visit the users overview page
-    Then I should see an edit link for user "beezle@marbles.biz"
-    And when I click that link
-    Then I should be on the edit user page for "beezle@marbles.biz"
+    When I click the link to edit user "mongo@tongue.com"
+    Then I should be editing the user "mongo@tongue.com"
+    Then show me the page
     

@@ -3,6 +3,26 @@ Given /^confirmed admin user "([^"]*)" with password "([^"]*)"$/ do |email, pass
           :password_confirmation => password, :role => "admin").confirm!
 end
 
+Given /^confirmed reader user "([^"]*)"$/ do |email|
+  user = Factory(:user, :email => email, :role => "reader")
+  user.confirm!
+end
+
+When /^I login as a confirmed admin user with email "([^"]*)"$/ do |email|
+  Given %{confirmed admin user "#{email}" with password "cambodia"}
+  Given %{I sign in as user "#{email}" with password "cambodia"}
+end
+
+Then /^I click the link to edit user "([^"]*)"$/ do |email|
+  user = User.where(:email => email).first
+  find(:css, "#user_#{user.id} a.edit").click
+end
+
+Then /^I should be editing the user "([^"]*)"$/ do |email|
+  user = User.where(:email => email).first
+  current_path.should == edit_user_path(user)
+end
+
 When /^I visit the users overview page$/ do
   visit users_path
 end
