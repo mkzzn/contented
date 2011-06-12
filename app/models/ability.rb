@@ -16,7 +16,7 @@ class Ability
   end
 
   def can_manage_self
-    can [:edit], User, ["id = ?", @user.id] do |current_user|
+    can [:manage], User, ["id = ?", @user.id] do |current_user|
       current_user.id == @user.id
     end
   end

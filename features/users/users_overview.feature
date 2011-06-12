@@ -28,5 +28,3 @@ Feature: Users Overview
     And I visit the users overview page
     When I click the link to edit user "mongo@tongue.com"
     Then I should be editing the user "mongo@tongue.com"
-    Then show me the page
-    
