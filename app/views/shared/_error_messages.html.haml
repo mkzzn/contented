@@ -1,3 +1,6 @@
 - if target.errors.any?
   #errorExplanation
-    -#%h2= pluralize(target.errors.count, "error"), 
+    %h2= "#{pluralize(target.errors.count, "error")} prevented this #{target.class.to_s.downcase} from being saved."
+    %ul
+      - target.errors.full_messages.each do |message|
+        %li= message
