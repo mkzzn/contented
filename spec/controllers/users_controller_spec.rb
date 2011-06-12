@@ -28,4 +28,11 @@ describe UsersController do
       end
     end
   end
+
+  describe "GET 'edit'" do
+    it "should fetch the target user" do
+      User.should_receive(:find).with(3)
+      get 'edit', :id => 3
+    end
+  end
 end
