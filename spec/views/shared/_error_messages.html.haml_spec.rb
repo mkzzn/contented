@@ -14,7 +14,8 @@ describe "shared/_error_messages.html.haml" do
   context "target has errors" do
     before(:each) do
       @target = mock_target
-      @target.stub! :errors => mock("errors").as_null_object
+      @errors = mock("errors").as_null_object
+      @target.stub! :errors => @errors
       view.stub!(:target) { @target }
     end
 
@@ -36,6 +37,12 @@ describe "shared/_error_messages.html.haml" do
         render
         rendered.should =~ /1 error/
       end
+
+      it "should render one error" do
+        @errors.stub!(:full_messages) { %w[ message1 ] }
+        render
+        view.should render_template(:partial => "shared/_error", :count => 1)
+      end
     end
 
     context "target has multiple errors" do
@@ -43,6 +50,12 @@ describe "shared/_error_messages.html.haml" do
         @target.stub_chain("errors", "count") { 2 }
         render
         rendered.should =~ /2 errors/
+      end
+
+      it "should render two errors" do
+        @errors.stub!(:full_messages) { %w[ message1 message2 ] }
+        render
+        view.should render_template(:partial => "shared/_error", :count => 2)
       end
     end
   end

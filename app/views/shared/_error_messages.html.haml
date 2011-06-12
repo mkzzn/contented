@@ -3,4 +3,4 @@
     %h2= "#{pluralize(target.errors.count, "error")} prevented this #{target.class.to_s.downcase} from being saved."
     %ul
       - target.errors.full_messages.each do |message|
-        %li= message
+        = render :partial => "shared/error", :target => message
