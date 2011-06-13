@@ -1,6 +1,11 @@
 require 'spec_helper'
 
 describe UsersController do
+  def mock_user(stubs={})
+    mock_model(User).as_null_object.tap do |user|
+      user.stub(stubs) unless stubs.empty?
+    end
+  end
 
   describe "GET 'index'" do
     context "admin user" do
@@ -33,6 +38,41 @@ describe UsersController do
     it "should fetch the target user" do
       User.should_receive(:find).with(3)
       get 'edit', :id => 3
+    end
+  end
+
+  describe "PUT 'update'" do
+    it "should fetch the target user" do
+      User.should_receive(:find).with(3) { mock_user }
+      post 'update', :id => 3
+    end
+
+    it "should update the attributes of the user in question" do
+      user_attrs = { "first_name" => "Walter", "last_name" => "Hagel" }
+      user = mock_user
+      User.stub!(:find) { user }
+      user.should_receive(:update_attributes).with(user_attrs)
+      post 'update', :id => 3, :user => user_attrs
+    end
+
+    context "user is invalid after update" do
+      it "should render the edit template with errors" do
+        user = mock_user
+        User.stub!(:find) { user }
+        user.stub!(:update_attributes) { false }
+        put 'update', :id => 3
+        response.should render_template("users/edit")
+      end
+    end
+
+    context "user is valid after update" do
+      it "should redirect to the users index" do
+        user = mock_user
+        User.stub!(:find) { user }
+        user.stub!(:update_attributes) { true }
+        put 'update', :id => 3
+        response.should redirect_to(users_path)
+      end
     end
   end
 end
