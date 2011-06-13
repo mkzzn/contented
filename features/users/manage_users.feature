@@ -1,22 +1,24 @@
-Feature: Users Overview
-  In order to maintain the application's user base
+Feature: Manage Users
+  In order to change user information
   As a system administrator
-  I want to be able to see all users in the system
+  I want to be able to edit and individual user 
 
-  Scenario: Admin user successfully views users
+  Background:
     Given confirmed admin user "waldorf@salad.biz" with password "cambodia"
+    And confirmed reader user "mondo@putnam.biz" with password "badges"
     When I sign in as user "waldorf@salad.biz" with password "cambodia"
-    And I visit the users overview page
-    Then I should be on the users overview page
-    
-  Scenario: Non-admin cannot view users
-    Given confirmed reader user "bezzle@marbles.biz" with password "ocelot"
-    When I sign in as user "bezzle@marbles.biz" with password "ocelot"    
-    And I visit the users overview page
-    Then I should be on the homepage
-    And I should see a warning saying that I cannot access that page
+    And I visit the edit page for user "mondo@putnam.biz"
 
-  Scenario: Admin sees all users in the system
-    Given there are three users in the system
-    When I login as a confirmed admin user and visit the users overview page
-    Then I should see three users on the page
+  Scenario: Admin updates user email
+    Given I change the user email to "monkey@jones.net"
+    When I submit the changes
+    Then I should be on the edit page for user "mondo@putnam.biz"
+    And I should see a notice saying that the user was updated
+    And the email field should say "monkey@jones.net"
+
+  Scenario: Admin changes user role
+    Given I change the user role to "admin"
+    When I submit the changes
+    Then I should be on the edit page for user "monkey@jones.net"
+    And I should see a notice saying that the user was updated
+    And the user "monkey@jones.net" should be an admin

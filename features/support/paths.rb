@@ -28,6 +28,9 @@ module NavigationHelpers
       new_confirmation_path
     when /^the edit page for category "(.*)"$/
       edit_category_path(Category.find_by_title($1))
+    when /^the edit page for user "(.*)"$/
+      user = User.where(:email => $1).first
+      edit_user_path(user)
     else
       begin
         page_name =~ /the (.*) page/
