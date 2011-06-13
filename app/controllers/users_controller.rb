@@ -15,6 +15,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find params[:id]
     if @user.update_without_password params[:user]
+      flash[:notice] = "User '#{@user.email}' was successfully updated."
       redirect_to users_path
     else
       render :action => "edit"

@@ -24,7 +24,7 @@
   .fields
     = f.label :password_confirmation
     = f.password_field :password_confirmation
-
+ 
   .fields= f.submit "Update"
 
 - if current_user and can?(:delete, current_user)

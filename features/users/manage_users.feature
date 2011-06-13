@@ -14,11 +14,11 @@ Feature: Manage Users
     When I submit the changes
     Then I should be on the users overview page
     And I should see a notice saying that the user was updated
-    And the email field should say "monkey@jones.net"
+    And I should see the user "monkey@jones.net" 
 
   Scenario: Admin changes user role
     Given I change the user role to "admin"
     When I submit the changes
     Then I should be on the users overview page
     And I should see a notice saying that the user was updated
-    And the user "monkey@jones.net" should be an admin
+    And I should see that the user "monkey@jones.net" is an admin

@@ -56,22 +56,33 @@ describe UsersController do
     end
 
     context "user is invalid after update" do
-      it "should render the edit template with errors" do
-        user = mock_user
-        User.stub!(:find) { user }
-        user.stub!(:update_without_password) { false }
+      before(:each) do
+        @user = mock_user
+        User.stub!(:find) { @user }
+        @user.stub!(:update_without_password) { false }
         put 'update', :id => 3
+      end
+      
+      it "should render the edit template with errors" do
         response.should render_template("users/edit")
       end
     end
 
     context "user is valid after update" do
-      it "should redirect to the users index" do
-        user = mock_user
-        User.stub!(:find) { user }
-        user.stub!(:update_without_password) { true }
+      before(:each) do
+        @user = mock_user :email => "bob@bob.net"
+        User.stub!(:find) { @user }
+        @user.stub!(:update_without_password) { true }
         put 'update', :id => 3
+      end
+
+      it "should redirect to the users index" do
         response.should redirect_to(users_path)
+      end
+
+      it "should add a notice to the flash" do
+        request.flash[:notice].should == \
+          "User '#{@user.email}' was successfully updated."
       end
     end
   end
