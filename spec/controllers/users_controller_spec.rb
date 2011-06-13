@@ -51,7 +51,7 @@ describe UsersController do
       user_attrs = { "first_name" => "Walter", "last_name" => "Hagel" }
       user = mock_user
       User.stub!(:find) { user }
-      user.should_receive(:update_attributes).with(user_attrs)
+      user.should_receive(:update_without_password).with(user_attrs)
       post 'update', :id => 3, :user => user_attrs
     end
 
@@ -59,7 +59,7 @@ describe UsersController do
       it "should render the edit template with errors" do
         user = mock_user
         User.stub!(:find) { user }
-        user.stub!(:update_attributes) { false }
+        user.stub!(:update_without_password) { false }
         put 'update', :id => 3
         response.should render_template("users/edit")
       end
@@ -69,7 +69,7 @@ describe UsersController do
       it "should redirect to the users index" do
         user = mock_user
         User.stub!(:find) { user }
-        user.stub!(:update_attributes) { true }
+        user.stub!(:update_without_password) { true }
         put 'update', :id => 3
         response.should redirect_to(users_path)
       end
