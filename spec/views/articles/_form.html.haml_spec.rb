@@ -12,7 +12,7 @@ describe "articles/_form.html.haml" do
   end
 
   def mock_category(stubs={})
-    mock_model(Category).as_null_object.tap do |category|
+    (@mock_category ||= mock_model(Category).as_null_object).tap do |category|
       category.stub(stubs) unless stubs.empty?
     end
   end

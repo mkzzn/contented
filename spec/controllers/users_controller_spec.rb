@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe UsersController do
   def mock_user(stubs={})
-    mock_model(User).as_null_object.tap do |user|
+    (@mock_user ||= mock_model(User).as_null_object).tap do |user|
       user.stub(stubs) unless stubs.empty?
     end
   end

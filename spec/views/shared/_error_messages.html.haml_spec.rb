@@ -61,7 +61,7 @@ describe "shared/_error_messages.html.haml" do
   end
 
   def mock_target(stubs={})
-    mock("target").as_null_object.tap do |target|
+    (@mock_target ||= mock("target").as_null_object).tap do |target|
       target.stub(stubs) unless stubs.empty?
     end
   end
