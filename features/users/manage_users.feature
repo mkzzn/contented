@@ -18,7 +18,6 @@ Feature: Manage Users
 
   Scenario: Admin changes user role
     Given I change the user role to "admin"
-    Then show me the page
     When I submit the changes
     Then I should be on the users overview page
     And I should see a notice saying that the user was updated
