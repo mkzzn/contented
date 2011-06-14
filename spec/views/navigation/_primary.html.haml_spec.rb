@@ -9,7 +9,7 @@ describe '/nav/_primary.html.haml' do
     end
   end
 
-  context "pages controller" do
+  describe "pages controller" do
     context "homepage action" do
       it "should activate the 'Home' link" do
         controller.stub!(:controller_name) { "pages" }
@@ -19,6 +19,7 @@ describe '/nav/_primary.html.haml' do
         rendered.should include(homepage_link)
       end
     end
+
     context "non-homepage action" do
       it "should not activate the 'Home' link" do
         controller.stub!(:controller_name) { "pages" }
@@ -30,7 +31,7 @@ describe '/nav/_primary.html.haml' do
     end
   end
 
-  context "articles controller" do
+  describe "articles controller" do
     context "active" do
       it "should activate the articles link" do
         controller.stub!(:controller_name) { "articles" }
@@ -39,6 +40,7 @@ describe '/nav/_primary.html.haml' do
         rendered.should include(articles_link)
       end
     end
+
     context "inactive" do
       it "should not activate the articles link" do
         render
@@ -48,7 +50,7 @@ describe '/nav/_primary.html.haml' do
     end
   end
 
-  context "categories controller" do
+  describe "categories controller" do
     context "active" do
       it "should activate the categories link" do
         controller.stub!(:controller_name) { "categories" }
@@ -76,7 +78,7 @@ describe '/nav/_primary.html.haml' do
       end
     end
 
-  context "user" do
+  describe "user info" do
     context "logged in" do
       before(:each) do
         controller.stub!(:current_user) { mock_user }
