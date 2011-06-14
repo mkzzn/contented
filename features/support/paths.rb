@@ -14,6 +14,8 @@ module NavigationHelpers
       articles_path
     when /the categories index/
       categories_path
+
+    # users
     when /the users page/
       "/users"
     when /the user registration page/
@@ -26,6 +28,10 @@ module NavigationHelpers
       new_user_session_path
     when /the user confirmation page/
       new_confirmation_path
+    when /^the show user page for "(.*)"$/
+      user = User.where(:email => $1).first
+      user_path(user)
+
     when /^the edit page for category "(.*)"$/
       edit_category_path(Category.find_by_title($1))
     when /^the edit page for user "(.*)"$/

@@ -16,10 +16,23 @@ Then /^I should see the user "([^"]*)"$/ do |email|
   page.should have_css("#user_#{user[:id]}")
 end
 
-Then /^I should see that the user "([^"]*)" is an admin$/ do |arg1|
-  pending # express the regexp above with the code you wish you had
+Then /^I should see that the user "([^"]*)" is an admin$/ do |email|
+  user = User.where(:email => email).first
+  page.should have_xpath("//tr[@id='user_#{user[:id]}']//td[@class='role'][contains(.,'admin')]")
 end
 
-Given /^I change the user role to "([^"]*)"$/ do |arg1|
-  pending # express the regexp above with the code you wish you had
+Given /^I change the user role to "([^"]*)"$/ do |role|
+  select role, :from => "user_role"
+end
+
+Given /^I change the password to "([^"]*)"$/ do |password|
+  fill_in "user_password", :with => password
+end
+
+Given /^I change the password confirmation to "([^"]*)"$/ do |confirmation|
+  fill_in "user_password_confirmation", :with => confirmation
+end
+
+Then /^I should see an error saying that the passwords do not match$/ do
+  page.should have_xpath("//div[@id='errorExplanation']//li[contains(.,'Password doesn')][contains(.,'match confirmation')]")
 end

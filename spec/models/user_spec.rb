@@ -1,6 +1,12 @@
 require 'spec_helper'
 
 describe User do
+  describe "roles" do
+    it "should have a list of valid roles" do
+      User::ROLES.should == %w[ reader admin ]
+    end
+  end
+
   describe "update_with_password" do
     before(:each) do
       @user = Factory :user

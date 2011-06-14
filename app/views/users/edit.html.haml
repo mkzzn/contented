@@ -6,6 +6,9 @@
     = f.label :email
     = f.text_field :email
   .fields
+    = f.label :role
+    = f.select :role, User::ROLES
+  .fields
     = f.label :first_name
     = f.text_field :first_name
   .fields
