@@ -47,19 +47,38 @@ describe UsersController do
       post 'update', :id => 3
     end
 
-    it "should update the attributes of the user in question" do
-      user_attrs = { "first_name" => "Walter", "last_name" => "Hagel" }
-      user = mock_user
-      User.stub!(:find) { user }
-      user.should_receive(:update_without_password).with(user_attrs)
-      post 'update', :id => 3, :user => user_attrs
+    describe "fetching and updating the user" do
+      before(:each) do
+        @user_attrs = { "first_name" => "Walter", "last_name" => "Hagel" }
+        @user = mock_user
+        User.stub!(:find) { @user }
+      end
+
+      it "should update the attributes of the user in question" do
+        @user.should_receive(:update_attributes).with @user_attrs
+      end
+
+      it "should create a new param filter" do
+        param_filter = mock(ParamFilter).as_null_object
+        ParamFilter.should_receive(:new).with(@user_attrs) { param_filter }
+      end
+
+      it "should filter empty passwords" do
+        params = mock("params")
+        ParamFilter.stub!(:new) { params }
+        params.should_receive(:filter_empty_passwords)
+      end
+
+      after(:each) do
+        post 'update', :id => 3, :user => @user_attrs
+      end
     end
 
     context "user is invalid after update" do
       before(:each) do
         @user = mock_user
         User.stub!(:find) { @user }
-        @user.stub!(:update_without_password) { false }
+        @user.stub!(:update_attributes) { false }
         put 'update', :id => 3
       end
       
@@ -72,7 +91,7 @@ describe UsersController do
       before(:each) do
         @user = mock_user :email => "bob@bob.net"
         User.stub!(:find) { @user }
-        @user.stub!(:update_without_password) { true }
+        @user.stub!(:update_attributes) { true }
         put 'update', :id => 3
       end
 
