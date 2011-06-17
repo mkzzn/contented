@@ -3,11 +3,13 @@
 
 .section.articles
   = link_to "Articles", articles_path, :class => active_on("articles title", :articles => true)
-  = link_to "New", new_article_path, :class => "new_article"
+  - if can? :create, Article
+    = link_to "New", new_article_path, :class => "new_article"
 
 .section.categories
   = link_to "Categories", categories_path, :class => active_on("categories title", :categories => true)
-  = link_to "New", new_category_path, :class => "new_category"
+  - if can? :create, Category
+    = link_to "New", new_category_path, :class => "new_category"
 
 .section.session
   - if user_signed_in?

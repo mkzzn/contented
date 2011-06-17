@@ -1,4 +1,5 @@
 require 'spec_helper'
+require "cancan/matchers"
 
 describe '/nav/_primary.html.haml' do
   #include Devise::TestHelpers
@@ -107,6 +108,30 @@ describe '/nav/_primary.html.haml' do
 
       it "should have a link to register" do
         rendered.should include("Register")
+      end
+    end
+  end
+
+  describe "new article link" do
+    context "user can create a new article" do
+      it "should be visible" do
+      end
+    end
+
+    context "user cannot create a new article" do
+      it "should not be visible" do
+      end
+    end
+  end
+
+  describe "new category link" do
+    context "user can create a new category" do
+      it "should be visible" do
+      end
+    end
+
+    context "user cannot create a new category" do
+      it "should not be visible" do
       end
     end
   end
