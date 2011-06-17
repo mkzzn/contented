@@ -112,26 +112,52 @@ describe '/nav/_primary.html.haml' do
     end
   end
 
-  describe "new article link" do
-    context "user can create a new article" do
-      it "should be visible" do
+  describe "abilities" do
+    before(:each) do
+      @ability = Object.new
+      @ability.extend(CanCan::Ability)
+      controller.stub(:current_ability) { @ability }
+    end
+
+    describe "new article link" do
+      before do
+        @new_article_link = '<a href="/articles/new" class="new_article">New</a>'
+      end
+
+      context "user can create a new article" do
+        it "should be visible" do
+          @ability.can :manage, Article
+          render
+          rendered.should include(@new_article_link)
+        end
+      end
+
+      context "user cannot create a new article" do
+        it "should not be visible" do
+          render
+          rendered.should_not include(@new_article_link)
+        end
       end
     end
 
-    context "user cannot create a new article" do
-      it "should not be visible" do
+    describe "new category link" do
+      before do
+        @new_category_link = '<a href="/categories/new" class="new_category">New</a>'
       end
-    end
-  end
 
-  describe "new category link" do
-    context "user can create a new category" do
-      it "should be visible" do
+      context "user can create a new category" do
+        it "should be visible" do
+          @ability.can :manage, Category
+          render
+          rendered.should include(@new_category_link)
+        end
       end
-    end
 
-    context "user cannot create a new category" do
-      it "should not be visible" do
+      context "user cannot create a new category" do
+        it "should not be visible" do
+          render
+          rendered.should_not include(@new_category_link)
+        end
       end
     end
   end
