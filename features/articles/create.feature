@@ -2,6 +2,10 @@ Feature: Create Article
   In order to publish content
   As a site writer
   I want to be able to create articles
+
+  Background:
+    Given confirmed admin user "waldorf@salad.biz" with password "cambodia"
+    And I sign in as user "waldorf@salad.biz" with password "cambodia" 
   
   Scenario: User Navigates to the New Article Page
     Given I am on the articles index page
