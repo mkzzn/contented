@@ -92,12 +92,36 @@ describe ArticlesController do
   end
 
   describe "GET 'new'" do
-    it "should build a new article" do
-      Article.should_receive(:new) { mock_article :save => false }
+    before(:each) do
+      stub_current_ability
+      @article = mock_article
+      Article.stub!(:new) { @article }
     end
 
-    after(:each) do
-      get 'new'
+    context "user can build a new article" do
+      before(:each) do
+        @ability.can :build, Article
+      end
+
+      it "should build a new article" do
+        Article.should_receive(:new)
+        get 'new'
+      end
+    end
+
+    context "user cannot build a new article" do
+      before(:each) do
+        @ability.cannot :build, Article
+        get "new"
+      end
+
+      it "should redirect to the homepage" do
+        response.should redirect_to(root_path)
+      end
+
+      it "should set a flash alert" do
+        request.flash[:alert].should == "You are not authorized to access this page."
+      end
     end
   end
 
