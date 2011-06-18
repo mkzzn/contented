@@ -13,3 +13,7 @@ end
 Then /^there should be no article called "([^"]*)"$/ do |title|
   Article.find_by_title(title).should be_nil
 end
+
+Then /^I should not see a link to delete the article$/ do
+  page.should_not have_css("input.destroy")
+end

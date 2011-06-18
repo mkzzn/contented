@@ -114,9 +114,7 @@ describe '/nav/_primary.html.haml' do
 
   describe "abilities" do
     before(:each) do
-      @ability = Object.new
-      @ability.extend(CanCan::Ability)
-      controller.stub(:current_ability) { @ability }
+      stub_current_ability
     end
 
     describe "new article link" do
@@ -160,5 +158,11 @@ describe '/nav/_primary.html.haml' do
         end
       end
     end
+  end
+
+  def stub_current_ability
+    @ability = Object.new
+    @ability.extend(CanCan::Ability)
+    @controller.stub!(:current_ability) { @ability }
   end
 end

@@ -14,7 +14,6 @@ Then /^I should not see a link to create a new article$/ do
   page.should_not have_css("a.new_article")
 end
 
-
 Then /^I should not see a link to create a new category$/ do
   page.should_not have_css("a.new_category")
 end

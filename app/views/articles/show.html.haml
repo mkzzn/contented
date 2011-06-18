@@ -7,7 +7,8 @@
     .active_category= link_to "Uncategorized", uncategorized_articles_path
   = link_to @article.title, @article, :class => "title"
   .resource_links
-    = button_to "Delete", @article, :method => :delete, :class => :destroy
+    - if can? :destroy, @article
+      = button_to "Delete", @article, :method => :delete, :class => :destroy
     = link_to "Edit", edit_article_path(@article), :class => "edit"
   %p.body= @article.body
 = render :partial => "articles/comments"

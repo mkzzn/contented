@@ -29,7 +29,30 @@ describe "articles/show.html.haml" do
     rendered.should =~ /ultracat/
   end
 
-  context "category link" do
+  describe "delete link" do
+    before(:each) do
+      stub_current_ability
+      @article = mock_model(Article, @article_stubs)
+    end
+
+    context "user can delete article" do
+      it "should render a link to destroy the article" do
+        @ability.can :destroy, @article
+        expect_and_render_resources
+        rendered.should have_selector(".article input.destroy")
+      end
+    end
+    
+    context "user cannot delete article" do
+      it "should not render a link to destroy the article" do
+        @ability.cannot :destroy, @article
+        expect_and_render_resources
+        rendered.should_not have_selector(".article input.destroy")
+      end
+    end
+  end
+
+  describe "category link" do
     it "should not render one if the article is uncategorized" do
       @article = mock_model Article, @article_stubs.merge(:categorized? => false)
       expect_and_render_resources
@@ -45,5 +68,11 @@ describe "articles/show.html.haml" do
       rendered.should =~ /ultracat/
       rendered.should_not =~ /Uncategorized/
     end
+  end
+
+  def stub_current_ability
+    @ability = Object.new
+    @ability.extend(CanCan::Ability)
+    @controller.stub!(:current_ability) { @ability }
   end
 end
