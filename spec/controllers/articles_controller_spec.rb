@@ -30,18 +30,45 @@ describe ArticlesController do
   describe "DELETE 'destroy'" do
     before(:each) do
       @article = mock_article
-      @article.stub!(:id) { 2 }
+      Article.stub!(:find) { @article }
+      stub_current_ability
     end
 
-    it "should destroy an article" do
-      Article.should_receive(:delete).with(@article.id) { @article }
-      delete 'destroy', :id => @article.id
+    context "user can delete articles" do
+      before(:each) do
+        @ability.can :destroy, Article
+      end
+
+      it "should find the article" do
+        Article.should_receive(:find).with(2) { @article }
+        delete 'destroy', :id => 2
+      end
+
+      it "should destroy an article" do
+        @article.should_receive(:destroy)
+        delete 'destroy', :id => 2
+      end
+
+      it "should redirect to the articles index" do
+        delete 'destroy', :id => 2
+        response.code.should == "302"
+        response.should redirect_to(articles_path)
+      end
     end
 
-    it "should redirect to the articles index" do
-      delete 'destroy', :id => @article.id
-      response.code.should == "302"
-      response.should redirect_to(articles_path)
+    context "user cannot delete articles" do
+      before(:each) do
+        @ability.cannot :destroy, Article
+        delete 'destroy', :id => 2
+      end
+
+      it "should redirect to the homepage" do
+        response.should redirect_to(root_path)
+      end
+
+      it "should set a flash warning" do
+        request.flash[:alert].should == "You are not authorized to access this page."
+      end
     end
   end
 
@@ -160,5 +187,11 @@ describe ArticlesController do
     (@mock_comment ||= mock_model(Comment).as_null_object).tap do |comment|
       comment.stub(stubs) unless stubs.empty?
     end
+  end
+
+  def stub_current_ability
+    @ability = Object.new
+    @ability.extend(CanCan::Ability)
+    @controller.stub!(:current_ability) { @ability }
   end
 end

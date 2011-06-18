@@ -8,12 +8,23 @@ module NavigationHelpers
   def path_to(page_name)
     case page_name
 
+    # shared
     when /the home\s?page/
       '/'
+
+    # articles
+    when /the articles overview page/
+      articles_path
     when /the articles index page/
       articles_path
+
+    # categories
     when /the categories index/
       categories_path
+    when /the categories overview page/
+      categories_path
+    when /^the edit page for category "(.*)"$/
+      edit_category_path(Category.find_by_title($1))
 
     # users
     when /the users page/
@@ -31,12 +42,10 @@ module NavigationHelpers
     when /^the show user page for "(.*)"$/
       user = User.where(:email => $1).first
       user_path(user)
-
-    when /^the edit page for category "(.*)"$/
-      edit_category_path(Category.find_by_title($1))
     when /^the edit page for user "(.*)"$/
       user = User.where(:email => $1).first
       edit_user_path(user)
+
     else
       begin
         page_name =~ /the (.*) page/

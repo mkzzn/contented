@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_filter :fetch_article, :only => [:show, :update, :edit]
+  before_filter :fetch_article, :only => [:show, :update, :edit, :destroy]
 
   def index
     @articles = Article.all
@@ -43,7 +43,8 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-    Article.delete params[:id]
+    authorize! :destroy, @article
+    @article.destroy
     flash[:notice] = "Article was successfully destroyed"
     redirect_to articles_path
   end

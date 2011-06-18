@@ -4,8 +4,7 @@ Feature: Create Article
   I want to be able to create articles
 
   Background:
-    Given confirmed admin user "waldorf@salad.biz" with password "cambodia"
-    And I sign in as user "waldorf@salad.biz" with password "cambodia" 
+    Given I am logged in as a confirmed admin user
   
   Scenario: User Navigates to the New Article Page
     Given I am on the articles index page
