@@ -7,6 +7,7 @@ class CategoriesController < ApplicationController
 
   def new
     @category = Category.new
+    authorize! :build, @category
   end
 
   def create

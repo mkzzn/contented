@@ -31,7 +31,7 @@ Then /^I should be redirected to the homepage$/ do
 end
 
 Then /^I should see a warning saying that I cannot view that page$/ do
-  pending # express the regexp above with the code you wish you had
+  page.should have_xpath("//div[contains(@class,'alert')][contains(.,'You are not authorized to access this page.')]")
 end
 
 When /^I click the link to create a new category$/ do
