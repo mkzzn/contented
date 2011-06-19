@@ -33,3 +33,11 @@ end
 When /^I click the uncategorized link within (article "\w+")$/ do |article|
   find(:xpath, "//div[@id='article_#{article[:id]}']//div[@class='active_category']//a[.='Uncategorized']").click
 end
+
+Then /^I should see the link to edit the article$/ do
+  page.should have_css(".article .resource_links a.edit")
+end
+
+Then /^I should not see the link to edit the article$/ do
+  page.should_not have_css(".article .resource_links a.edit")
+end

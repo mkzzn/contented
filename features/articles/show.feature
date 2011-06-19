@@ -37,3 +37,17 @@ Feature: View Article
     And I am viewing article "articlaus"
     When I click the uncategorized link within article "articlaus"
     Then I should be on the uncategorized articles page
+
+  Scenario: Admin sees edit article link
+    Given I am logged in as a confirmed admin user
+    And I am viewing article "articlaus"
+    Then I should see the link to edit the article
+    
+  Scenario: User cannot see edit article link
+    Given I am logged in as a confirmed reader user
+    And I am viewing article "articlaus"
+    Then I should not see the link to edit the article
+
+  Scenario: Visitor cannot see edit article link
+    Given I am viewing article "articlaus"
+    Then I should not see the link to edit the article

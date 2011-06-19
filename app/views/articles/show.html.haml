@@ -9,6 +9,7 @@
   .resource_links
     - if can? :destroy, @article
       = button_to "Delete", @article, :method => :delete, :class => :destroy
-    = link_to "Edit", edit_article_path(@article), :class => "edit"
+    - if can? :edit, @article
+      = link_to "Edit", edit_article_path(@article), :class => "edit"
   %p.body= @article.body
 = render :partial => "articles/comments"
