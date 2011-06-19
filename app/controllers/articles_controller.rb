@@ -29,6 +29,7 @@ class ArticlesController < ApplicationController
   end
 
   def update
+    authorize! :edit, @article
     @article.update_attributes params[:article]
     if @article.valid?
       flash[:notice] = "#{@article[:title]} was saved to category #{@article.category_name}"

@@ -142,25 +142,55 @@ describe ArticlesController do
   describe "PUT 'update'" do
     before(:each) do
       @article = mock_article
-      @article.stub!(:id) { 2 }
-      @attrs = { "body" => "bar", "title" => "foo" }
-      Article.should_receive(:find).with(2) { @article }
-      @article.should_receive(:update_attributes).with(@attrs) { true }
+      @attrs = { "weasel" => "pox", "hen" => "scatter" }
+      Article.stub!(:find) { @article }
+      stub_current_ability
     end
 
-    context "success" do
-      it "should redirect to show article page" do
-        @article.stub!(:valid?) { true }
-        put 'update', :id => 2, :article => @attrs      
-        response.should redirect_to(article_path(@article))
+    it "should fetch the article" do
+      Article.should_receive(:find).with(2) { @article }
+      put 'update', :id => 2
+    end
+
+    context "user is not authorized" do
+      before(:each) do
+        @ability.cannot :edit, Article
+        put 'update', :id => 2
+      end
+
+      it "should redirect to the homepage" do
+        response.should redirect_to(root_path)
+      end
+
+      it "should set a flash alert" do
+        request.flash[:alert].should == "You are not authorized to access this page."
       end
     end
 
-    context "failure" do
-      it "should render the new article template" do
-        @article.stub!(:valid?) { false }
-        put 'update', :id => 2, :article => @attrs      
-        response.should render_template("new")
+    context "user is authorized" do
+      before(:each) do
+        @ability.can :edit, Article
+      end
+
+      it "should update the article with the given attributes" do
+        @article.should_receive(:update_attributes).with(@attrs)
+        put 'update', :id => 2, :article => @attrs
+      end
+
+      context "article is valid after update" do
+        it "should redirect to show article page" do
+          @article.stub!(:valid?) { true }
+          put 'update', :id => 2, :article => @attrs      
+          response.should redirect_to(article_path(@article))
+        end
+      end
+
+      context "article is invalid after update" do
+        it "should render the new article template" do
+          @article.stub!(:valid?) { false }
+          put 'update', :id => 2, :article => @attrs      
+          response.should render_template("new")
+        end
       end
     end
   end
