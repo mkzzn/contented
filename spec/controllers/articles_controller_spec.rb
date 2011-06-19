@@ -34,7 +34,7 @@ describe ArticlesController do
       stub_current_ability
     end
 
-    context "user can delete articles" do
+    context "user is authorized" do
       before(:each) do
         @ability.can :destroy, Article
       end
@@ -56,7 +56,7 @@ describe ArticlesController do
       end
     end
 
-    context "user cannot delete articles" do
+    context "user is not authorized" do
       before(:each) do
         @ability.cannot :destroy, Article
         delete 'destroy', :id => 2
@@ -98,7 +98,7 @@ describe ArticlesController do
       Article.stub!(:new) { @article }
     end
 
-    context "user can build a new article" do
+    context "user is authorized" do
       before(:each) do
         @ability.can :build, Article
       end
@@ -109,7 +109,7 @@ describe ArticlesController do
       end
     end
 
-    context "user cannot build a new article" do
+    context "user is not authorized" do
       before(:each) do
         @ability.cannot :build, Article
         get "new"
@@ -127,15 +127,40 @@ describe ArticlesController do
 
   describe "GET 'edit'" do
     before(:each) do
-      @article = mock_article :id => 2
+      @article = mock_article
+      Article.stub!(:find) { @article }
+      stub_current_ability
     end
 
-    it "should get the article" do
+    it "should fetch the article" do
       Article.should_receive(:find).with(2) { @article }
+      get :edit, :id => 2
     end
 
-    after(:each) do
-      get 'edit', :id => 2
+    context "user is authorized" do
+      before(:each) do
+        @ability.can :edit, Article
+      end
+
+      it "should render the edit template" do
+        get :edit, :id => 2
+        response.should render_template("articles/edit")
+      end
+    end
+
+    context "user is not authorized" do
+      before(:each) do
+        @ability.cannot :edit, Article
+        get :edit, :id => 2
+      end
+
+      it "should redirect to the homepage" do
+        response.should redirect_to(root_path)
+      end
+
+      it "should set a flash alert" do
+        request.flash[:alert].should == "You are not authorized to access this page."
+      end
     end
   end
 
@@ -152,9 +177,9 @@ describe ArticlesController do
       put 'update', :id => 2
     end
 
-    context "user is not authorized" do
+    context "user is authorized" do
       before(:each) do
-        @ability.cannot :edit, Article
+        @ability.cannot :update, Article
         put 'update', :id => 2
       end
 
@@ -167,9 +192,9 @@ describe ArticlesController do
       end
     end
 
-    context "user is authorized" do
+    context "user is not authorized" do
       before(:each) do
-        @ability.can :edit, Article
+        @ability.can :update, Article
       end
 
       it "should update the article with the given attributes" do
@@ -196,37 +221,74 @@ describe ArticlesController do
   end
 
   describe "POST 'create'" do
-    context "success" do
+    before(:each) do
+      stub_current_ability
+    end
+
+    context "user is authorized" do
       before(:each) do
-        @article = mock_article @attributes
+        @article = mock_article
+        Article.stub!(:create) { @article }
+        @ability.can :create, Article
       end
 
       it "should create a new article" do
         Article.should_receive(:create).with(@attributes) { @article }
         post :create, :article => @attributes
       end
+ 
+      context "article is valid after creation" do
+        before(:each) do
+          @article.stub!(:valid?) { true }
+        end
 
-      it "should redirect to the articles path" do
-        post :create, :article => @attributes
-        response.code.should == "302"
-        response.should redirect_to(articles_path)
+        it "should set a flash notice" do
+          @article.stub!(:title) { "Bee Article" }
+          post :create
+          request.flash[:notice].should == "Bee Article was successfully created"
+        end
+
+        it "should redirect to the articles path" do
+          post :create
+          response.code.should == "302"
+          response.should redirect_to(articles_path)
+        end
+      end
+
+      context "article is invalid after creation" do
+        before(:each) do
+          @article.stub!(:valid?) { false }
+          post :create
+        end
+
+        it "should set a flash warning" do
+          request.flash[:warning].should == "Article creation failed"
+        end
+
+        it "should render the new template" do
+          response.should render_template("articles/new")
+        end
       end
     end
 
-    context "failure" do
+    context "user is not authorized" do
       before(:each) do
-        @article = mock_article :title => ""
+        @ability.cannot :create, Article
       end
 
-      it "should create a new article" do
-        Article.should_receive(:create).with({}) { @article }
-        post :create, :article => {}
+      it "should not_create a new article" do
+        Article.should_not_receive(:create).with(@attributes) { @article }
+        post :create
       end
 
-      it "should not redirect" do
-        post :create, :article => {}
-        response.should_not redirect_to(articles_path)
-        response.code.should == "200"
+      it "should redirect to the homepage" do
+        post :create
+        response.should redirect_to(root_path)
+      end
+
+      it "should set a flash alert" do
+        post :create
+        request.flash[:alert].should == "You are not authorized to access this page."
       end
     end
   end

@@ -4,24 +4,39 @@ Feature: Edit Article
   I want to be able to update the information of an existing article
 
   Background:
-    Given article "jenkins"
-    And I am logged in as a confirmed admin user
-    And article "jenkins" has body "wolfpack"
-    And I am viewing article "jenkins"
-    And I click "Edit"
+    Given article "jenkins" with body "wolfpack"
 
     Scenario: Admin user successfully updates article information
-      Given I fill in article "title" with "snakebot"
+      Given I am logged in as a confirmed admin user
+      And I visit the edit page for article "jenkins"
+      And I fill in article "title" with "snakebot"
       And I fill in article "body" with "humon"
       When I submit the changes
       Then I should be viewing article "snakebot"
       And article "snakebot" should have body "humon"
 
     Scenario: Admin user submits invalid data
-      Given I clear the article title
-      When I submit the changes
-      And I should be shown that the title has an error
+      Given I am logged in as a confirmed admin user
+      And I visit the edit page for article "jenkins"
+      When I clear the article title
+      And I submit the changes
+      Then I should be shown that the title has an error
 
     Scenario: Admin user cancels editing
-      Given I cancel editing
+      Given I am logged in as a confirmed admin user
+      And I visit the edit page for article "jenkins"
+      When I cancel editing
       Then I should be viewing article "jenkins"
+
+    Scenario: Reader user cannot edit the article
+      Given I am logged in as a confirmed reader user
+      When I visit the edit page for article "jenkins"
+      Then I should be redirected to the homepage
+      And I should see a warning saying that I cannot view that page
+
+    Scenario: Visitor cannot edit the article
+      Given I am not logged in
+      When I visit the edit page for article "jenkins"
+      Then I should be redirected to the homepage
+      And I should see a warning saying that I cannot view that page
+

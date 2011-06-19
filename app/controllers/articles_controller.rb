@@ -15,9 +15,11 @@ class ArticlesController < ApplicationController
   end
 
   def edit
+    authorize! :edit, @article
   end
 
   def create
+    authorize! :create, Article
     @article = Article.create params[:article]
     if @article.valid?
       flash[:notice] = "#{@article.title} was successfully created"
@@ -29,7 +31,7 @@ class ArticlesController < ApplicationController
   end
 
   def update
-    authorize! :edit, @article
+    authorize! :update, @article
     @article.update_attributes params[:article]
     if @article.valid?
       flash[:notice] = "#{@article[:title]} was saved to category #{@article.category_name}"

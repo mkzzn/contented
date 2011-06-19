@@ -29,3 +29,11 @@ end
 Given /^I cancel editing$/ do
   find(:css, "#cancel_editing").click
 end
+
+Given /^article "([^"]*)" with body "([^"]*)"$/ do |title, body|
+  Factory :article, :title => title, :body => body
+end
+
+Given /^I visit the edit page for (article "\w+")$/ do |article|
+  visit edit_article_path(article)
+end
