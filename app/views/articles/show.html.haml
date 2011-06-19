@@ -1,4 +1,3 @@
-
 = stylesheet_link_tag "articles/shared"
 
 %div[@article]
@@ -13,4 +12,12 @@
     - if can? :edit, @article
       = link_to "Edit", edit_article_path(@article), :class => "edit"
   %p.body= @article.body
-= render :partial => "articles/comments"
+
+#comments
+  %h2 Comments
+  = render :partial => @comments
+  = form_for [@article, @comment] do |f|
+    .fields
+      = f.label :body, "Comment"
+      = f.text_area :body
+    = f.submit
