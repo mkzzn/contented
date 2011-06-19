@@ -42,8 +42,8 @@ class ArticlesController < ApplicationController
   end
 
   def new
+    authorize! :build, Article
     @article = Article.new
-    authorize! :build, @article
   end
 
   def destroy

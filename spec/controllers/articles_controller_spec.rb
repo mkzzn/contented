@@ -115,6 +115,10 @@ describe ArticlesController do
         get "new"
       end
 
+      it "should not build a new article" do
+        Article.should_not_receive(:new)
+      end
+
       it "should redirect to the homepage" do
         response.should redirect_to(root_path)
       end
