@@ -1,7 +1,8 @@
+
 = stylesheet_link_tag "articles/shared"
 
 %div[@article]
-  -if @article.categorized?
+  - if @article.categorized?
     .active_category= link_to @article.category_name, @article.category
   - else
     .active_category= link_to "Uncategorized", uncategorized_articles_path
