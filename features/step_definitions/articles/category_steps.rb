@@ -23,3 +23,8 @@ end
 Then /^(article "\w+") should not be categorized$/ do |article|
   article.categorized?.should == false
 end
+
+Given /^categories "([^"]*)" and "([^"]*)"$/ do |title1, title2|
+  Factory :category, :title => title1
+  Factory :category, :title => title2
+end

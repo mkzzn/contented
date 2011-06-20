@@ -4,10 +4,10 @@ Feature: Article Categories
   I want to be able save my articles within categories
 
   Background:
-    Given article "humon"
-    And category "douglas"
-    And category "macarthur"
-    Given I am editing article "humon"
+    Given I am logged in as a confirmed admin user
+    And article "humon"
+    And categories "douglas" and "macarthur"
+    When I am editing article "humon"
 
   Scenario: User sees article categories
     Then these article categories should be available:
