@@ -1,35 +1,39 @@
 require 'spec_helper'
 
 describe UsersController do
-  def mock_user(stubs={})
-    (@mock_user ||= mock_model(User).as_null_object).tap do |user|
-      user.stub(stubs) unless stubs.empty?
-    end
-  end
-
   describe "GET 'index'" do
-    context "admin user" do
+    before(:each) do
+      stub_current_ability
+    end
+
+    context "user is authorized" do
       before(:each) do
-        controller.stub!(:current_user) { Factory :user, :role => "admin" }
-      end
-      
-      it "should render the index" do
-        get :index
-        response.should render_template("index")
+        @ability.can :read_all, User
       end
 
-      it "should get all users" do
-        users = (1..2).collect { Factory :user }
-        User.should_receive(:all) { users }
+      it "should render the users template" do
+        get :index
+        response.should render_template("users/index")
+      end
+
+      it "should fetch all users" do
+        User.should_receive(:all)
         get :index
       end
     end
 
-    context "reader user" do
-      it "should redirect to the homepage" do
-        controller.stub!(:current_user) { Factory :user, :role => "reader" }
+    context "user is not authorized" do
+      before(:each) do
+        @ability.cannot :read_all, User
         get :index
-        response.should redirect_to("/")
+      end
+
+      it "should redirect to the homepage" do
+        response.should redirect_to(root_path)
+      end
+
+      it "should set a flash alert" do
+        request.flash[:alert].should == "You are not authorized to access this page."
       end
     end
   end
@@ -104,5 +108,17 @@ describe UsersController do
           "User '#{@user.email}' was successfully updated."
       end
     end
+  end
+
+  def mock_user(stubs={})
+    (@mock_user ||= mock_model(User).as_null_object).tap do |user|
+      user.stub(stubs) unless stubs.empty?
+    end
+  end
+
+  def stub_current_ability
+    @ability = Object.new
+    @ability.extend(CanCan::Ability)
+    @controller.stub!(:current_ability) { @ability }
   end
 end

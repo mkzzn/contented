@@ -4,17 +4,21 @@ Feature: Users Overview
   I want to be able to see all users in the system
 
   Scenario: Admin user successfully views users
-    Given confirmed admin user "waldorf@salad.biz" with password "cambodia"
-    When I sign in as user "waldorf@salad.biz" with password "cambodia"
+    Given I am logged in as a confirmed admin user
     And I visit the users overview page
     Then I should be on the users overview page
     
-  Scenario: Non-admin cannot view users
-    Given confirmed reader user "bezzle@marbles.biz" with password "ocelot"
-    When I sign in as user "bezzle@marbles.biz" with password "ocelot"    
+  Scenario: Reader user cannot view users
+    Given I am logged in as a confirmed reader user
     And I visit the users overview page
     Then I should be on the homepage
-    And I should see a warning saying that I cannot access that page
+    And I should see a warning saying that I cannot view that page
+
+  Scenario: Visitor cannot view users
+    Given I am not logged in
+    When I visit the users overview page
+    Then I should be on the homepage
+    And I should see a warning saying that I cannot view that page
 
   Scenario: Admin sees all users in the system
     Given I login as a confirmed admin user
