@@ -43,11 +43,51 @@ describe CategoriesController do
   end
 
   context "DELETE destroy" do
-    it "should destroy the target category" do
-      category = mock_category :id => 2
-      Category.should_receive(:find).with(2) { category }
-      category.should_receive(:destroy) { category }
-      delete "destroy", :id => 2
+    before(:each) do
+      @category = mock_category
+      Category.stub!(:find) { @category }
+      stub_current_ability
+    end
+
+    it "should fetch the target category" do
+      Category.should_receive(:find).with(2)
+      delete :destroy, :id => 2
+    end
+    
+    context "user is authorized" do
+       before(:each) do
+        @ability.can :destroy, Category
+      end
+
+      it "should destroy the target category" do
+        @category.should_receive(:destroy)
+        delete :destroy, :id => 2
+      end
+
+      it "should set a flash notice" do
+        delete :destroy, :id => 2
+        request.flash[:notice].should == "category was successfully destroyed"
+      end
+
+      it "should redirect to the categories overview page" do
+        delete :destroy, :id => 2
+        response.should redirect_to(categories_path)
+      end
+    end
+
+    context "user is not authorized" do
+      before(:each) do
+        @ability.cannot :destroy, Category
+        delete :destroy, :id => 2
+      end
+
+      it "should redirect to the homepage" do
+        response.should redirect_to(root_path)
+      end
+
+      it "should set a flash alert" do
+        request.flash[:alert].should == "You are not authorized to access this page."
+      end
     end
   end
 

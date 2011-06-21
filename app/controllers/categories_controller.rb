@@ -39,6 +39,7 @@ class CategoriesController < ApplicationController
   end
 
   def destroy
+    authorize! :destroy, @category
     @category.destroy
     flash[:notice] = "category was successfully destroyed"
     redirect_to categories_path
