@@ -3,6 +3,7 @@
   .title= @category.title
   .description= @category.description
   .resource_links
-    = link_to "Edit", edit_category_path(@category), :class => "edit"
+    - if can? :edit, @category
+      = link_to "Edit", edit_category_path(@category), :class => "edit"
     = button_to "Delete", @category, :method => :delete, :class => :destroy
   .articles= render @category.articles
