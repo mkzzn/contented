@@ -29,8 +29,9 @@ class CategoriesController < ApplicationController
   end
 
   def update
+    authorize! :update, @category
     if @category.update_attributes params[:category]
-      flash[:notice] = @category[:title] + " was successfully updated"
+      flash[:notice] = "Category was successfully updated."
       redirect_to categories_path
     else
       flash[:warning] = "category was not updated"

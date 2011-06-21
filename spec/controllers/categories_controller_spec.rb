@@ -95,22 +95,63 @@ describe CategoriesController do
     before(:each) do
       @params = { "description" => "herman", "title" => "craig" }
       @category = mock_category(:id => 2)
-      Category.should_receive(:find).with(2) { @category }
+      Category.stub!(:find) { @category }
+      stub_current_ability
     end
 
-    context "success" do
-      it "should update and redirect to the categories index" do
-        @category.stub!(:update_attributes) { true }
-        put "update", :id => 2, :category => @params
-        response.should redirect_to(categories_path)
+    it "should fetch the target category" do
+      Category.should_receive(:find).with(2) { @category }
+      put :update, :id => 2
+    end
+
+    context "user is authorized" do
+      before(:each) do
+        @ability.can :update, Category
+      end
+
+      context "category attributes update successfully" do
+        before(:each) do
+          @category.stub!(:update_attributes) { true }
+          put "update", :id => 2, :category => @params
+        end
+
+        it "should set a flash notice" do
+          request.flash[:notice].should == "Category was successfully updated."
+        end
+
+        it "should redirect to the categories index" do
+          response.should redirect_to(categories_path)
+        end
+      end
+
+      context "category attributes do not update successfully" do
+        before(:each) do
+          @category.stub!(:update_attributes) { false }
+          put "update", :id => 2, :category => @params
+        end
+
+        it "should set a flash notice" do
+          request.flash[:warning].should == "category was not updated"
+        end
+
+        it "should render the 'new' template" do
+          response.should render_template("categories/new")
+        end
       end
     end
 
-    context "failure" do
-      it "should fail to update and render the form template" do
-        @category.stub!(:update_attributes) { false }
+    context "user is not authorized" do
+      before(:each) do
+        @ability.cannot :update, Category
         put "update", :id => 2, :category => @params
-        response.should render_template("new")
+      end
+
+      it "should redirect to the homepage" do
+        response.should redirect_to(root_path)
+      end
+
+      it "should set a flash alert" do
+        request.flash[:alert].should == "You are not authorized to access this page."
       end
     end
   end

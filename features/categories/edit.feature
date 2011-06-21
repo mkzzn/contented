@@ -18,7 +18,7 @@ Feature: Edit Category
       And I submit the changes
       Then I should be viewing the categories index page
       And I should see category "snakebot" with description "waffles"
-      And I should see a notice saying "snakebot was successfully updated"
+      And I should see a notice saying "Category was successfully updated."
       But I should not see category "jenkins"
 
     Scenario: Admin user submits invalid data
