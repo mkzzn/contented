@@ -11,12 +11,13 @@ class CategoriesController < ApplicationController
   end
 
   def create
+    authorize! :create, Category
     @category = Category.create params[:category]
     if @category.valid?
-      flash[:notice] = @category[:title] + " was created"
+      flash[:notice] = "Category was successfully created."
       redirect_to categories_path
     else
-      flash[:warning] = "category was not created"
+      flash[:warning] = "Category was not created."
       render :action => "new"
     end
   end

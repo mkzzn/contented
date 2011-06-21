@@ -42,7 +42,7 @@ describe CategoriesController do
     end
   end
 
-  context "DELETE destroy" do
+  describe "DELETE destroy" do
     before(:each) do
       @category = mock_category
       Category.stub!(:find) { @category }
@@ -91,7 +91,7 @@ describe CategoriesController do
     end
   end
 
-  context "PUT update" do
+  describe "PUT update" do
     before(:each) do
       @params = { "description" => "herman", "title" => "craig" }
       @category = mock_category(:id => 2)
@@ -190,7 +190,7 @@ describe CategoriesController do
     end
   end
 
-  context "GET show" do
+  describe "GET show" do
     before(:each) do
       @category = mock_category(:id => 2)
     end
@@ -204,23 +204,68 @@ describe CategoriesController do
     end
   end
 
-  context "POST create" do
+  describe "POST create" do
     before(:each) do
       @params = {"description" => "douglass", "title" => "fredrick"}
-      @category = mock_category(@params)
-      Category.should_receive(:create).with(@params) { @category }
+      @category = mock_category
+      Category.stub!(:create) { @category }
+      stub_current_ability
     end
 
-    it "should redirect to the categories index on success" do
-      @category.stub!(:valid?) { true }
-      post "create", :category => @params
-      response.should redirect_to(categories_path)
+    context "user is authorized" do
+      before(:each) do
+        @ability.can :create, Category
+      end
+
+      it "should create a new Category" do
+        Category.should_receive(:create).with(@params) { @category }
+        post :create, :category => @params
+      end
+
+      context "category is valid after creation" do
+        before(:each) do
+          @category.stub!(:valid?) { true }
+          post :create, :category => @params
+        end
+
+        it "should set a flash notice" do
+          request.flash[:notice].should == "Category was successfully created."
+        end
+
+        it "should redirect to the categories index on success" do
+          response.should redirect_to(categories_path)
+        end
+      end
+
+      context "category is not valid after creation" do
+        before(:each) do
+          @category.stub!(:valid?) { false }
+          post :create, :category => @params
+        end
+
+        it "should set a flash warning" do
+          request.flash[:warning].should == "Category was not created."
+        end
+
+        it "should render the new action on failure" do
+          response.should render_template("new")
+        end
+      end
     end
 
-    it "should render the new action on failure" do
-      @category.stub!(:valid?) { false }
-      post "create", :category => @params
-      response.should render_template("new")
+    context "user is not authorized" do
+      before(:each) do
+        @ability.cannot :create, Category
+        post :create, :category => @params
+      end
+
+      it "should redirect to the homepage" do
+        response.should redirect_to(root_path)
+      end
+
+      it "should set a flash alert" do
+        request.flash[:alert].should == "You are not authorized to access this page."
+      end
     end
   end
 

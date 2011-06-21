@@ -12,14 +12,14 @@ Feature: Category Creation
     When I submit the category
     Then I should be on the categories index page
     And I should see category "beckwith"
-    And I should see a notice saying "beckwith was created"
+    And I should see a notice saying "Category was successfully created."
 
   Scenario: Admin user submits an invalid category
     Given I am logged in as a confirmed admin user
     When I go to the new category page
     And I enter an empty category title
     When I submit the category
-    Then I should see a warning saying "category was not created"
+    Then I should see a warning saying "Category was not created."
     And I should see errors on the category title
 
   Scenario: Reader user cannot view the new category page
