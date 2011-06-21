@@ -8,17 +8,37 @@ describe CategoriesController do
     end
   end
 
-  context "GET edit" do
+  describe "GET edit" do
     before(:each) do
+      stub_current_ability
       @category = mock_category(:id => 2)
+      Category.stub!(:find) { @category }
     end
 
-    it "should fetch the target category" do
-      Category.should_receive(:find).with(2) { @category }
+    context "user is authorized" do
+      before(:each) do
+        @ability.can :edit, Category
+      end
+
+      it "should fetch the target category" do
+        Category.should_receive(:find).with(2) { @category }
+        get :edit, :id => 2
+      end
     end
 
-    after(:each) do
-      get "edit", :id => 2
+    context "user is not authorized" do
+      before(:each) do
+        @ability.cannot :edit, Category
+        get :edit, :id => 2
+      end
+
+      it "should redirect to the homepage" do
+        response.should redirect_to(root_path)
+      end
+
+      it "should set a flash alert" do
+        request.flash[:alert].should == "You are not authorized to access this page."
+      end
     end
   end
 
@@ -62,7 +82,7 @@ describe CategoriesController do
       Category.stub!(:new) { @category }
     end
 
-    context "user can build a new category" do
+    context "user is authorized" do
       before(:each) do
         @ability.can :build, Category
       end
@@ -73,7 +93,7 @@ describe CategoriesController do
       end
     end
 
-    context "user cannot build a new category" do
+    context "user is not authorized" do
       before(:each) do
         @ability.cannot :build, Category
         get "new"

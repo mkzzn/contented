@@ -34,3 +34,7 @@ end
 Given /^I cancel editing the category$/ do
   find(:css, "#cancel_editing").click
 end
+
+Given /^I visit the edit page for (category "\w+")$/ do |category|
+  visit edit_category_path(category)
+end

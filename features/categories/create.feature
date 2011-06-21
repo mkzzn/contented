@@ -28,7 +28,7 @@ Feature: Category Creation
     Then I should be redirected to the homepage
     And I should see a warning saying that I cannot view that page
 
-  Scenario: Visitor cannot edit the article
+  Scenario: Visitor cannot view the new category page
     Given I am not logged in
     When I go to the new category page
     Then I should be redirected to the homepage

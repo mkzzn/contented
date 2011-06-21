@@ -39,4 +39,3 @@ Feature: Edit Article
       When I visit the edit page for article "jenkins"
       Then I should be redirected to the homepage
       And I should see a warning saying that I cannot view that page
-

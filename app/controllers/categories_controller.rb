@@ -22,6 +22,7 @@ class CategoriesController < ApplicationController
   end
 
   def edit
+    authorize! :edit, Category
   end
 
   def show
