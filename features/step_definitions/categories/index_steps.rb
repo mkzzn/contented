@@ -33,3 +33,11 @@ end
 Given /^I click the categories navigation heading$/ do
   find(:css, "#navigation div.section.categories a.categories.title").click
 end
+
+When /^I click the link to edit (category "\w+")$/ do |category|
+  find(:css, "#category_#{category[:id]} a.edit").click
+end
+
+Then /^I should not see an edit link for (category "\w+")$/ do |category|
+  page.should_not have_css("#category_#{category[:id]} a.edit")
+end

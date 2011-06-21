@@ -28,3 +28,19 @@ Feature: Categories Index
     Given I am viewing the homepage
     And I click the categories navigation heading
     Then I should be on the categories index
+
+  Scenario: Admin user clicks the edit category link
+    Given I am logged in as a confirmed admin user
+    When I go to the categories index
+    And I click the link to edit category "monster"
+    Then I should be on the edit page for category "monster"
+
+  Scenario: Reader cannot see the edit category link
+    Given I am logged in as a confirmed reader user
+    When I go to the categories index
+    Then I should not see an edit link for category "monster"
+
+  Scenario: Visitor cannot see the edit category link
+    Given I am logged in as a confirmed reader user
+    When I go to the categories index
+    Then I should not see an edit link for category "monster"
