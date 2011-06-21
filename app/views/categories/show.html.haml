@@ -5,5 +5,6 @@
   .resource_links
     - if can? :edit, @category
       = link_to "Edit", edit_category_path(@category), :class => "edit"
-    = button_to "Delete", @category, :method => :delete, :class => :destroy
+    - if can? :destroy, @category
+      = button_to "Delete", @category, :method => :delete, :class => :destroy
   .articles= render @category.articles

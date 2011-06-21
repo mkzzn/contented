@@ -22,3 +22,10 @@ When /^I visit the show page for category "([^"]*)"$/ do |title|
   visit category_path(category)
 end
 
+Then /^I should see the delete link for (category "\w+")$/ do |category|
+  find(:css, "#category_#{category[:id]} input.destroy").click 
+end
+
+Then /^I should not see an delete link for (category "\w+")$/ do |category|
+  page.should_not have_css("#category_#{category[:id]} input.destroy")
+end

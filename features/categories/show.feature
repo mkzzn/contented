@@ -33,3 +33,18 @@ Feature: Show Category
     Given I am not logged in
     When I visit the show page for category "foo"
     Then I should not see an edit link for category "foo"
+
+  Scenario: Admin user clicks the delete category link
+    Given I am logged in as a confirmed admin user
+    When I visit the show page for category "foo"
+    Then I should see the delete link for category "foo"
+
+  Scenario: Reader cannot see the delete category link
+    Given I am logged in as a confirmed reader user
+    When I visit the show page for category "foo"
+    Then I should not see an delete link for category "foo"
+
+  Scenario: Visitor cannot see the delete category link
+    Given I am not logged in
+    When I visit the show page for category "foo"
+    Then I should not see an delete link for category "foo"

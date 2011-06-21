@@ -38,6 +38,30 @@ describe "categories/show.html.haml" do
     end
   end
 
+  describe "delete category link" do
+    context "user is authorized" do
+      before(:each) do
+        @ability.can :destroy, Category
+      end
+
+      it "should render an 'delete' link" do
+        render
+        rendered.should have_selector("#category_#{@category.id} input.destroy")
+      end
+    end
+
+    context "user is not authorized" do
+      before(:each) do
+        @ability.cannot :destroy, Category
+      end
+
+      it "should not render an 'delete' link" do
+        render
+        rendered.should_not have_selector("#category_#{@category.id} input.destroy")
+      end
+    end
+  end
+
   def stub_article(stubs={})
     (@stub_article ||= stub_model(Article).as_null_object).tap do |article|
       article.stub(stubs) unless stubs.empty?
