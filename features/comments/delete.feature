@@ -9,18 +9,14 @@ Feature: Comment Deletion
   Scenario: Admin user deletes a comment
     Given I am logged in as a confirmed admin user
     And I am viewing article "bonobo"
-    When I click the delete link for comment "werewolf"
-    Then I should see a notice saying "werewolf has been deleted"
-    And I should not see the comment "werewolf"
+    Then I should be able to successfully delete comment "werewolf"
     And I should be viewing article "bonobo"
 
   Scenario: Reader user deletes own comment
     Given I am logged in as confirmed reader user "hoss@weasel.net"
     And user "hoss@weasel.net" owns comment "werewolf"
     And I am viewing article "bonobo"
-    When I click the delete link for comment "werewolf"
-    Then I should see a notice saying "werewolf has been deleted"
-    And I should not see the comment "werewolf"
+    Then I should be able to successfully delete comment "werewolf"
     And I should be viewing article "bonobo"
 
   Scenario: Reader cannot delete foreign comment

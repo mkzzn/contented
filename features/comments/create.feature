@@ -5,15 +5,23 @@ Feature: Comment Creation
 
   Background:
     Given article "bonobo"
+
+  Scenario: Admin user posts a valid comment
+    Given I am logged in as a confirmed admin user
     And I am viewing article "bonobo"
+    Then I should be able to successfully post comment "excellent!"
 
-  Scenario: User posts a valid comment
-    Given I enter the comment "This is great!"
-    And I submit the comment
-    Then the comment "This is great!" should appear on the page
+  Scenario: Reader user posts a valid comment
+    Given I am logged in as a confirmed reader user
+    And I am viewing article "bonobo"
+    Then I should be able to successfully post comment "excellent!"
 
-  Scenario: User posts an empty comment
-    Given I enter an empty comment
-    And I submit the comment
-    Then I should see errors on the comment field
-    And the comment should not be posted to the page
+  Scenario: Admin user posts an empty comment
+    Given I am logged in as a confirmed reader user
+    And I am viewing article "bonobo"
+    Then I should be shown an error if I post an empty comment
+
+  Scenario: Visitor cannot post a comment
+    Given I am not logged in
+    And I am viewing article "bonobo"
+    Then I should not see the form for posting a comment

@@ -31,3 +31,9 @@ end
 Then /^I should not see the delete link for (comment "\w+")$/ do |comment|
   page.should_not have_css("#comment_#{comment[:id]} .resource_links input.destroy")
 end
+
+Then /^I should be able to successfully delete comment $/do |comment|
+  When %Q{I click the delete link for comment "#{comment}"}
+  Then %Q{I should see a notice saying "#{comment} has been deleted"}
+  And %Q{I should not see the comment "#{comment}"}
+end

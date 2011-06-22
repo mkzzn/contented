@@ -21,3 +21,24 @@ end
 Then /^the comment should not be posted to the page$/ do
   page.should_not have_xpath("//div[@class='comment']//div[@class='body'][contains(.,'')]")
 end
+
+Then /^I should be able to successfully post comment "([^"]*)"$/ do |comment|
+  Given %Q{I enter the comment "#{comment}"}
+  And %Q{I submit the comment}
+  Then %Q{the comment "#{comment}" should appear on the page}
+end
+
+Then /^I should be shown an error if I post an empty comment$/ do
+  Given %Q{I enter an empty comment}
+  And %Q{I submit the comment}
+  Then %Q{I should see errors on the comment field}
+  And %Q{the comment should not be posted to the page}
+end
+
+Given /^I am viewing article"([^"]*)"$/ do |arg1|
+  pending # express the regexp above with the code you wish you had
+end
+
+Then /^I should not see the form for posting a comment$/ do
+  page.should_not have_css("form#new_comment")
+end
