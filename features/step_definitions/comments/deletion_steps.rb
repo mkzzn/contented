@@ -13,3 +13,21 @@ end
 Then /^I should not see the comment "([^"]*)"$/ do |comment_body|
   page.should_not have_xpath("//div[@class='comment']//div[@class='body'][contains(.,'#{comment_body}')]")
 end
+
+Given /^(article "\w+") with comment "([^"]*)"$/ do |article, comment_body|
+  article.comments.create :body => comment_body
+end
+
+Given /^user "([^"]*)" owns (comment "\w+")$/ do |user_email, comment|
+  user = User.where(:email => user_email)
+  comment.update_attributes :user_id => user[:id]
+end
+
+Given /^user "([^"]*)" does not own (comment "\w+")$/ do |user_email, comment|
+  user = User.where(:email => user_email)
+  comment.update_attributes :user_id => nil
+end
+
+Then /^I should not see the delete link for (comment "\w+")$/ do |comment|
+  page.should_not have_css("#comment_#{comment[:id]} .resource_links input.destroy")
+end
