@@ -16,7 +16,7 @@
 #comments
   %h2 Comments
   = render :partial => @comments
-  - if can? :create, @comment
+  - if current_user and can? :create, @comment
     = form_for [@article, @comment] do |f|
       .fields
         = f.label :body, "Comment"

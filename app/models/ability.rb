@@ -12,6 +12,7 @@ class Ability
       can :manage, :all
     when "reader"
       can_manage_self
+      can :create, Comment
     end
   end
 
