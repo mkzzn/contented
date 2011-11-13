@@ -16,8 +16,9 @@
 #comments
   %h2 Comments
   = render :partial => @comments
-  = form_for [@article, @comment] do |f|
-    .fields
-      = f.label :body, "Comment"
-      = f.text_area :body
-    = f.submit
+  - if can? :create, @comment
+    = form_for [@article, @comment] do |f|
+      .fields
+        = f.label :body, "Comment"
+        = f.text_area :body
+      = f.submit

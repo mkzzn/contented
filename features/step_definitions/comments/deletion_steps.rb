@@ -19,7 +19,7 @@ Given /^(article "\w+") with comment "([^"]*)"$/ do |article, comment_body|
 end
 
 Given /^user "([^"]*)" owns (comment "\w+")$/ do |user_email, comment|
-  user = User.where(:email => user_email)
+  user = User.where(:email => user_email).first
   comment.update_attributes :user_id => user[:id]
 end
 
@@ -32,8 +32,8 @@ Then /^I should not see the delete link for (comment "\w+")$/ do |comment|
   page.should_not have_css("#comment_#{comment[:id]} .resource_links input.destroy")
 end
 
-Then /^I should be able to successfully delete comment $/do |comment|
-  When %Q{I click the delete link for comment "#{comment}"}
+Then /^I should be able to successfully delete comment "([^"]*)"$/ do |comment|
+  Given %Q{I click the delete link for comment "#{comment}"}
   Then %Q{I should see a notice saying "#{comment} has been deleted"}
   And %Q{I should not see the comment "#{comment}"}
 end

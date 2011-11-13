@@ -30,6 +30,12 @@ describe User do
         @ability.should_not be_able_to(:manage, Category)
       end
     end
+    
+    describe "comment abilities" do
+      it "should be able to create a comment" do
+        @ability.should be_able_to(:create, Comment)
+      end
+    end
   end
 
   describe "admin" do
