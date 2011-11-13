@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   def create
     @article = Article.find params[:article_id]
-    @comment = @article.comments.create params[:comment]
+    @comment = @article.comments.create params[:comment].merge(:user_id => current_user[:id])
 
     if @comment.valid?
       redirect_to @article

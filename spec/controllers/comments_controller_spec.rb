@@ -12,7 +12,7 @@ describe CommentsController do
       comment.stub(stubs) unless stubs.empty?
     end
   end
-  
+
   context "POST 'create'" do
     before(:each) do
       @article = Factory :article, :id => "3"

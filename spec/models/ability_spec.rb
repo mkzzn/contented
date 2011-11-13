@@ -13,7 +13,7 @@ describe User do
         @ability.should be_able_to(:manage, @user)
       end
       
-      it "should not be able ot manage other users" do
+      it "should not be able to manage other users" do
         user2 = Factory :user
         @ability.should_not be_able_to(:manage, user2)
       end
@@ -34,6 +34,11 @@ describe User do
     describe "comment abilities" do
       it "should be able to create a comment" do
         @ability.should be_able_to(:create, Comment)
+      end
+
+      it "should be able to delete own comment" do
+        comment = Factory :comment, :user_id => @user.id
+        @ability.should be_able_to(:delete, comment)
       end
     end
   end
