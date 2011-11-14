@@ -36,6 +36,9 @@ describe User do
         @ability.should be_able_to(:create, Comment)
       end
 
+      it "should not be able to delete comment without user_id" do
+      end
+
       it "should be able to delete own comment" do
         comment = Factory :comment, :user_id => @user.id
         @ability.should be_able_to(:delete, comment)
