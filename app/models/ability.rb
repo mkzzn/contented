@@ -24,8 +24,6 @@ class Ability
   end
 
   def can_delete_own_comment
-    can [:delete], Comment, ["user_id = ?", @user.id] do |current_user|
-      current_user.id == @user.id
-    end
+    can [:delete], Comment, :user_id => @user.id 
   end
 end
