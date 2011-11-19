@@ -17,6 +17,8 @@ describe CommentsController do
     before(:each) do
       @article = Factory :article, :id => "3"
       Article.should_receive(:find).with("3") { @article }
+      @user = Factory :user
+      controller.stub! :current_user => @user
       @params = {"article_id" => "3", "comment" => {"body" => "kwl!"}}
       @comment = mock_comment :body => "kwl!"
       @article.stub_chain(:comments, :create) { @comment }
