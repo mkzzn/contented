@@ -1,7 +1,12 @@
 class Article < ActiveRecord::Base
   # associations
   has_many :comments, :dependent => :destroy
+  has_many :assets
+
   belongs_to :category
+
+  attr_accessible :assets
+  accepts_nested_attributes_for :assets, :allow_destroy => true
 
   # validations
   validates_presence_of :title, :allow_blank => false
