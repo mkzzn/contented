@@ -24,5 +24,4 @@ Feature: Comment Creation
   Scenario: Visitor cannot post a comment
     Given I am not logged in
     And I am viewing article "bonobo"
-    Then show me the page
     Then I should not see the form for posting a comment
