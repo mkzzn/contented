@@ -17,9 +17,14 @@
       .fields
         = asset_fields.label :asset, ""
         = asset_fields.file_field :asset
+  = f.fields_for :assets do |asset_fields|
     - unless asset_fields.object.new_record?
       .fields
+        = link_to asset_fields.object.asset.url(:original), asset_fields.object.asset.url(:original)
+        %br
         = link_to image_tag(asset_fields.object.asset.url(:small)), asset_fields.object.asset.url(:original)
-        
+        %br
+        = asset_fields.label :_destroy
+        = asset_fields.check_box :_destroy
   .fields
     = f.submit
