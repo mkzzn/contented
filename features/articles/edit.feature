@@ -39,3 +39,11 @@ Feature: Edit Article
       When I visit the edit page for article "jenkins"
       Then I should be redirected to the homepage
       And I should see a warning saying that I cannot view that page
+
+    Scenario: User attaches a file
+      Given I am logged in as a confirmed admin user
+      And I visit the edit page for article "jenkins"
+      When I select a file to upload
+      And I submit the changes
+      Then I should be viewing article "jenkins"
+      And article "jenkins" should have one asset

@@ -2,7 +2,7 @@
 
 .resource_links
   = link_to "Cancel", @article, :id => "cancel_editing"
-= form_for @article do |f|
+= form_for @article, :html => { :multipart => true } do |f|
   .fields
     = f.label :title
     = f.text_field :title
@@ -12,5 +12,14 @@
   .fields
     = f.label :body
     = f.text_area :body
+  = f.fields_for :assets do |asset_fields|
+    - if asset_fields.object.new_record?
+      .fields
+        = asset_fields.label :asset, ""
+        = asset_fields.file_field :asset
+    - unless asset_fields.object.new_record?
+      .fields
+        = link_to image_tag(asset_fields.object.asset.url(:thumb)), asset_fields.object.assets.url(:original)
+        
   .fields
     = f.submit

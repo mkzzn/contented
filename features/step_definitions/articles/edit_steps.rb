@@ -37,3 +37,13 @@ end
 Given /^I visit the edit page for (article "\w+")$/ do |article|
   visit edit_article_path(article)
 end
+
+When /^I select a file to upload$/ do
+  attach_file(:article_assets_attributes_0_asset, File.join(RAILS_ROOT, 'features', 'upload_files', 'anemone.jpg'))
+end
+
+Then /^(article "\w+") should have one asset$/ do |article|
+  puts article.title
+  puts article.assets.count
+  article.assets.count.should == 1
+end
