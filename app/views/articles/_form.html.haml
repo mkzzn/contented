@@ -19,7 +19,7 @@
         = asset_fields.file_field :asset
     - unless asset_fields.object.new_record?
       .fields
-        = link_to image_tag(asset_fields.object.asset.url(:thumb)), asset_fields.object.assets.url(:original)
+        = link_to image_tag(asset_fields.object.asset.url(:thumb)), asset_fields.object.asset.url(:original)
         
   .fields
     = f.submit

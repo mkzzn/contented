@@ -1,11 +1,12 @@
 class Article < ActiveRecord::Base
+  attr_accessible :assets_attributes
+
   # associations
   has_many :comments, :dependent => :destroy
   has_many :assets
 
   belongs_to :category
 
-  attr_accessible :assets
   accepts_nested_attributes_for :assets, :allow_destroy => true
 
   # validations

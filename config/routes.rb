@@ -4,6 +4,7 @@ Contented::Application.routes.draw do
 
   resources :articles do
     resources :comments
+    resources :assets
     collection do
       get "uncategorized"
     end
