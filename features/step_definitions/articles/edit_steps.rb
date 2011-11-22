@@ -47,3 +47,8 @@ Then /^(article "\w+") should have one asset$/ do |article|
   puts article.assets.count
   article.assets.count.should == 1
 end
+
+Then /^I should see a thumbnail of the asset that I uploaded$/ do
+  asset = Asset.last
+  page.should have_xpath("//a[contains(@href, #{asset.asset_file_name})]//img[contains(@src, #{asset.asset_file_name})]")
+end

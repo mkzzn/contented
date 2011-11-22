@@ -46,4 +46,5 @@ Feature: Edit Article
       When I select a file to upload
       And I submit the changes
       Then I should be viewing article "jenkins"
-      And article "jenkins" should have one asset
+      When I visit the edit page for article "jenkins"
+      Then I should see a thumbnail of the asset that I uploaded
