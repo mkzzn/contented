@@ -2,7 +2,9 @@ require 'spec_helper'
 
 describe "articles/_form.html.haml" do
   before(:each) do
-    assign :article, stub_model(Article)
+    article = stub_model(Article).as_null_object
+    5.times { article.assets.build }
+    assign :article, article
   end
 
   it "should get all categories" do

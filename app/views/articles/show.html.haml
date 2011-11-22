@@ -11,7 +11,7 @@
       = button_to "Delete", @article, :method => :delete, :class => :destroy
     - if can? :edit, @article
       = link_to "Edit", edit_article_path(@article), :class => "edit"
-  %p.body= @article.body
+  %p.body!= @article.body
 
 #comments
   %h2 Comments
