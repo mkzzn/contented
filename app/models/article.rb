@@ -1,6 +1,4 @@
 class Article < ActiveRecord::Base
-  attr_accessible :assets_attributes
-
   # associations
   has_many :comments, :dependent => :destroy
   has_many :assets
