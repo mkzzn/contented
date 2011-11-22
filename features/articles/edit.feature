@@ -48,3 +48,13 @@ Feature: Edit Article
       Then I should be viewing article "jenkins"
       When I visit the edit page for article "jenkins"
       Then I should see a thumbnail of the asset that I uploaded
+
+    Scenario: User destroys an attached file
+      Given I am logged in as a confirmed admin user
+      And article "jenkins" has an attached asset
+      When I visit the edit page for article "jenkins"
+      And I check the box to destroy the asset
+      And I submit the changes
+      When I visit the edit page for article "jenkins"
+      Then show me the page
+      Then I should not see a thumbnail of the asset that I uploaded

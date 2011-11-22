@@ -52,3 +52,19 @@ Then /^I should see a thumbnail of the asset that I uploaded$/ do
   asset = Asset.last
   page.should have_xpath("//a[contains(@href, #{asset.asset_file_name})]//img[contains(@src, #{asset.asset_file_name})]")
 end
+
+Given /^(article "\w+") has an attached asset$/ do |article|
+  # attach_file(:article_assets_attributes_0_asset, File.join(RAILS_ROOT, 'features', 'upload_files', 'anemone.jpg'))
+  # When %Q{I submit the changes}
+  article.assets.create :asset_file_name => File.join(RAILS_ROOT, 'features', 'upload_files', 'anemone.jpg')
+end
+
+
+When /^I check the box to destroy the asset$/ do
+  check("article_assets_attributes_6__destroy")
+end
+
+Then /^I should not see a thumbnail of the asset that I uploaded$/ do
+  asset = Asset.last
+  page.should_not have_css("#article_assets_attributes_6__destroy")
+end
