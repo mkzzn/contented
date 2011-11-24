@@ -58,3 +58,9 @@ Feature: Edit Article
       When I visit the edit page for article "jenkins"
       Then show me the page
       Then I should not see a thumbnail of the asset that I uploaded
+
+    Scenario: User sees links to all image sizes
+      Given I am logged in as a confirmed admin user
+      And article "jenkins" has an attached asset
+      When I visit the edit page for article "jenkins"
+      Then I should see small, medium and large links for the asset

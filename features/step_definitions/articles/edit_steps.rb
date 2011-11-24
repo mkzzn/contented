@@ -68,3 +68,9 @@ Then /^I should not see a thumbnail of the asset that I uploaded$/ do
   asset = Asset.last
   page.should_not have_css("#article_assets_attributes_6__destroy")
 end
+
+Then /^I should see small, medium and large links for the asset$/ do
+  page.should have_css("a.large_asset")
+  page.should have_css("a.medium_asset")
+  page.should have_css("a.small_asset")
+end

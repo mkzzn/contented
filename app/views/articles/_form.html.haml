@@ -20,9 +20,16 @@
   = f.fields_for :assets do |asset_fields|
     - unless asset_fields.object.new_record?
       .fields
-        = link_to asset_fields.object.asset.url(:original), asset_fields.object.asset.url(:original)
         %br
         = link_to image_tag(asset_fields.object.asset.url(:small)), asset_fields.object.asset.url(:original)
+        %br
+        = link_to "Original", asset_fields.object.asset.url(:original)
+        %br
+        = link_to "Large", asset_fields.object.asset.url(:large), :class => "large_asset"
+        %br
+        = link_to "Medium", asset_fields.object.asset.url(:medium), :class => "medium_asset"
+        %br
+        = link_to "Small", asset_fields.object.asset.url(:small), :class => "small_asset"
         %br
         = asset_fields.label :_destroy
         = asset_fields.check_box :_destroy
