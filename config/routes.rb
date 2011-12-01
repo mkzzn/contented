@@ -7,6 +7,7 @@ Contented::Application.routes.draw do
     collection do
       get "uncategorized"
     end
+    resources :assets, :only => [:create, :destroy]
   end
 
   resources :categories do
