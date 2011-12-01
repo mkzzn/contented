@@ -19,6 +19,7 @@ gem 'ruby_parser'
 gem 'sass'
 gem 'sexp_processor'
 gem 'test_notifier'
+gem 'paperclip', '2.4.5'
 gem 'ZenTest', '4.5.0'
 
 group :development, :test do
