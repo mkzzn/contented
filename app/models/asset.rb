@@ -1,7 +1,7 @@
 class Asset < ActiveRecord::Base
   has_attached_file :data
 
-  belongs_to :attachable, :polymorphic => true
+  has_many :asset_links
   
   def url(*args)
     data.url(*args)

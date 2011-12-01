@@ -1,6 +1,7 @@
 class Article < ActiveRecord::Base
   # associations
   has_many :comments, :dependent => :destroy
+  has_many :asset_links, :as => :attachable
   belongs_to :category
 
   # validations
