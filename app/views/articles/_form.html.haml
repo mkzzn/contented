@@ -14,35 +14,3 @@
     = f.text_area :body
   .fields
     = f.submit
-
--# app/views/properties/edit.html.haml
-- key = Rails.application.config.session_options[:key]
-
--# Needs yield :scripts in application layout in the bottom of the body
-= content_for :scripts do
-  :javascript
-    var upload_params = {
-      '#{key}' : '#{cookies[key]}',
-      '#{request_forgery_protection_token}' : '#{form_authenticity_token}',
-      '_http_accept': 'application/javascript'
-    };
-    var url = $('input#asset_asset').attr('rel');
-    $('input#photo_image').uploadify({
-      'uploader'     : '/assets/uploadify.swf',
-      'script'       : url,
-      'fileDataName' : 'asset[asset]',
-      'fileExt'      : '*.png;*.jpg;*.gif',
-      'cancelImg'    : '/images/cancel.png',
-      'multi'        : true,
-      'scriptData'   : upload_params,
-      'auto'         : true,
-      'onComplete'   : function(e, id, obj, response, data) {
-        $('#assets').append(response);
-      }
-    });
-
-#assets
-  = render :partial => 'assets/asset', :collection => @article.assets
-  - unless @article.new_record?
-    = fields_for Asset.new do |f|
-      = f.file_field :image, :rel => article_assets_path(@article)

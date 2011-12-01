@@ -10,6 +10,8 @@ Contented::Application.routes.draw do
     resources :assets, :only => [:create, :destroy]
   end
 
+  resources :assets, :only => [:index, :create, :destroy]
+
   resources :categories do
     resources :articles
   end
