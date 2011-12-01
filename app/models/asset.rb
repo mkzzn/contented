@@ -1,7 +1,8 @@
 class Asset < ActiveRecord::Base
   has_attached_file :data
 
-  has_many :asset_links
+  belongs_to :attachable, :polymorphic => true
+  validate :validate_attachment_size
   
   def url(*args)
     data.url(*args)
