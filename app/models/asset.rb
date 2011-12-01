@@ -9,7 +9,7 @@ class Asset < ActiveRecord::Base
       "size" => asset.size,
       "url" => asset.url,
       "thumbnail_url" => asset.thumb.url,
-      "delete_url" => picture_path(:id => id),
+      "delete_url" => asset_path(:id => id),
       "delete_type" => "DELETE" 
     }
   end
