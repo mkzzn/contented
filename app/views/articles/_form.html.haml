@@ -1,4 +1,13 @@
 = stylesheet_link_tag "articles/shared"
+= javascript_include_tag "jquery_file_upload"
+
+= javascript_include_tag "//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"
+= javascript_include_tag "//ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"
+= javascript_include_tag "//ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"
+= javascript_include_tag 'jquery.iframe-transport'
+= javascript_include_tag 'jquery.fileupload'
+= javascript_include_tag 'jquery.fileupload-ui'
+= javascript_include_tag 'jquery.fileupload.widget'
 
 .resource_links
   = link_to "Cancel", @article, :id => "cancel_editing"
@@ -14,3 +23,54 @@
     = f.text_area :body
   .fields
     = f.submit
+
+
+%link{:rel => "stylesheet", :href => "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/base/jquery-ui.css", :id => "theme"}
+= stylesheet_link_tag 'jquery.fileupload-ui'
+
+#fileupload
+  = form_for Picture.new, :html => { :multipart => true } do |f|
+    .fileupload_buttonbar
+      %label.fileinput-button
+        %span Add files...
+        = f.file_field :asset
+      %button.start{:type => "submit"} Start upload
+      %button.cancel{:type => "reset"} Cancel upload
+      %button.delete{:type => "button"}  Delete files
+      .fileupload-content
+        %table.files
+        .fileupload-progressbar
+
+%script#template-upload{:type => "text/x-jquery-tmpl"}
+  %tr.template-upload{:class => ("ui-state-error" if error)}
+    %td.preview
+    %td.name= name
+    %td.size= sizef
+    - if error
+      %td.error{:colspan => 2}= error
+    - else
+      %td.progress
+      %td.start
+        %button Start
+    %td.cancel
+      %button Cancel
+    
+%script#template-download{:type => "text/x-jquery-tmpl"}
+  %tr.template-upload{:class => ("ui-state-error" if error)}  
+    - if error
+      %td.name= name
+      %td.size= sizef
+      %td.error{:colspan => 2}
+        - if error === 1
+          File exceeds upload_max_filesize
+        - else
+          = error
+    - else
+      %td.preview
+        - if thumbnail_url
+          = link_to(image_tag(thumbnail_url), url, :target => "_blank")
+      %td.name= link_to(name, url, :target => ("_blank" if thumbnail_url))
+      %td.size= sizef
+      %td{:colspan => 2}
+    %td.delete
+      %button{:data-type => delete_type, :data_url => delete_url} Delete
