@@ -1,0 +1,5 @@
+-# app/views/assets/_asset.html.haml
+
+.asset[asset]
+  = image_tag asset.image_url(:thumb) if asset.image?
+  = link_to "Delete", article_asset_path(@article, asset), :method => :delete, :confirm => "Are you sure?", :remote => :true

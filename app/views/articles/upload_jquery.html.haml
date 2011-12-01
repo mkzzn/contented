@@ -1,0 +1,89 @@
+%link#theme{:href => "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/themes/base/jquery-ui.css", :rel => "stylesheet"}/
+<%= stylesheet_link_tag 'jquery.fileupload-ui' %>
+#fileupload
+  <%= form_for Picture.new, :html => { :multipart => true } do |f| %>
+  .fileupload-buttonbar
+    %label.fileinput-button
+      %span Add files...
+      <%= f.file_field :avatar %>
+    %button.start{:type => "submit"} Start upload
+    %button.cancel{:type => "reset"} Cancel upload
+    %button.delete{:type => "button"} Delete files
+  <% end %>
+  .fileupload-content
+    %table.files
+    .fileupload-progressbar
+%script#template-upload{:type => "text/x-jquery-tmpl"}
+  <tr class="template-upload{{if error}} ui-state-error{{/if}}">
+  <td class="preview"></td>
+  <td class="name">${name}</td>
+  <td class="size">${sizef}</td>
+  {{if error}}
+  <td class="error" colspan="2">Error:
+  {{if error === 'custom_failure'}}Custom Error Message
+  {{else}}${error}
+  {{/if}}
+  </td>
+  {{else}}
+  <td class="progress"><div></div></td>
+  <td class="start"><button>Start</button></td>
+  {{/if}}
+  <td class="cancel"><button>Cancel</button></td>
+  </tr>
+%script#template-download{:type => "text/x-jquery-tmpl"}
+  <tr class="template-download{{if error}} ui-state-error{{/if}}">
+  {{if error}}
+  <td></td>
+  <td class="name">${name}</td>
+  <td class="size">${sizef}</td>
+  <td class="error" colspan="2">Error:
+  {{if error === 1}}File exceeds upload_max_filesize (php.ini directive)
+  {{else}}${error}
+  {{/if}}
+  </td>
+  {{else}}
+  <td class="preview">
+  {{if thumbnail_url}}
+  <a href="${url}" target="_blank"><img src="${thumbnail_url}"></a>
+  {{/if}}
+  </td>
+  <td class="name">
+  <a href="${url}"{{if thumbnail_url}} target="_blank"{{/if}}>${name}</a>
+  </td>
+  <td class="size">${sizef}</td>
+  <td colspan="2"></td>
+  {{/if}}
+  <td class="delete">
+  <button data-type="${delete_type}" data-url="${delete_url}">Delete</button>
+  </td>
+  </tr>
+%script{:src => "//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"}
+%script{:src => "//ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"}
+%script{:src => "//ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"}
+<%= javascript_include_tag 'jquery.iframe-transport' %>
+<%= javascript_include_tag 'jquery.fileupload' %>
+<%= javascript_include_tag 'jquery.fileupload-ui' %>
+%script{:charset => "utf-8", :type => "text/javascript"}
+  $(function () {
+  \// Initialize the jQuery File Upload widget:
+  $('#fileupload').fileupload();
+  \//
+  \// Load existing files:
+  $.getJSON($('#fileupload form').prop('action'), function (files) {
+  var fu = $('#fileupload').data('fileupload');
+  fu._adjustMaxNumberOfFiles(-files.length);
+  fu._renderDownload(files)
+  \.appendTo($('#fileupload .files'))
+  \.fadeIn(function () {
+  \// Fix for IE7 and lower:
+  $(this).show();
+  });
+  });
+  
+  \// Open download dialogs via iframes,
+  \// to prevent aborting current uploads:
+  $('#fileupload .files a:not([target^=_blank])').live('click', function (e) {
+  e.preventDefault();
+  $('<iframe style="display:none;"></iframe>')
+  \.prop('src', this.href)
+  \.append

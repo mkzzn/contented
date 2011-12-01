@@ -23,6 +23,7 @@ gem 'ZenTest', '4.5.0'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'flash_cookie_session'
+gem 'jquery-rails'
 
 group :development, :test do
   gem 'rspec', '2.6.0'
