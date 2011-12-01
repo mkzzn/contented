@@ -8,16 +8,20 @@ class Article < ActiveRecord::Base
   # validations
   validates_presence_of :title, :allow_blank => false
   validates_presence_of :body, :allow_blank => false
-  validate :validate_attachments
+  validate :validate_attachment_quantity
+  validate :validate_attachment_size
 
   scope :uncategorized, where(:category_id => nil)
   
   MAX_ATTACHMENTS = 25
   MAX_ATTACHMENT_SIZE = 2.megabytes
 
-  def validate_attachments
-    errors.add_to_base("Too many attachments - maximum is #{Max_Attachments}") if assets.length > MAX_ATTACHMENTS
-    assets.each {|a| errors.add_to_base("#{a.name} is over #{Max_Attachment_Size/1.megabyte}MB") if a.file_size > MAX_ATTACHMENT_SIZE}
+  def validate_attachment_quantity
+    errors.add_to_base("Too many attachments - maximum is #{MAX_ATTACHMENTS}") if assets.length > MAX_ATTACHMENTS
+  end
+
+  def validate_attachment_size
+    assets.each {|a| errors.add_to_base("#{a.file_name} is over #{MAX_ATTACHMENT_SIZE/1.megabyte}MB") if a.file_size > MAX_ATTACHMENT_SIZE}
   end
 
   def category_name

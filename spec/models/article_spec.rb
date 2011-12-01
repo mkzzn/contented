@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 describe Article do
-  context "validations" do
-    context "attributes" do
+  describe "validations" do
+    describe "attributes" do
       before(:each) do
         @article = Factory.build :article, :title => nil, :body => nil 
         @article.save
@@ -16,10 +16,46 @@ describe Article do
         @article.should_not be_valid
       end
     end
+
+    describe "attachments" do
+      before(:each) do
+        @article = Factory :article
+        @article.stub! :assets => []
+      end
+
+      describe "max attachments" do
+        it "should validate with fewer than 25 attachments" do
+          @article.stub_chain(:assets, :length) { 8 }
+          @article.valid?
+          @article.should be_valid
+        end
+
+        it "should not validate with more than 25  attachments" do
+          @article.stub_chain(:assets, :length) { 40 }
+          @article.valid?
+          @article.should_not be_valid
+        end
+      end
+
+      describe "max file size" do
+        it "should validate with assets under one megabyte" do
+          asset = Factory :asset, :data_file_size => 100_000
+          @article.stub! :assets => [ asset ]
+          @article.valid?.should be_true
+        end
+
+        it "should not validate with assets above one megabyte" do
+          asset = Factory :asset, :data_file_size => 3_000_000
+          @article.stub! :assets => [ asset ]
+          @article.valid?.should be_false
+          @article.errors.count.should == 1
+        end
+      end
+    end
   end
 
-  context "scopes" do
-    context "uncategorized" do
+  describe "scopes" do
+    describe "uncategorized" do
       it "should be able to filter categorized articles" do
         article1 = Factory :categorized_article
         article2 = Factory :categorized_article, :category => nil
@@ -28,8 +64,8 @@ describe Article do
     end
   end
 
-  context "associations" do
-    context "comments" do
+  describe "associations" do
+    describe "comments" do
       before(:each) do
         @article = Factory :article
         @comment = Factory :comment, :article => @article
@@ -45,14 +81,14 @@ describe Article do
       end
     end
 
-    context "categories" do
+    describe "categories" do
       it "should be able to belong to a category" do
         @category = Factory :category
         @article = Factory :article, :category => @category
         @article.category.should == @category
       end
 
-      context "uncategorized" do
+      describe "uncategorized" do
         it "should not be categorized if it has no category" do
           Factory(:article).categorized?.should == false
         end
@@ -63,7 +99,7 @@ describe Article do
         end
       end
       
-      context "category name" do
+      describe "category name" do
         it "should return the category name if it has a category" do
           category = Factory :category
           article = Factory :article, :category => category
