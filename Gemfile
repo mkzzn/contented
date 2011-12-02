@@ -21,7 +21,6 @@ gem 'sexp_processor'
 gem 'test_notifier'
 gem 'ZenTest', '4.5.0'
 gem 'carrierwave', '>= 0.5.3'
-gem 'nested_form'
 gem 'mini_magick'
 
 group :development, :test do
