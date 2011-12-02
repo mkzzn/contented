@@ -3,10 +3,15 @@ class Attachment < ActiveRecord::Base
   mount_uploader :asset, AssetUploader
 
   def store_dir
-    "uploads/attachment/asset"
+    "public/uploads/attachment/asset/#{id}"
+  end
+
+  def remove_files
+    require 'fileutils'
+    FileUtils.rm_rf store_dir
   end
 
   def before_destroy
-    remove_asset!
+    remove_files
   end
 end
