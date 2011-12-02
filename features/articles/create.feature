@@ -24,3 +24,12 @@ Feature: Create Article
     And I enter insufficient values for an article
     When I submit the article
     And I should see a warning saying that my article was not created
+
+  Scenario: Admin user attaches a file
+    Given I am on the new article page
+    When I select a file to upload
+    And I enter valid data for an article entitled "goats"
+    And I submit the changes
+    Then I should be on the articles index page
+    When I visit the edit page for article "goats"
+    Then I should see a thumbnail of the asset that I uploaded

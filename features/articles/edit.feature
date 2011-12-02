@@ -39,3 +39,27 @@ Feature: Edit Article
       When I visit the edit page for article "jenkins"
       Then I should be redirected to the homepage
       And I should see a warning saying that I cannot view that page
+
+    Scenario: User attaches a file
+      Given I am logged in as a confirmed admin user
+      And I visit the edit page for article "jenkins"
+      When I select a file to upload
+      And I submit the changes
+      Then I should be viewing article "jenkins"
+      When I visit the edit page for article "jenkins"
+      Then I should see a thumbnail of the asset that I uploaded
+
+    Scenario: User destroys an attached file
+      Given I am logged in as a confirmed admin user
+      And article "jenkins" has an attached asset
+      When I visit the edit page for article "jenkins"
+      And I check the box to destroy the asset
+      And I submit the changes
+      When I visit the edit page for article "jenkins"
+      Then I should not see a thumbnail of the asset that I uploaded
+
+    Scenario: User sees links to all image sizes
+      Given I am logged in as a confirmed admin user
+      And article "jenkins" has an attached asset
+      When I visit the edit page for article "jenkins"
+      Then I should see small, medium and large links for the asset
