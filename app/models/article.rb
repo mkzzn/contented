@@ -4,7 +4,7 @@ class Article < ActiveRecord::Base
   has_many :attachments, :as => :attachable
   belongs_to :category
 
-  accepts_nested_attributes_for :attachments
+  accepts_nested_attributes_for :attachments, :allow_destroy => true
 
   # validations
   validates_presence_of :title, :allow_blank => false
