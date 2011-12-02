@@ -52,6 +52,8 @@ GEM
       rack-test (>= 0.5.4)
       selenium-webdriver (>= 0.0.27)
       xpath (~> 0.1.4)
+    carrierwave (0.5.8)
+      activesupport (~> 3.0)
     childprocess (0.1.9)
       ffi (~> 1.0.6)
     commander (4.0.4)
@@ -113,6 +115,7 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.16)
+    nested_form (0.1.1)
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
     net-sftp (2.0.5)
@@ -198,6 +201,7 @@ DEPENDENCIES
   cancan (= 1.6.5)
   capistrano (= 2.6.0)
   capybara (= 1.0.0.beta1)
+  carrierwave (>= 0.5.3)
   cucumber (= 0.10.3)
   cucumber-rails (= 0.5.1)
   database_cleaner
@@ -213,6 +217,7 @@ DEPENDENCIES
   i18n
   jspec (= 4.3.3)
   launchy
+  nested_form
   pg (= 0.11.0)
   rails (= 3.0.7)
   rake (~> 0.8.7)

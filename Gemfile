@@ -20,6 +20,9 @@ gem 'sass'
 gem 'sexp_processor'
 gem 'test_notifier'
 gem 'ZenTest', '4.5.0'
+gem 'carrierwave', '>= 0.5.3'
+gem 'nested_form'
+
 
 group :development, :test do
   gem 'rspec', '2.6.0'

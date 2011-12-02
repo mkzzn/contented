@@ -2,7 +2,8 @@
 
 .resource_links
   = link_to "Cancel", @article, :id => "cancel_editing"
-= form_for @article do |f|
+= nested_form_for @article, :html => { :multipart => true } do |f|
+  = f.error_messages
   .fields
     = f.label :title
     = f.text_field :title
@@ -12,5 +13,19 @@
   .fields
     = f.label :body
     = f.text_area :body
+
+  = f.fields_for :attachments do |attachment_form|  
+    .fields
+      = attachment_form.label :title
+      = attachment_form.text_field :title 
+    .fields
+      = attachment_form.label :description
+      = attachment_form.text_area :description 
+    .fields
+      = attachment_form.label :asset
+      = attachment_form.file_field :asset 
+    .fields
+      = attachment_form.link_to_remove "Remove this attachment" 
+      = f.link_to_add "Add attachment", :attachments 
   .fields
     = f.submit

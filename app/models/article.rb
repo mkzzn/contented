@@ -1,7 +1,10 @@
 class Article < ActiveRecord::Base
   # associations
   has_many :comments, :dependent => :destroy
+  has_many :attachments, :as => :attachable
   belongs_to :category
+
+  accepts_nested_attributes_for :attachments
 
   # validations
   validates_presence_of :title, :allow_blank => false
