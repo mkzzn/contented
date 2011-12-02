@@ -1,4 +1,4 @@
 class Attachment < ActiveRecord::Base
   belongs_to :attachable, :polymorphic => true
-  mount_uploader :asset, FileUploader
+  mount_uploader :asset, AssetUploader
 end
