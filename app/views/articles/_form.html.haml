@@ -27,7 +27,7 @@
         = attachment_form.file_field :asset 
       .fields
         = attachment_form.link_to_remove "Remove this attachment" 
-      = attachment_form.object.asset.url
+
     - unless attachment_form.object.new_record?
       .fields
         = attachment_form.label :title
@@ -36,9 +36,10 @@
         = attachment_form.label :description
         = attachment_form.text_field :description 
       .fields
-        = attachment_form.label :remove_asset
-        = attachment_form.check_box :remove_asset 
-      = attachment_form.object.asset.url
+        = attachment_form.label :_destroy
+        = attachment_form.check_box :_destroy
+      = attachment_form.object.asset_url
+      = image_tag attachment_form.object.asset.thumb.url
   .fields
     = f.submit
     = f.link_to_add "Add attachment", :attachments 
