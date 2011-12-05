@@ -107,6 +107,16 @@ describe ArticlesController do
         Article.should_receive(:new)
         get 'new'
       end
+
+      it "should build five attachments" do
+        Article.stub!(:new) { mock_article }
+        5.times do
+          mock_attachments = mock("Attachments")
+          mock_article.should_receive(:attachments) { mock_attachments }
+          mock_attachments.should_receive(:build)
+        end
+        get 'new'
+      end
     end
 
     context "user is not authorized" do
@@ -149,6 +159,16 @@ describe ArticlesController do
       it "should render the edit template" do
         get :edit, :id => 2
         response.should render_template("articles/edit")
+      end
+
+      it "should build five attachments" do
+        Article.stub!(:new) { mock_article }
+        5.times do
+          mock_attachments = mock("Attachments")
+          mock_article.should_receive(:attachments) { mock_attachments }
+          mock_attachments.should_receive(:build)
+        end
+        get 'edit', :id => 2
       end
     end
 

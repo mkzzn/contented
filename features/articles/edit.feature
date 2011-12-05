@@ -43,8 +43,7 @@ Feature: Edit Article
     Scenario: User attaches a file
       Given I am logged in as a confirmed admin user
       And I visit the edit page for article "jenkins"
-      When I click to add a new attachment
-      And I select a file to upload
+      When I select a file to upload
       And I submit the changes
       Then I should be viewing article "jenkins"
       When I visit the edit page for article "jenkins"
@@ -63,4 +62,4 @@ Feature: Edit Article
       Given I am logged in as a confirmed admin user
       And article "jenkins" has an attached asset
       When I visit the edit page for article "jenkins"
-      Then I should see small, medium and large links for the asset
+      Then I should see a thumbnail link for the attachment

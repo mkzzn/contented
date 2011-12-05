@@ -14,33 +14,23 @@
     = f.label :body
     = f.text_area :body
 
-  = f.fields_for :attachments do |attachment_form|  
-    - if attachment_form.object.new_record?
+  = f.fields_for :attachments do |attachment_fields|
+    - if attachment_fields.object.new_record?
       .fields
-        = attachment_form.label :title
-        = attachment_form.text_field :title 
+        = attachment_fields.label :asset, ""
+        = attachment_fields.file_field :asset
+  = f.fields_for :attachments do |attachment_fields|
+    - unless attachment_fields.object.new_record?
       .fields
-        = attachment_form.label :description
-        = attachment_form.text_field :description 
-      .fields
-        = attachment_form.label :asset
-        = attachment_form.file_field :asset 
-      .fields
-        = attachment_form.link_to_remove "Remove this attachment" 
+        %br
+        = link_to image_tag(attachment_fields.object.asset.thumb.url), attachment_fields.object.asset.url
+        %br
+        = link_to "Original", attachment_fields.object.asset.url
+        %br
+        = link_to "Thumb", attachment_fields.object.asset.thumb.url, :class => "thumb_link"
 
-    - unless attachment_form.object.new_record?
-      .fields
-        = attachment_form.label :title
-        = attachment_form.text_field :title 
-      .fields
-        = attachment_form.label :description
-        = attachment_form.text_field :description 
-      .fields
-        = attachment_form.label :_destroy
-        = attachment_form.check_box :_destroy
-
-      = attachment_form.object.asset_url
-      = image_tag attachment_form.object.asset.thumb.url
+        %br
+        = attachment_fields.label :_destroy
+        = attachment_fields.check_box :_destroy
   .fields
     = f.submit
-    = f.link_to_add "Add attachment", :attachments 
