@@ -43,7 +43,8 @@ Feature: Edit Article
     Scenario: User attaches a file
       Given I am logged in as a confirmed admin user
       And I visit the edit page for article "jenkins"
-      When I select a file to upload
+      When I click to add a new attachment
+      And I select a file to upload
       And I submit the changes
       Then I should be viewing article "jenkins"
       When I visit the edit page for article "jenkins"

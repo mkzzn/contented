@@ -38,8 +38,12 @@ Given /^I visit the edit page for (article "\w+")$/ do |article|
   visit edit_article_path(article)
 end
 
+When /^I click to add a new attachment$/ do
+  find(:css, "a.add_nested_fields").click
+end
+
 When /^I select a file to upload$/ do
-  attach_file(:article_assets_attributes_0_asset, File.join(RAILS_ROOT, 'features', 'upload_files', 'anemone.jpg'))
+  attach_file(:article_attachments_attributes_new_1323105260470_asset, File.join(RAILS_ROOT, 'features', 'upload_files', 'anemone.jpg'))
 end
 
 Then /^(article "\w+") should have one asset$/ do |article|
@@ -49,7 +53,7 @@ Then /^(article "\w+") should have one asset$/ do |article|
 end
 
 Then /^I should see a thumbnail of the asset that I uploaded$/ do
-  asset = Asset.last
+  attachment = Attachment.last
   page.should have_xpath("//a[contains(@href, #{asset.asset_file_name})]//img[contains(@src, #{asset.asset_file_name})]")
 end
 

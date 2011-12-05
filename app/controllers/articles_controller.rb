@@ -16,6 +16,7 @@ class ArticlesController < ApplicationController
 
   def edit
     authorize! :edit, @article
+    5.times { @article.attachments.build }
   end
 
   def create
@@ -44,6 +45,7 @@ class ArticlesController < ApplicationController
   def new
     authorize! :build, Article
     @article = Article.new
+    5.times { @article.attachments.build }
   end
 
   def destroy
