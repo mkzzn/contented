@@ -62,4 +62,4 @@ Feature: Edit Article
       Given I am logged in as a confirmed admin user
       And article "jenkins" has an attached asset
       When I visit the edit page for article "jenkins"
-      Then I should see a thumbnail link for the attachment
+      Then I should see links for all image sizes

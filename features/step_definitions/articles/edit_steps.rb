@@ -69,6 +69,9 @@ Then /^I should not see a thumbnail of the asset that I uploaded$/ do
   page.should_not have_css("#article_attachments_attributes_6__destroy")
 end
 
-Then /^I should see a thumbnail link for the attachment$/ do
-  page.should have_css("a.thumb_link")
+Then /^I should see links for all image sizes$/ do
+  page.should have_css("a.image_link.thumb")
+  page.should have_css("a.image_link.small")
+  page.should have_css("a.image_link.medium")
+  page.should have_css("a.image_link.large")
 end

@@ -33,6 +33,18 @@ class AssetUploader < CarrierWave::Uploader::Base
   #   process :scale => [50, 50]
   # end
 
+  version :large do
+    process :resize_to_fit => [720, 540]
+  end
+
+  version :medium do
+    process :resize_to_fit => [512, 384]
+  end
+
+  version :small do
+    process :resize_to_fit => [320, 240]
+  end
+
   version :thumb do
     process :resize_to_fill => [80, 80]
   end
