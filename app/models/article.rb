@@ -17,6 +17,10 @@ class Article < ActiveRecord::Base
     categorized? ? category[:title] : "Uncategorized"
   end
 
+  def author_name
+    user.full_name rescue nil
+  end
+
   def categorized?
     category ? true : false
   end

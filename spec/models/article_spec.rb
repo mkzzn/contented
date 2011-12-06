@@ -92,4 +92,25 @@ describe Article do
       end
     end
   end
+
+  describe "author name" do
+    before(:each) do
+      @article = Factory :article
+    end
+
+    context "article has a user" do
+      it "should return the full name of the user" do
+        user = Factory :user
+        user.stub! :full_name => "Greg Anderson"
+        @article.update_attributes :user => user
+        @article.author_name.should == "Greg Anderson"
+      end
+    end
+
+    context "article has no user" do
+      it "should return nil" do
+        @article.author_name.should be_nil
+      end
+    end
+  end
 end

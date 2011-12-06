@@ -10,5 +10,9 @@ class User < ActiveRecord::Base
 
   has_many :articles
 
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
   ROLES = %w[ reader admin ]
 end

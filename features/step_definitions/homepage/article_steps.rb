@@ -8,12 +8,13 @@ end
 
 Given /^(article "\w+") was written by "([^"]*)"$/ do |article, author_name|
   first_name, last_name = author_name.split
-  pending # express the regexp above with the code you wish you had
+  user = Factory :user, :first_name => first_name, :last_name => last_name
+  article.update_attributes :user_id => user[:id]
 end
 
 When /^I should see that (article "\w+") was written by "([^"]*)"$/ do |article, author_name|
   first_name, last_name = author_name.split
-  pending # express the regexp above with the code you wish you had
+  page.should have_xpath("//div[@class='author'][contains(.,'#{author_name}')]")
 end
 
 Given /^(article "\w+") has (\d+) comments$/ do |article, count|

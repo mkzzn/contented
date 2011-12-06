@@ -25,7 +25,6 @@ Feature: Homepage Articles
   Scenario: User sees number of article comments
     Given article "grandy" has 2 comments
     When I go to the homepage
-    Then show me the page
     Then I should see that article "grandy" has 2 comments
     
   Scenario: User links to article comments

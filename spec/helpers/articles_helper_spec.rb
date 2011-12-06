@@ -12,7 +12,7 @@ describe ArticlesHelper do
     it "should return a link with the number of comments" do
       @article.stub_chain(:comments, :count) { 2 }
       extend ActionView::Helpers::TextHelper
-      comments_link(@article).should == link_to("2 comments", (article_path(@article) + "#comments"))
+      comments_link(@article).should == link_to("2 comments", (article_path(@article) + "#comments"), :class => "comments")
     end
   end
 end
