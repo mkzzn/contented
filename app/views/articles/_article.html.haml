@@ -1,4 +1,8 @@
 %div[article]
   = link_to article.title, article_path(article), :class => "title"
+  %p.info
+    .author
+    .date= article.created_at.strftime("%Y-%m-%d")
+    .comments= comments_link(article)
   %p.body= article.body
   
