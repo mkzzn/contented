@@ -38,6 +38,12 @@ Feature: View Article
     When I click the uncategorized link within article "articlaus"
     Then I should be on the uncategorized articles page
 
+  Scenario: User sees HTML-formatted body
+    Given article "articlaus" has body "##Wafflebots"
+    When I am viewing article "articlaus"
+    Then show me the page
+    Then the article body should contain "<h2>Wafflebots</h2>"
+
   Scenario: Admin sees edit article link
     Given I am logged in as a confirmed admin user
     And I am viewing article "articlaus"

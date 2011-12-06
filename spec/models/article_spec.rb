@@ -113,4 +113,11 @@ describe Article do
       end
     end
   end
+
+  describe "body_markdown" do
+    it "should convert the body to markdown" do
+      @article = Factory :article, :body => "##Snakebite"
+      @article.body_markdown.should == "<h2>Snakebite</h2>\n"
+    end
+  end
 end

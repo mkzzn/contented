@@ -41,3 +41,7 @@ end
 Then /^I should not see the link to edit the article$/ do
   page.should_not have_css(".article .resource_links a.edit")
 end
+
+Then /^the article body should contain "([^"]*)"$/ do |body_html|
+  page.should have_xpath("//p[@class=body][contains(.,'#{body_html}')]")
+end

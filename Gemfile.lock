@@ -37,6 +37,7 @@ GEM
     bcrypt-ruby (2.1.4)
     bind (0.2.8)
       commander (>= 4.0.0)
+    bluecloth (2.2.0)
     builder (2.1.2)
     cancan (1.6.5)
     capistrano (2.6.0)
@@ -149,6 +150,7 @@ GEM
       rake (>= 0.8.7)
       thor (~> 0.14.4)
     rake (0.8.7)
+    rdiscount (1.6.8)
     rspec (2.6.0)
       rspec-core (~> 2.6.0)
       rspec-expectations (~> 2.6.0)
@@ -201,6 +203,7 @@ DEPENDENCIES
   ZenTest (= 4.5.0)
   autotest (= 4.4.6)
   autotest-rails
+  bluecloth (>= 2.0.0)
   cancan (= 1.6.5)
   capistrano (= 2.6.0)
   capybara (= 1.0.0.beta1)
@@ -225,6 +228,7 @@ DEPENDENCIES
   pg (= 0.11.0)
   rails (= 3.0.7)
   rake (~> 0.8.7)
+  rdiscount
   rspec (= 2.6.0)
   rspec-rails (= 2.6.1)
   ruby_parser

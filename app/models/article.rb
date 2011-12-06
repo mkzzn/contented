@@ -12,6 +12,11 @@ class Article < ActiveRecord::Base
   validates_presence_of :body, :allow_blank => false
 
   scope :uncategorized, where(:category_id => nil)
+  require 'bluecloth'
+
+  def body_markdown
+    BlueCloth.new(body).to_html
+  end
 
   def category_name
     categorized? ? category[:title] : "Uncategorized"
