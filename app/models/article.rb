@@ -3,6 +3,7 @@ class Article < ActiveRecord::Base
   has_many :comments, :dependent => :destroy
   has_many :attachments, :as => :attachable
   belongs_to :category
+  belongs_to :user
 
   accepts_nested_attributes_for :attachments, :allow_destroy => true
 
@@ -18,5 +19,9 @@ class Article < ActiveRecord::Base
 
   def categorized?
     category ? true : false
+  end
+
+  def created_date
+    created_at.strftime("%Y-%m-%d") rescue nil
   end
 end

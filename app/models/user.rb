@@ -8,5 +8,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :first_name, :last_name, :role, :display_name,
     :password, :password_confirmation, :remember_me
 
+  has_many :articles
+
   ROLES = %w[ reader admin ]
 end

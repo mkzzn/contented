@@ -33,3 +33,14 @@ Feature: Homepage Articles
     When I go to the homepage
     When I click on the comments link for article "grandy"
     Then I should be viewing the comments section for article "grandy"
+
+  Scenario: User sees the article category
+    Given article "articlaus" is within category "fluevog"
+    And I go to the homepage
+    Then I should see category "fluevog" within article "articlaus"
+
+  Scenario: User visits article category
+    Given article "articlaus" is within category "fluevog"
+    And I go to the homepage
+    When I click the link to category "fluevog" within article "articlaus"
+    Then I should be viewing category "fluevog"

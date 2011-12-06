@@ -77,4 +77,19 @@ describe Article do
       end
     end
   end
+
+  describe "created_date" do
+    context "article has a created_at timestamp" do
+      it "should return a formatted YYYY-MM-DD timestamp" do
+        article = Factory :article, :created_at => Date.parse("2011-10-02")
+        article.created_date.should == "2011-10-02"
+      end
+    end
+
+    context "article has not been created" do
+      it "should be nil" do
+        Factory.build(:article).created_at.should be_nil
+      end
+    end
+  end
 end

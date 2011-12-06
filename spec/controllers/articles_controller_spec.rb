@@ -252,15 +252,18 @@ describe ArticlesController do
     context "user is authorized" do
       before(:each) do
         @article = mock_article
+        @current_user = stub_model(User)
+        controller.stub! :current_user => @current_user
         Article.stub!(:create) { @article }
         @ability.can :create, Article
       end
 
-      it "should create a new article" do
+      it "should create a new article with user id" do
+        @attributes.merge!("user_id" => @current_user[:id])
         Article.should_receive(:create).with(@attributes) { @article }
         post :create, :article => @attributes
       end
- 
+
       context "article is valid after creation" do
         before(:each) do
           @article.stub!(:valid?) { true }
@@ -268,12 +271,12 @@ describe ArticlesController do
 
         it "should set a flash notice" do
           @article.stub!(:title) { "Bee Article" }
-          post :create
+          post :create, :article => @attributes
           request.flash[:notice].should == "Bee Article was successfully created"
         end
 
         it "should redirect to the articles path" do
-          post :create
+          post :create, :article => @attributes
           response.code.should == "302"
           response.should redirect_to(articles_path)
         end
@@ -282,7 +285,7 @@ describe ArticlesController do
       context "article is invalid after creation" do
         before(:each) do
           @article.stub!(:valid?) { false }
-          post :create
+          post :create, :article => @attributes
         end
 
         it "should set a flash warning" do

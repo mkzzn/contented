@@ -21,7 +21,7 @@ class ArticlesController < ApplicationController
 
   def create
     authorize! :create, Article
-    @article = Article.create params[:article]
+    @article = Article.create params[:article].merge(:user_id => current_user[:id])
     if @article.valid?
       flash[:notice] = "#{@article.title} was successfully created"
       redirect_to articles_path
