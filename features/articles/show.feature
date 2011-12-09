@@ -41,7 +41,6 @@ Feature: View Article
   Scenario: User sees HTML-formatted body
     Given article "articlaus" has markdown-headline "Wafflebots" in its body
     When I am viewing article "articlaus"
-    Then show me the page
     Then the article body should contain the headline "Wafflebots"
 
   Scenario: Admin sees edit article link
