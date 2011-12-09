@@ -39,10 +39,10 @@ Feature: View Article
     Then I should be on the uncategorized articles page
 
   Scenario: User sees HTML-formatted body
-    Given article "articlaus" has body "##Wafflebots"
+    Given article "articlaus" has markdown-headline "Wafflebots" in its body
     When I am viewing article "articlaus"
     Then show me the page
-    Then the article body should contain "<h2>Wafflebots</h2>"
+    Then the article body should contain the headline "Wafflebots"
 
   Scenario: Admin sees edit article link
     Given I am logged in as a confirmed admin user
