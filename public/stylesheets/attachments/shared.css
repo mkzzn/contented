@@ -1,0 +1,10 @@
+.attachment {
+  clear: both; }
+  .attachment .image {
+    float: left; }
+    .attachment .image .image_name {
+      font-size: 1.6em;
+      padding-bottom: 8px; }
+  .attachment .image_controls {
+    padding-top: 40px;
+    float: left; }

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "articles/show.html.haml" do
   before(:each) do
-    @article = stub_article
+    @article = stub_article :body_markdown => "snakes"
     assign :article, @article
     assign :comments, (1..2).map { stub_comment }
     assign :comment, stub_comment

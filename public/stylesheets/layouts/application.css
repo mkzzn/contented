@@ -123,3 +123,6 @@ body {
   display: block; }
   #categories a.category:hover {
     text-decoration: underline; }
+
+.clear {
+  clear: both; }

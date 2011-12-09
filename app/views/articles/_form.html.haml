@@ -1,4 +1,7 @@
 = stylesheet_link_tag "articles/shared"
+= stylesheet_link_tag "attachments/shared"
+
+= javascript_include_tag "views/attachments/images"
 
 .resource_links
   = link_to "Cancel", @article, :id => "cancel_editing"
@@ -21,22 +24,29 @@
         = attachment_fields.file_field :asset
   = f.fields_for :attachments do |attachment_fields|
     - unless attachment_fields.object.new_record?
-      .fields
-        %br
-        = link_to image_tag(attachment_fields.object.asset.thumb.url), attachment_fields.object.asset.url
-        %br
-        = link_to "Original", attachment_fields.object.asset.url
-        %br
-        = link_to "Large", attachment_fields.object.asset.large.url, :class => "image_link large"
-        %br
-        = link_to "Medium", attachment_fields.object.asset.medium.url, :class => "image_link medium"
-        %br
-        = link_to "Small", attachment_fields.object.asset.small.url, :class => "image_link small"
-        %br
-        = link_to "Thumb", attachment_fields.object.asset.thumb.url, :class => "image_link thumb"
+      %div[attachment_fields.object]
+        .image
+          .image_name= link_to attachment_fields.object.asset.url, attachment_fields.object.asset.url
+          = link_to image_tag(attachment_fields.object.asset.small.url), attachment_fields.object.asset.url
+          %br
+          = attachment_fields.label :_destroy
+          = attachment_fields.check_box :_destroy
 
-        %br
-        = attachment_fields.label :_destroy
-        = attachment_fields.check_box :_destroy
+        .image_controls
+          %button.add_image{ :url => attachment_fields.object.asset.url } Original
+          = link_to "(view)", attachment_fields.object.asset.url
+          %br
+          %button.add_image{ :url => attachment_fields.object.asset.large.url } Large
+          = link_to "(view)", attachment_fields.object.asset.large.url, :class => "image_link large"
+          %br
+          %button.add_image{ :url => attachment_fields.object.asset.medium.url } Medium
+          = link_to "(view)", attachment_fields.object.asset.medium.url, :class => "image_link medium"
+          %br
+          %button.add_image{ :url => attachment_fields.object.asset.small.url } Small
+          = link_to "(view)", attachment_fields.object.asset.small.url, :class => "image_link small"
+          %br
+          %button.add_image{ :url => attachment_fields.object.asset.thumb.url } Thumb
+          = link_to "(view)", attachment_fields.object.asset.thumb.url, :class => "image_link thumb"
+    .clear
   .fields
     = f.submit
