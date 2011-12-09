@@ -8,5 +8,4 @@
     .author= article.author_name
     .date= article.created_date
     .comments= comments_link(article)
-  %p.body= article.body
-  
+  .teaser= markdown(article.teaser)

@@ -14,6 +14,9 @@
     = f.label :category
     = f.collection_select :category_id, Category.all, :id, :title, {:include_blank => "Uncategorized"}
   .fields
+    = f.label :teaser
+    = f.text_area :teaser
+  .fields
     = f.label :body
     = f.text_area :body
 

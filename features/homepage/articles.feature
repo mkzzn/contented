@@ -22,6 +22,11 @@ Feature: Homepage Articles
     When I go to the homepage
     Then I should see that article "grandy" was created on "2011-10-01"
 
+  Scenario: User sees article teaser
+    Given article "grandy" has teaser "Edgar is dumb!!"
+    When I go to the homepage
+    Then I should see that article "grandy" has teaser "Edgar is dumb!!"
+
   Scenario: User sees number of article comments
     Given article "grandy" has 2 comments
     When I go to the homepage

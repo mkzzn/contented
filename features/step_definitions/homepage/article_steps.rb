@@ -34,3 +34,11 @@ end
 Then /^I should be viewing the comments section for (article "\w+")$/ do |article|
   current_path.should == article_path(article)
 end
+
+Given /^(article "\w+") has teaser "([^"]*)"$/ do |article, teaser|
+  article.update_attributes :teaser => teaser
+end
+
+Then /^I should see that (article "\w+") has teaser "([^"]*)"$/ do |article, teaser|
+  page.should have_xpath("//div[@id='article_#{article[:id]}']//div[@class='teaser'][contains(.,'#{teaser}')]")  
+end

@@ -4,4 +4,9 @@ module ApplicationHelper
       content_tag :div, flash[key], {:class => "flash #{key}"} if flash[key]
     end.compact.join
   end
+
+  def markdown(text)
+    require 'rdiscount'
+    RDiscount.new(text).to_html.html_safe rescue ""
+  end
 end

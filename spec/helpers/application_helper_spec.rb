@@ -44,4 +44,11 @@ describe ApplicationHelper, "flash helpers" do
       end
     end
   end
+
+
+  describe "markdown helper" do
+    it "should convert the supplied text to html" do
+      markdown("##Waffles").should == "<h2>Waffles</h2>\n"
+    end
+  end
 end
