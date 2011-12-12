@@ -76,6 +76,14 @@ describe Article do
         end
       end
     end
+
+    describe "featured_image" do
+      it "should be able to have a featured image" do
+        attachment = stub_model(Attachment, :id => 20)
+        article = Factory :article, :featured_image_id => 20
+        article.featured_image.should == attachment
+      end
+    end
   end
 
   describe "created_date" do

@@ -14,11 +14,15 @@
     = f.label :category
     = f.collection_select :category_id, Category.all, :id, :title, {:include_blank => "Uncategorized"}
   .fields
+    = f.label :featured_image_id, "Featured Image"
+    = f.collection_select :featured_image_id, @article.attachments.all, :id, :asset, {:include_blank => "None"}
+  .fields
     = f.label :teaser
     = f.text_area :teaser
   .fields
     = f.label :body
     = f.text_area :body
+  
 
   = f.fields_for :attachments do |attachment_fields|
     - if attachment_fields.object.new_record?

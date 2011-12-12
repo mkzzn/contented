@@ -2,6 +2,7 @@ class Article < ActiveRecord::Base
   # associations
   has_many :comments, :dependent => :destroy
   has_many :attachments, :as => :attachable
+  belongs_to :featured_image, :class_name => "Attachment"
   belongs_to :category
   belongs_to :user
 
