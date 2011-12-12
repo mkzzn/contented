@@ -1,7 +1,9 @@
-Factory.define :user do |f|
-  f.email { Faker::Internet.email }
-  f.first_name { Faker::Name.first_name }
-  f.last_name { Faker::Name.last_name }
-  f.password { "password" }
-  f.password_confirmation { "password" }
+FactoryGirl.define do
+  factory :user do
+    email { Faker::Internet.email }
+    first_name { Faker::Name.first_name }
+    last_name { Faker::Name.last_name }
+    password { "password" }
+    password_confirmation { "password" }
+  end
 end

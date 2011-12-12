@@ -1,3 +1,5 @@
-Factory.define :category do |f|
-  f.title { Faker::Lorem.sentence }
+FactoryGirl.define do
+  factory :category do
+    title { Faker::Lorem.sentence }
+  end
 end

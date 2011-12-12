@@ -1,8 +1,10 @@
-Factory.define :article do |f|
-  f.title { Faker::Lorem.sentence }
-  f.body { Faker::Lorem.paragraph }
-end
+FactoryGirl.define do
+  factory :article do
+    title { Faker::Lorem.sentence }
+    body { Faker::Lorem.paragraph }
+  end
 
-Factory.define :categorized_article, :parent => :article do |f|
-  f.association :category
-end
+  factory :categorized_article, :parent => :article do
+    association :category
+  end
+end 

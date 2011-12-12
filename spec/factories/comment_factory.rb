@@ -1,4 +1,6 @@
-Factory.define :comment do |f|
-  f.body { Faker::Lorem.sentence }
-  f.association :article, :factory => :article
+FactoryGirl.define do
+  factory :comment do
+    body { Faker::Lorem.sentence }
+    association :article, :factory => :article
+  end
 end
