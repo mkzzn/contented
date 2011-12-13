@@ -11,6 +11,9 @@
     = f.label :title
     = f.text_field :title
   .fields
+    = f.label :published, "Published?"
+    = f.check_box :published
+  .fields
     = f.label :category
     = f.collection_select :category_id, Category.all, :id, :title, {:include_blank => "Uncategorized"}
   .fields

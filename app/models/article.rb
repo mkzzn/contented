@@ -34,4 +34,8 @@ class Article < ActiveRecord::Base
   def created_date
     created_at.strftime("%Y-%m-%d") rescue nil
   end
+
+  def published_state
+    published ? "Published" : "Unpublished"
+  end
 end

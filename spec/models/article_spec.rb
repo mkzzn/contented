@@ -130,4 +130,20 @@ describe Article do
       @article.body_markdown.should == "<h2>Snakebite</h2>\n"
     end
   end
+
+  describe "published_state" do
+    context "article is not published" do
+      it "should be 'Unpublished'" do
+        article = Factory :article, :published => false
+        article.published_state.should == "Unpublished"
+      end
+    end
+
+    context "article is published" do
+      it "should be 'Published'" do
+        article = Factory :article, :published => false
+        article.published_state.should == "Published"
+      end
+    end
+  end
 end

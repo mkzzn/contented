@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111212222848) do
+ActiveRecord::Schema.define(:version => 20111213210116) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(:version => 20111212222848) do
     t.integer  "user_id"
     t.text     "teaser"
     t.integer  "featured_image_id"
+    t.boolean  "published",         :default => false
   end
 
   create_table "assets", :force => true do |t|
