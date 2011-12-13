@@ -20,3 +20,7 @@ end
 Then /^(article "\w+") should not have a featured image$/ do |article|
   page.should_not have_xpath("//div[@id='article_#{article[:id]}'][contains(@class,'article')]//img[contains(@src,'anemone.jpg')]")
 end
+
+Given /^the attachment for (article "\w+") is selected as a featured image$/ do |article|
+  article.update_attributes :featured_image_id => article.attachments.first[:id]
+end

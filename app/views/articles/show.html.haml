@@ -11,6 +11,8 @@
       = button_to "Delete", @article, :method => :delete, :class => :destroy
     - if can? :edit, @article
       = link_to "Edit", edit_article_path(@article), :class => "edit"
+  - if @article.featured_image
+    .featured_image= image_tag @article.featured_image.asset.large.url
   .body
     != @article.body_markdown
 

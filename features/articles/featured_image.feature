@@ -6,19 +6,22 @@ Feature: Featured Image
   Background:
     Given article "jenkins" has an attachment
 
-  Scenario: Select a featured image
+  Scenario: Author selects a featured image
     Given I am logged in as a confirmed admin user
     And I visit the edit page for article "jenkins"
     And I select the featured image
     When I submit the changes
     Then I should be viewing article "jenkins"
+    Then show me the page
     And article "jenkins" should have a featured image
 
-  Scenario: Featured image on homepage
+  Scenario: User views featured image on homepage
+    Given the attachment for article "jenkins" is selected as a featured image
     When I go to the homepage
+    Then show me the page
     Then article "jenkins" should have a featured image
 
-  Scenario: Remove a featured image
+  Scenario: Author removes a featured image
     Given I am logged in as a confirmed admin user
     And I visit the edit page for article "jenkins"
     And I select no featured image

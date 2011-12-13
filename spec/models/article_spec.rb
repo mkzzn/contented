@@ -79,8 +79,10 @@ describe Article do
 
     describe "featured_image" do
       it "should be able to have a featured image" do
-        attachment = stub_model(Attachment, :id => 20)
-        article = Factory :article, :featured_image_id => 20
+        article = Factory :article
+        attachment = stub_model(Attachment, :attachable => article)
+        article.featured_image = attachment
+        article.save
         article.featured_image.should == attachment
       end
     end
