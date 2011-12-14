@@ -75,19 +75,47 @@ describe ArticlesController do
   describe "GET 'show'" do
     before(:each) do
       @article = mock_article(:id => 2)
+      stub_current_ability
+      Article.stub!(:find) { @article }
     end
 
-    it "should return the relevant article and build a new comment" do
-      new_comment = mock_comment :save => false
-      comments = [ mock_comment(:article_id => 2) ]
+    context "user is authorized" do
+      before(:each) do
+        @ability.can :view, Article
+      end
 
-      Article.should_receive(:find).with(2) { @article }
-      Comment.should_receive(:new).with({:article_id => 2}) { new_comment }
-      @article.should_receive(:comments) { comments }
+      it "should find the article" do
+        Article.should_receive(:find).with(2) { @article }
+      end
+
+      it "should build a new comment" do
+        @new_comment = mock_comment :save => false
+        Comment.should_receive(:new).with({:article_id => 2}) { @new_comment }
+      end
+
+      it "should fetch article comments" do
+        @comments = [ mock_comment(:article_id => 2) ]
+        @article.should_receive(:comments) { @comments } 
+      end
+
+      after(:each) do
+        get 'show', :id => 2
+      end
     end
 
-    after(:each) do
-      get 'show', :id => 2
+    context "user is not authorized" do
+      before(:each) do
+        @ability.cannot :view, Article
+        get 'show', :id => 2
+      end
+
+      it "should redirect to the homepage" do
+        response.should redirect_to(root_path)
+      end
+
+      it "should set a flash warning" do
+        request.flash[:alert].should == "You are not authorized to access this page."
+      end
     end
   end
 

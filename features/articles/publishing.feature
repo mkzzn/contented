@@ -39,7 +39,7 @@ Feature: Publishing
     And I am logged in as a confirmed reader user
     When I view article "jenkins"
     Then I should be on the homepage
-    And I should see a warning saying that I cannot view article "jenkins"
+    And I should see a warning saying that I cannot view that page
 
   Scenario: Reader cannot see unpublished articles on the homepage
     Given unpublished article "jenkins"
@@ -50,5 +50,5 @@ Feature: Publishing
   Scenario: Author views an unpublished article
     Given unpublished article "jenkins"
     And I am logged in as a confirmed admin user
-    When I visit article "jenkins"
+    When I view article "jenkins"
     Then I should be viewing article "jenkins"

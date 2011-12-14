@@ -1,3 +1,2 @@
-Given /^article "([^"]*)"$/ do |title|
-  Factory :article, :title => title
+Given /^(article "\w+")$/ do |article|
 end

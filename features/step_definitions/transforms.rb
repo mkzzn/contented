@@ -1,6 +1,16 @@
 Transform /^article "\w+"$/ do |capture|
   title = capture.gsub(/(^article|\")/,"").strip
-  Article.find_by_title(title) || Factory(:article, :title => title)
+  Article.find_by_title(title) || Factory(:article, :title => title, :published => true)
+end
+
+Transform /^published article "\w+"$/ do |capture|
+  title = capture.gsub(/(^article|\")/,"").strip
+  Article.find_by_title(title) || Factory(:article, :title => title, :published => true)
+end
+
+Transform /^unpublished article "\w+"$/ do |capture|
+  title = capture.gsub(/(^article|\")/,"").strip
+  Article.find_by_title(title) || Factory(:article, :title => title, :published => false)
 end
 
 Transform /^category "\w+"$/ do |capture|

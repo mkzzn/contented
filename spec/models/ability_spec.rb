@@ -23,6 +23,16 @@ describe User do
       it "should not be able to manage articles" do
         @ability.should_not be_able_to(:manage, Article)
       end
+
+      it "should not be able to view unpublished articles" do
+        article = Factory :article, :published => false
+        @ability.should_not be_able_to(:view, article)
+      end
+
+      it "should be able to view published articles" do
+        article = Factory :article, :published => true
+        @ability.should be_able_to(:view, article)
+      end
     end
 
     describe "category abilities" do

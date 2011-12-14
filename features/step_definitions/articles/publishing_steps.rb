@@ -36,8 +36,10 @@ Given /^published article "([^"]*)"$/ do |title|
   Factory :article, :title => title, :published => true
 end
 
-When /^I unpublish article "([^"]*)"$/ do |arg1|
-  pending # express the regexp above with the code you wish you had
+When /^I unpublish (article "\w+")$/ do |article|
+  visit edit_article_path(article)
+  uncheck "Published"
+  When %Q{I submit the article}
 end
 
 Then /^I should see a warning saying that I cannot view article "([^"]*)"$/ do |arg1|

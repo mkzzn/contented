@@ -2,8 +2,8 @@ Given /^category "([^"]*)" with description "([^"]*)"$/ do |title, desc|
   Factory :category, :title => title, :description => desc
 end
 
-Given /^(category "\w+") has an article entitled "([^"]*)"$/ do |category, title|
-  Factory :article, :title => title, :category => category
+Given /^(category "\w+") contains (article "\w+")$/ do |category, article|
+  article.update_attributes :category => category
 end
 
 Then /^I should see article "([^"]*)" within (category "\w+")$/ do |article, category|
@@ -23,7 +23,7 @@ Given /^article "([^"]*)" is the (.*) article in (category "\w+")$/ do |article,
   (order[number] - category.articles.count).times do
     Factory :article, :category => category
   end
-  Factory :article, :category => category, :title => article
+  Factory :article, :category => category, :title => article, :published => true
 end
 
 Given /^I am viewing the homepage$/ do

@@ -5,7 +5,7 @@ Feature: Categories Index
 
   Background:
     Given category "monster" with description "bar"
-    And category "monster" has an article entitled "weasel"
+    And category "monster" contains article "weasel"
     
   Scenario: User views all categories
     Given I go to the categories index

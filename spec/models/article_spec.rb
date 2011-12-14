@@ -141,7 +141,7 @@ describe Article do
 
     context "article is published" do
       it "should be 'Published'" do
-        article = Factory :article, :published => false
+        article = Factory :article, :published => true
         article.published_state.should == "Published"
       end
     end

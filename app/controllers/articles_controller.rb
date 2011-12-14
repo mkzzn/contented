@@ -6,6 +6,7 @@ class ArticlesController < ApplicationController
   end
 
   def show
+    authorize! :view, @article
     @comments = @article.comments
     @comment = Comment.new :article_id => @article.id
   end

@@ -2,9 +2,9 @@ Given /^category "([^"]*)"$/ do |category|
   Factory :category, :title => category
 end
 
-Given /^category "([^"]*)" has article "([^"]*)"$/ do |category, article|
+Given /^category "([^"]*)" has (article "\w+")$/ do |category, article|
   category = Category.find_by_title category
-  Factory :article, :category => category, :title => article
+  article.update_attributes :category => category
 end
 
 When /^I click the title of category "([^"]*)"$/ do |title|
