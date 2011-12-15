@@ -12,6 +12,7 @@
     = link_to "New", new_category_path, :class => "new_category"
 
 .section.session
+  = link_to "Atom/RSS", feed_path
   - if user_signed_in?
     = link_to "My Account (#{current_user[:email]})", edit_user_registration_path, :class => "title"
     = link_to "Sign Out", destroy_user_session_path, :class => "title"

@@ -2,7 +2,13 @@ class ArticlesController < ApplicationController
   before_filter :fetch_article, :only => [:show, :update, :edit, :destroy]
 
   def index
-    @articles = Article.all
+    @articles = Article.order "created_at desc"
+
+    respond_to do |format|
+      format.html     # index.html.erb
+      format.atom     # index.atom.builder
+      format.xml  { render :xml => @articles }
+    end
   end
 
   def show
@@ -18,6 +24,14 @@ class ArticlesController < ApplicationController
   def edit
     authorize! :edit, @article
     5.times { @article.attachments.build }
+  end
+
+  def feed
+    @articles = Article.order "created_at desc"
+    
+    respond_to do |format|
+      format.atom
+    end
   end
 
   def create
