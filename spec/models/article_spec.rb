@@ -18,7 +18,26 @@ describe Article do
     end
   end
 
+  describe "slugs" do
+    before(:all) do
+      @article = Factory :article, :title => "The Great Hog Race"
+    end
+
+    it "should use a parameterized version of the title" do
+      @article.to_param.should == "the-great-hog-race"
+    end
+
+    it "should add a tag to identical slugs" do
+      @article2 = Factory :article, :title => "The Great Hog Race"
+      @article2.to_param.should == "the-great-hog-race--2"
+    end
+  end
+
   context "scopes" do
+    before(:all) do
+      Article.destroy_all
+    end
+
     context "uncategorized" do
       it "should be able to filter categorized articles" do
         article1 = Factory :categorized_article

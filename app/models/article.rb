@@ -15,6 +15,9 @@ class Article < ActiveRecord::Base
   scope :uncategorized, where(:category_id => nil)
   scope :published, where(:published => true)
 
+  extend FriendlyId
+  friendly_id :title, :use => :slugged
+
   def body_markdown
     require 'rdiscount'
     RDiscount.new(body).to_html.html_safe

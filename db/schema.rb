@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111213210116) do
+ActiveRecord::Schema.define(:version => 20111215180117) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -23,7 +23,10 @@ ActiveRecord::Schema.define(:version => 20111213210116) do
     t.text     "teaser"
     t.integer  "featured_image_id"
     t.boolean  "published",         :default => false
+    t.string   "slug"
   end
+
+  add_index "articles", ["slug"], :name => "index_articles_on_slug", :unique => true
 
   create_table "assets", :force => true do |t|
     t.integer  "attachable_id"

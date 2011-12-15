@@ -24,7 +24,7 @@ gem 'carrierwave', '>= 0.5.3'
 gem 'mini_magick'
 gem 'nested_form'
 gem 'rdiscount'
-#gem 'bluecloth'
+gem 'friendly_id', '~> 4.0.0.beta14'
 
 group :development, :test do
   gem 'rspec', '2.6.0'
