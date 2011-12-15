@@ -51,7 +51,7 @@ Then /^the article body should contain the headline "([^"]*)"$/ do |headline|
 end
 
 Then /^the page url should contain "([^"]*)"$/ do |slugged_title|
-  current_path.should == "/articles/#{slugged_title}"
+  current_path.should include(slugged_title)
 end
 
 Given /^I visit article "([^"]*)"$/ do |title|

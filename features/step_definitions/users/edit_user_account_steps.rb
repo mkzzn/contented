@@ -37,3 +37,13 @@ end
 Then /^I should not be able to change my role$/ do
   page.should_not have_css("#user_role")
 end
+
+Given /^user "([^"]*)" has first name "([^"]*)" and last name "([^"]*)"$/ do |email, first, last|
+  user = User.find_by_email email
+  user.update_attributes :first_name => first, :last_name => last
+end
+
+When /^I am editing user "([^"]*)"$/ do |email|
+  user = User.find_by_email email
+  visit edit_user_path(user)
+end

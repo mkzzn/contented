@@ -29,3 +29,12 @@ end
 Then /^I should not see an delete link for (category "\w+")$/ do |category|
   page.should_not have_css("#category_#{category[:id]} input.destroy")
 end
+
+Given /^I am viewing the category entitled "([^"]*)"$/ do |title|
+  category = Category.find_by_title title
+  visit category_path(category)
+end
+
+Given /^an category entitled "([^"]*)"$/ do |title|
+  Factory :category, :title => title, :published => true
+end

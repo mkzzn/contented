@@ -51,5 +51,5 @@ Feature: Show Category
 
   Scenario: URL Contains Category Slug
     Given category "Waffles arrr baddDDDD"
-    Given I am viewing category "Waffles arrr baddDDDD"
+    Given I am viewing the category entitled "Waffles arrr baddDDDD"
     Then the page url should contain "waffles-arrr-badddddd"

@@ -23,3 +23,8 @@ Feature: Edit User Account
 
   Scenario: User cannot change role
     Then I should not be able to change my role
+
+  Scenario: URL Contains Category Slug
+    Given user "mung@bean.org" has first name "carlton" and last name "fisk"
+    When I am editing user "mung@bean.org"
+    Then the page url should contain "carlton-fisk"
