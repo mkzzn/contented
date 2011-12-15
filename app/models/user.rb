@@ -10,6 +10,9 @@ class User < ActiveRecord::Base
 
   has_many :articles
 
+  extend FriendlyId
+  friendly_id :full_name, :use => :slugged
+
   def full_name
     "#{first_name} #{last_name}"
   end

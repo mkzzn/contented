@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111215180117) do
+ActiveRecord::Schema.define(:version => 20111215190321) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -51,7 +51,10 @@ ActiveRecord::Schema.define(:version => 20111215180117) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "slug"
   end
+
+  add_index "categories", ["slug"], :name => "index_categories_on_slug", :unique => true
 
   create_table "comments", :force => true do |t|
     t.text     "body"
@@ -86,12 +89,14 @@ ActiveRecord::Schema.define(:version => 20111215180117) do
     t.string   "last_name"
     t.string   "display_name"
     t.string   "role",                                  :default => "reader"
+    t.string   "slug"
   end
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+  add_index "users", ["slug"], :name => "index_users_on_slug", :unique => true
   add_index "users", ["unlock_token"], :name => "index_users_on_unlock_token", :unique => true
 
 end

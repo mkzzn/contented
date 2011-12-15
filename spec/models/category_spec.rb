@@ -36,6 +36,21 @@ describe Category do
     end
   end
 
+  describe "slugs" do
+    before(:all) do
+      @category = Factory :category, :title => "The Great Hog Race"
+    end
+
+    it "should use a parameterized version of the title" do
+      @category.to_param.should == "the-great-hog-race"
+    end
+
+    it "should add a tag to identical slugs" do
+      @category2 = Factory :category, :title => "The Great Hog Race"
+      @category2.to_param.should == "the-great-hog-race--2"
+    end
+  end
+
   context "recent article filter" do
     it "should only display recent articles" do
       category = Factory :category

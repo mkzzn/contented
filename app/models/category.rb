@@ -8,6 +8,9 @@ class Category < ActiveRecord::Base
   # callbacks
   after_destroy :remove_article_categories
 
+  extend FriendlyId
+  friendly_id :title, :use => :slugged
+
   def recent_articles(count=3)
     articles.order("created_at DESC").take count
   end
