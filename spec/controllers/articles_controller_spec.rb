@@ -6,10 +6,25 @@ describe ArticlesController do
   end
 
   describe "GET 'index'" do
-    it "should return available articles" do
-      published_scope = mock("Published Scope")
-      Article.should_receive(:published) { published_scope }
-      published_scope.should_receive(:order).with("created_at desc")
+    before(:each) do
+      @ability = mock(Ability)
+      Ability.stub! :new => @ability
+    end
+
+    context "user can view rough drafts" do
+      it "should return all available articles" do
+        @ability.stub! :can_view_rough_drafts => true
+        Article.should_receive(:order).with("created_at desc")
+      end
+    end
+
+    context "user cannot view rough drafts" do
+      it "should return only published articles" do
+        @ability.stub! :can_view_rough_drafts => false
+        published_scope = mock("Published Scope")
+        Article.should_receive(:published) { published_scope }
+        published_scope.should_receive(:order).with("created_at desc")
+      end
     end
 
     after(:each) do

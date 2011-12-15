@@ -2,7 +2,12 @@ class ArticlesController < ApplicationController
   before_filter :fetch_article, :only => [:show, :update, :edit, :destroy]
 
   def index
-    @articles = Article.published.order "created_at desc"
+    if Ability.new(current_user).can_view_rough_drafts
+      @articles = Article.order "created_at desc"
+    else 
+      @articles = Article.published.order "created_at desc"
+    end
+
     respond_to do |format|
       format.html     # index.html.erb
       format.xml  { render :xml => @articles }

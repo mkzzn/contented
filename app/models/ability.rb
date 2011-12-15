@@ -18,6 +18,10 @@ class Ability
     end
   end
 
+  def can_view_rough_drafts
+    can [:view], Article, :role => "admin"
+  end
+
   def can_view_published_article
     can [:view], Article, :published => true
   end
