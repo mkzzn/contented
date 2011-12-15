@@ -7,7 +7,9 @@ describe ArticlesController do
 
   describe "GET 'index'" do
     it "should return available articles" do
-      Article.should_receive(:all) { mock_article @attributes }
+      published_scope = mock("Published Scope")
+      Article.should_receive(:published) { published_scope }
+      published_scope.should_receive(:order).with("created_at desc")
     end
 
     after(:each) do
@@ -24,6 +26,17 @@ describe ArticlesController do
     it "should return only uncategorized articles" do
       Article.should_receive(:uncategorized) { [ @article2 ] }
       get 'uncategorized'
+    end
+  end
+
+  describe "GET 'feed'" do
+    it "should fetch the ten most recent articles" do
+      published_scope = mock("Published Scope")
+      order_scope = mock("Order Scope")
+      Article.should_receive(:published) { published_scope }
+      published_scope.should_receive(:order).with("created_at desc") { order_scope }
+      order_scope.should_receive(:limit).with(10) { mock_article @attributes }
+      get 'feed'
     end
   end
 

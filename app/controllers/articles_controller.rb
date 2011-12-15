@@ -2,11 +2,9 @@ class ArticlesController < ApplicationController
   before_filter :fetch_article, :only => [:show, :update, :edit, :destroy]
 
   def index
-    @articles = Article.order "created_at desc"
-
+    @articles = Article.published.order "created_at desc"
     respond_to do |format|
       format.html     # index.html.erb
-      format.atom     # index.atom.builder
       format.xml  { render :xml => @articles }
     end
   end
@@ -27,8 +25,7 @@ class ArticlesController < ApplicationController
   end
 
   def feed
-    @articles = Article.order "created_at desc"
-    
+    @articles = Article.published.order("created_at desc").limit(10)
     respond_to do |format|
       format.atom
     end

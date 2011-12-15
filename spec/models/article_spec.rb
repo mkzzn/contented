@@ -26,6 +26,18 @@ describe Article do
         Article.uncategorized.should == [ article2 ]
       end
     end
+
+    describe "published" do
+      it "should return published articles" do
+        @article = Factory :article, :published => true
+        Article.published.should include(@article)
+      end
+
+      it "should not return unpublished articles" do
+        @article = Factory :article, :published => false
+        Article.published.should_not include(@article)
+      end
+    end
   end
 
   context "associations" do

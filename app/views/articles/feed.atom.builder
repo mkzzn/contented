@@ -1,4 +1,4 @@
-atom_feed do |feed|
+atom_feed :language => 'en-US' do |feed|
   feed.title "Detroit Fugue"
   feed.updated @articles.first.created_at
 

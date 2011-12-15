@@ -13,6 +13,7 @@ class Article < ActiveRecord::Base
   validates_presence_of :body, :allow_blank => false
 
   scope :uncategorized, where(:category_id => nil)
+  scope :published, where(:published => true)
 
   def body_markdown
     require 'rdiscount'
