@@ -12,13 +12,11 @@ Feature: Featured Image
     And I select the featured image
     When I submit the changes
     Then I should be viewing article "jenkins"
-    Then show me the page
     And article "jenkins" should have a featured image
 
   Scenario: User views featured image on homepage
     Given the attachment for article "jenkins" is selected as a featured image
     When I go to the homepage
-    Then show me the page
     Then article "jenkins" should have a featured image
 
   Scenario: Author removes a featured image

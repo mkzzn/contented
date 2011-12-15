@@ -23,7 +23,6 @@ Feature: Publishing
     When I publish article "jenkins"
     And I go to the homepage
     Then I should see article "jenkins"
-    Then show me the page
     And article "jenkins" should be published
 
   Scenario: Author un-publishes an existing articl
