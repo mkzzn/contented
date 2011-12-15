@@ -59,5 +59,5 @@ Feature: View Article
 
   Scenario: URL Contains Article Slug
     Given an article entitled "Waffles arrr baddDDDD"
-    Given I visit article "Waffles arrr baddDDDD"
-    Then the page url should contain "waffles-arr-badddddd"
+    Given I am viewing the article entitled "Waffles arrr baddDDDD"
+    Then the page url should contain "waffles-arrr-badddddd"

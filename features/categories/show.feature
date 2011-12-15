@@ -48,3 +48,8 @@ Feature: Show Category
     Given I am not logged in
     When I visit the show page for category "foo"
     Then I should not see an delete link for category "foo"
+
+  Scenario: URL Contains Category Slug
+    Given category "Waffles arrr baddDDDD"
+    Given I am viewing category "Waffles arrr baddDDDD"
+    Then the page url should contain "waffles-arrr-badddddd"
