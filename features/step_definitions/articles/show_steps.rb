@@ -49,3 +49,16 @@ end
 Then /^the article body should contain the headline "([^"]*)"$/ do |headline|
   page.should have_xpath("//div[@class='body']//h2[contains(.,'#{headline}')]")
 end
+
+Then /^the page url should contain "([^"]*)"$/ do |slugged_title|
+  current_path.should =~ /#{slugged_title}/
+end
+
+Given /^I visit article "([^"]*)"$/ do |title|
+  article = Article.find_by_title "title"
+  visit article_path(article)
+end
+
+Given /^an article entitled "([^"]*)"$/ do |title|
+  Factory :article, :title => title
+end

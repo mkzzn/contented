@@ -56,3 +56,8 @@ Feature: View Article
   Scenario: Visitor cannot see edit article link
     Given I am viewing article "articlaus"
     Then I should not see the link to edit the article
+
+  Scenario: URL Contains Article Slug
+    Given an article entitled "Waffles arrr baddDDDD"
+    Given I visit article "Waffles arrr baddDDDD"
+    Then the page url should contain "waffles-arr-badddddd"
