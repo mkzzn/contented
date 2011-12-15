@@ -37,7 +37,8 @@ describe Category do
   end
 
   describe "slugs" do
-    before(:all) do
+    before(:each) do
+      Category.destroy_all
       @category = Factory :category, :title => "The Great Hog Race"
     end
 
