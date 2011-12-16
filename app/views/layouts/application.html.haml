@@ -20,6 +20,10 @@
       %a#branding{:href => "/"}
         .title Contented
         .subtitle Keep your content Happy.
+      #search
+        = form_tag search_path do
+          = text_field_tag "keyword"
+          = submit_tag "Search"
     #flash!= show_flash
     #navigation= render :partial => "nav/primary"
     #content

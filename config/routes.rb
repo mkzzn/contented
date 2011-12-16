@@ -6,10 +6,10 @@ Contented::Application.routes.draw do
     resources :comments
     collection do
       get "uncategorized"
-      get "search"
     end
   end
   match '/feed' => 'articles#feed', :as => :feed, :defaults => { :format => 'atom' }
+  match '/search' => 'articles#search', :as => :search
 
   resources :categories do
     resources :articles

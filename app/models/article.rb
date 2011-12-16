@@ -23,6 +23,12 @@ class Article < ActiveRecord::Base
     indexes body
     indexes teaser
     has user_id, category_id, created_at, updated_at
+
+    set_property :field_weights => {
+      :title => 5,
+      :body    => 2,
+      :teaser => 1
+    }
   end
 
   def body_markdown

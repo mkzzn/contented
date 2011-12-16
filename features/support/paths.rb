@@ -17,6 +17,8 @@ module NavigationHelpers
       articles_path
     when /the articles index page/
       articles_path
+    when /the search results page/
+      search_path
 
     # categories
     when /the categories index/
@@ -25,7 +27,7 @@ module NavigationHelpers
       categories_path
     when /^the edit page for category "(.*)"$/
       edit_category_path(Category.find_by_title($1))
-
+    
     # users
     when /the users page/
       "/users"

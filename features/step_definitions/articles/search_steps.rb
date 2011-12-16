@@ -3,8 +3,8 @@ Given /^unpublished article "([^"]*)" with body "([^"]*)"$/ do |title, body|
 end
 
 When /^I search for keyword "([^"]*)"$/ do |keyword|
-  fill_in "Search", :with => keyword
-  click "Search"
+  fill_in "keyword", :with => keyword
+  click_button "Search"
 end
 
 Then /^I should see a message saying there are two results for keyword "([^"]*)"$/ do |keyword|
