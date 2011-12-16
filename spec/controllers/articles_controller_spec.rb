@@ -32,6 +32,31 @@ describe ArticlesController do
     end
   end
 
+  describe "GET 'search'" do
+    before(:each) do
+      @ability = mock(Ability)
+      Ability.stub! :new => @ability 
+    end
+
+    after(:each) do
+      get 'search', :keyword => 'waffles'
+    end
+
+    context "user can only view published articles" do
+      it "should search only published articles" do
+        @ability.stub! :can_view_rough_drafts => false
+        Article.should_receive(:search).with("waffles", {:conditions => {:published => true}})
+      end
+    end 
+
+    context "user can view unpublished articles" do
+      it "should search all articles" do
+        @ability.stub! :can_view_rough_drafts => true
+        Article.should_receive(:search).with "waffles"
+      end
+    end
+ end
+
   describe "GET 'uncategorized'" do
     before(:each) do
       @article1 = mock_article :category_id => 1

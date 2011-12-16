@@ -20,6 +20,15 @@ class ArticlesController < ApplicationController
     @comment = Comment.new :article_id => @article.id
   end
 
+  def search
+    if Ability.new(current_user).can_view_rough_drafts
+      @articles = Article.search params[:keyword]
+    else
+      @articles = Article.search params[:keyword], :conditions => 
+        { :published => true }
+    end
+  end
+
   def uncategorized
     @articles = Article.uncategorized
   end

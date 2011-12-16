@@ -17,6 +17,13 @@ class Article < ActiveRecord::Base
 
   extend FriendlyId
   friendly_id :title, :use => :slugged
+ 
+  define_index do
+    indexes title, :sortable => true
+    indexes body
+    indexes teaser
+    has user_id, category_id, created_at, updated_at
+  end
 
   def body_markdown
     require 'rdiscount'

@@ -42,3 +42,4 @@ Feature: Search Articles
     Then I should be on the search results page
     And I should see a message saying there were no search results
   
+  Scenario: Search should return weighted results
