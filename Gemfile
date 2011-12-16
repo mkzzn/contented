@@ -25,6 +25,8 @@ gem 'mini_magick'
 gem 'nested_form'
 gem 'rdiscount'
 gem 'friendly_id', '~> 4.0.0.beta14'
+gem 'sunspot_rails', '1.3.0'
+gem 'sunspot_solr', '1.3.0'
 
 group :development, :test do
   gem 'rspec', '2.6.0'

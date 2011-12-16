@@ -80,6 +80,7 @@ GEM
     dynamic_form (1.1.4)
     erubis (2.6.6)
       abstract (>= 1.0.0)
+    escape (0.0.4)
     factory_girl (2.3.2)
       activesupport
     factory_girl_rails (1.4.0)
@@ -132,6 +133,7 @@ GEM
     orm_adapter (0.0.5)
     pg (0.11.0)
     polyglot (0.3.1)
+    pr_geohash (1.0.0)
     rack (1.2.3)
     rack-mount (0.6.14)
       rack (>= 1.0.0)
@@ -152,6 +154,8 @@ GEM
       thor (~> 0.14.4)
     rake (0.8.7)
     rdiscount (1.6.8)
+    rsolr (1.0.6)
+      builder (>= 2.1.2)
     rspec (2.6.0)
       rspec-core (~> 2.6.0)
       rspec-expectations (~> 2.6.0)
@@ -180,6 +184,15 @@ GEM
       tilt (>= 1.2.2, < 2.0)
     spork (0.9.0.rc5)
     subexec (0.1.0)
+    sunspot (1.3.0)
+      escape (~> 0.0.4)
+      pr_geohash (~> 1.0)
+      rsolr (~> 1.0.6)
+    sunspot_rails (1.3.0)
+      nokogiri
+      sunspot (= 1.3.0)
+    sunspot_solr (1.3.0)
+      escape (~> 0.0.4)
     term-ansicolor (1.0.5)
     test_notifier (0.3.6)
       notifier
@@ -236,6 +249,8 @@ DEPENDENCIES
   sass
   sexp_processor
   spork (= 0.9.0.rc5)
+  sunspot_rails (= 1.3.0)
+  sunspot_solr (= 1.3.0)
   test_notifier
   unicorn (= 3.6.2)
   watchr (= 0.7)
