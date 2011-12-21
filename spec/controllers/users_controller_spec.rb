@@ -49,6 +49,13 @@ describe UsersController do
     end
   end
 
+  describe "GET 'show'" do
+    it "should fetch the target user" do
+      User.should_receive(:find).with(3)
+      get 'edit', :id => 3
+    end
+  end
+
   describe "PUT 'update'" do
     it "should fetch the target user" do
       User.should_receive(:find).with(3) { mock_user }

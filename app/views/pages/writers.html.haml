@@ -1,2 +1,6 @@
 %h2 Writers
+-# - @writers.each do |writer|
+-#   = link_to user_path(writer), writer.full_name
+-#   = writer.biography
+
 = render :partial => "users/writer", :collection => @writers

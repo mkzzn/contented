@@ -27,6 +27,10 @@ module NavigationHelpers
       categories_path
     when /^the edit page for category "(.*)"$/
       edit_category_path(Category.find_by_title($1))
+
+    # pages
+    when /the writers page/
+      "/writers"
     
     # users
     when /the users page/

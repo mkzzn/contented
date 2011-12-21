@@ -1,2 +1,3 @@
-= link_to writer_path(writer), writer.full_name
-= writer.bio
+%div[writer]
+  = link_to writer.full_name, writer_path(writer)
+  .biography= writer.biography

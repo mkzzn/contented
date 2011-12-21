@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
   def writers
-    User.with_published_articles
+    @writers = User.with_published_articles
   end
 end

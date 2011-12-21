@@ -1,5 +1,5 @@
-Given /^writer (user "[\w\@\.]+") has (\d+) articles$/ do |user, article_count|
-  article_count.to_i.times { Factory :article, :user_id => user.id }
+Given /^writer (user "[\w\@\.]+") has (\d+) published articles$/ do |user, article_count|
+  article_count.to_i.times { Factory :published_article, :user_id => user.id }
 end
 
 Then /^I should see writers "([^"]*)" and "([^"]*)"$/ do |email1, email2|
@@ -18,7 +18,7 @@ Then /^I shouldn't see (user "[\w\@\.]+")$/ do |user|
 end
 
 Then /^I should see (user "[\w\@\.]+")$/ do |user|
-  page.should have_xpath("//div[@class='user'][@id='user_#{user[:id]}'])")
+  page.should have_xpath("//div[@class='user'][@id='user_#{user[:id]}']")
 end
 
 Then /^I should see "([^"]*)" before "([^"]*)"$/ do |email1, email2|
@@ -38,5 +38,5 @@ Given /^I click the link for writer (user "[\w\@\.]+")$/ do |user|
 end
 
 Then /^I should be viewing the writer page for (user "[\w\@\.]+")$/ do |user|
-  page.should == writer_page_path(user)
+  current_path.should == writer_path(user)
 end

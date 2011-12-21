@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111215190321) do
+ActiveRecord::Schema.define(:version => 20111221205042) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -90,6 +90,7 @@ ActiveRecord::Schema.define(:version => 20111215190321) do
     t.string   "display_name"
     t.string   "role",                                  :default => "reader"
     t.string   "slug"
+    t.text     "biography"
   end
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true
