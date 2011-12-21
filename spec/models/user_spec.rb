@@ -23,6 +23,27 @@ describe User do
     end
   end
 
+  describe "with_published_articles" do
+    before(:each) do
+      @user = Factory :user
+    end
+
+    it "should show users who have published articles" do
+      @user.articles = [ Factory(:published_article) ]
+      User.with_published_articles.should include(@user)
+    end
+
+    it "should not show users with only unpublished articles" do
+      @user.articles = [ Factory(:unpublished_article) ]
+      User.with_published_articles.should_not include(@user)
+    end
+
+    it "should not show users without any articles" do
+      @user.articles = []
+      User.with_published_articles.should_not include(@user)
+    end
+  end
+
   describe "full_name" do
     it "should combine the first and last names" do
       user = Factory :user, :first_name => "Steve", :last_name => "Barker"

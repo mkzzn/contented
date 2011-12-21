@@ -3,10 +3,10 @@ Given /^writer (user "[\w\@\.]+") has (\d+) articles$/ do |user, article_count|
 end
 
 Then /^I should see writers "([^"]*)" and "([^"]*)"$/ do |email1, email2|
-  user1 = user.find_by_email email1
-  user2 = user.find_by_email email2
-  page.should have_xpath("//div[@class='user'][@id='user_#{user1[:id]}]")
-  page.should have_xpath("//div[@class='user'][@id='user_#{user2[:id]}]")
+  user1 = User.find_by_email email1
+  user2 = User.find_by_email email2
+  page.should have_xpath("//div[@class='user'][@id='user_#{user1[:id]}']")
+  page.should have_xpath("//div[@class='user'][@id='user_#{user2[:id]}']")
 end
 
 Given /^(user "[\w\@\.]+") doesn't have any articles$/ do |user|
@@ -14,11 +14,11 @@ Given /^(user "[\w\@\.]+") doesn't have any articles$/ do |user|
 end
 
 Then /^I shouldn't see (user "[\w\@\.]+")$/ do |user|
-  page.should_not have_xpath("//div[@class='user'][@id='user_#{user[:id]}])")
+  page.should_not have_xpath("//div[@class='user'][@id='user_#{user[:id]}']")
 end
 
 Then /^I should see (user "[\w\@\.]+")$/ do |user|
-  page.should have_xpath("//div[@class='user'][@id='user_#{user[:id]}])")
+  page.should have_xpath("//div[@class='user'][@id='user_#{user[:id]}'])")
 end
 
 Then /^I should see "([^"]*)" before "([^"]*)"$/ do |email1, email2|

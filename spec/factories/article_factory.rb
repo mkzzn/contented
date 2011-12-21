@@ -7,4 +7,12 @@ FactoryGirl.define do
   factory :categorized_article, :parent => :article do
     association :category
   end
+
+  factory :published_article, :parent => :article do
+    published { true }
+  end
+
+  factory :unpublished_article, :parent => :article do
+    published { false }
+  end
 end 

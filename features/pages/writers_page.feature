@@ -8,7 +8,7 @@ Feature: Writers Page
     Given writer user "ben@hermanson.com" has 2 articles
 
   Scenario: Reader sees site writers
-    When I go to the Writers page
+    When I go to the writers page
     Then I should see writers "jeff@carlson.com" and "ben@hermanson.com"
 
   Scenario: Reader doesn't see non-writer users

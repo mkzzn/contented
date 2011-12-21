@@ -1,6 +1,8 @@
 Contented::Application.routes.draw do
   devise_for :users
   resources :users
+  match '/writers/:id' => "users#show"
+  match '/writers' => "pages#writers"
 
   resources :articles do
     resources :comments
@@ -8,6 +10,7 @@ Contented::Application.routes.draw do
       get "uncategorized"
     end
   end
+
   match '/feed' => 'articles#feed', :as => :feed, :defaults => { :format => 'atom' }
   match '/search' => 'articles#search', :as => :search
 

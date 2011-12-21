@@ -10,6 +10,10 @@ class User < ActiveRecord::Base
 
   has_many :articles
 
+  scope :with_published_articles, lambda {
+    where("id in (select DISTINCT user_id from articles where published = ?)", true)
+  }
+
   extend FriendlyId
   friendly_id :full_name, :use => :slugged
 
