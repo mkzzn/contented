@@ -21,8 +21,9 @@ Then /^I should see (user "[\w\@\.]+")$/ do |user|
   page.should have_xpath("//div[@class='user'][@id='user_#{user[:id]}']")
 end
 
-Then /^I should see "([^"]*)" before "([^"]*)"$/ do |email1, email2|
-  pending # express the regexp above with the code you wish you had
+Then /^I should see (user "[\w\@\.]+") before (user "[\w\@\.]+")$/ do |user1, user2|
+  page.should have_xpath("//div[@id='writers']/div[1][@class='user'][@id='user_#{user1[:id]}']")
+  page.should have_xpath("//div[@id='writers']/div[2][@class='user'][@id='user_#{user2[:id]}']")
 end
 
 Given /^(user "[\w\@\.]+") has a bio$/ do |user|
@@ -39,4 +40,9 @@ end
 
 Then /^I should be viewing the writer page for (user "[\w\@\.]+")$/ do |user|
   current_path.should == writer_path(user)
+end
+
+Given /^writer (user "[\w\@\.]+") has name "([^"]*)"$/ do |user, name|
+  first_name, last_name = name.split
+  user.update_attributes :first_name => first_name, :last_name => last_name
 end
