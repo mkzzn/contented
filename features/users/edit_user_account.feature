@@ -11,13 +11,13 @@ Feature: Edit User Account
   Scenario: User successfully updates their account
     Given I fill in "Mung" for my first name
     And I enter the current password "multiplex"
-    And I submit the changes
+    And I submit the user
     Then I should be on the homepage
     And I should see a notice saying that the user was successfully updated
 
   Scenario: User tries to update account without entering current password
     Given I fill in "Mung" for my first name
-    And I submit the changes
+    And I submit the user
     Then I should be on the users page
     And I should see an error explanation saying that a password is required
 

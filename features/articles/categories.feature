@@ -18,12 +18,14 @@ Feature: Article Categories
   
   Scenario: User saves an article to a category
     Given I select category "macarthur"
-    And I submit the changes
+    Then show me the page
+    And I submit the article
     Then I should see a notice saying that article "humon" was saved to category "macarthur"
     And article "humon" should belong to category "macarthur"
 
   Scenario: User saves an uncategorized article
     Given I select category "Uncategorized"
-    And I submit the changes
+    Then show me the page
+    And I submit the article
     Then I should see a notice saying that article "humon" was saved to category "Uncategorized"
     And article "humon" should not be categorized

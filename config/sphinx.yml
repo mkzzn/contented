@@ -1,7 +1,0 @@
-development:
-  port: 9312
-test:
-  address: localhost
-  port: 9312
-production:
-  port: 9312

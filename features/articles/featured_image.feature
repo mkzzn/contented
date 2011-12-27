@@ -10,7 +10,7 @@ Feature: Featured Image
     Given I am logged in as a confirmed admin user
     And I visit the edit page for article "jenkins"
     And I select the featured image
-    When I submit the changes
+    When I submit the article
     Then I should be viewing article "jenkins"
     And article "jenkins" should have a featured image
 
@@ -23,6 +23,6 @@ Feature: Featured Image
     Given I am logged in as a confirmed admin user
     And I visit the edit page for article "jenkins"
     And I select no featured image
-    When I submit the changes
+    When I submit the article
     Then I should be viewing article "jenkins"
     And article "jenkins" should not have a featured image

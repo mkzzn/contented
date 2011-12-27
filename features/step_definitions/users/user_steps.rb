@@ -16,3 +16,7 @@ end
 Given /^I am not logged in$/ do
   visit "/users/sign_out"
 end
+
+When /^I submit the user$/ do
+  find(:css, "#user_submit").click
+end

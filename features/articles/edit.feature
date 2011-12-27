@@ -11,7 +11,7 @@ Feature: Edit Article
       And I visit the edit page for article "jenkins"
       And I fill in article "title" with "snakebot"
       And I fill in article "body" with "humon"
-      When I submit the changes
+      When I submit the article
       Then I should be viewing article "snakebot"
       And article "snakebot" should have body "humon"
 
@@ -19,7 +19,7 @@ Feature: Edit Article
       Given I am logged in as a confirmed admin user
       And I visit the edit page for article "jenkins"
       When I clear the article title
-      And I submit the changes
+      And I submit the article
       Then I should be shown that the title has an error
 
     Scenario: Admin user cancels editing
@@ -44,7 +44,7 @@ Feature: Edit Article
       Given I am logged in as a confirmed admin user
       And I visit the edit page for article "jenkins"
       When I select a file to upload
-      And I submit the changes
+      And I submit the article
       Then I should be viewing article "jenkins"
       When I visit the edit page for article "jenkins"
       Then I should see a thumbnail of the asset that I uploaded
@@ -54,7 +54,7 @@ Feature: Edit Article
       And article "jenkins" has an attached asset
       When I visit the edit page for article "jenkins"
       And I check the box to destroy the asset
-      And I submit the changes
+      And I submit the article
       When I visit the edit page for article "jenkins"
       Then I should not see a thumbnail of the asset that I uploaded
 

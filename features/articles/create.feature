@@ -29,7 +29,7 @@ Feature: Create Article
     Given I am on the new article page
     When I select a file to upload
     And I enter valid data for an article entitled "goats"
-    And I submit the changes
+    And I submit the article
     Then I should be on the articles index page
     When I visit the edit page for article "goats"
     Then I should see a thumbnail of the asset that I uploaded

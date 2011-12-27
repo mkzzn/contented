@@ -11,27 +11,27 @@ Feature: Manage Users
 
   Scenario: Admin updates user without changing password
     Given I change the user email to "monkey@jones.net"
-    When I submit the changes
+    When I submit the user
     Then I should be on the users overview page
     And I should see a notice saying that the user was updated
     And I should see the user "monkey@jones.net" 
 
   Scenario: Admin changes user role
     Given I change the user role to "admin"
-    When I submit the changes
+    When I submit the user
     Then I should be on the users overview page
     And I should see a notice saying that the user was updated
     And I should see that the user "mondo@putnam.biz" is an admin
 
   Scenario: User update fails with only password field
     Given I change the password to "boggle"
-    When I submit the changes
+    When I submit the user
     Then I should be on the show user page for "mondo@putnam.biz"
     And I should see an error saying that the passwords do not match
 
   Scenario: User update fails with mismatched passwords
     Given I change the password to "boggle"
     And I change the password confirmation to "monkey"
-    When I submit the changes
+    When I submit the user
     Then I should be on the show user page for "mondo@putnam.biz"
     And I should see an error saying that the passwords do not match

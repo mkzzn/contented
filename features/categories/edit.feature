@@ -15,7 +15,7 @@ Feature: Edit Category
       Given I am logged in as a confirmed admin user
       And I visit the edit page for category "jenkins"
       When I enter category title "snakebot" and description "waffles"
-      And I submit the changes
+      And I submit the category
       Then I should be viewing the categories index page
       And I should see category "snakebot" with description "waffles"
       And I should see a notice saying "Category was successfully updated."
@@ -25,7 +25,7 @@ Feature: Edit Category
       Given I am logged in as a confirmed admin user
       And I visit the edit page for category "jenkins"
       When I clear the category title
-      And I submit the changes
+      And I submit the category
       Then I should be shown that the category title has an error
 
     Scenario: Admin user cancels editing
