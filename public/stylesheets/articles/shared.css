@@ -1,5 +1,5 @@
 .article {
-  margin-bottom: 24px; }
+  margin-bottom: 48px; }
   .article a.title {
     font-family: Ubuntu;
     font-size: 3.2em;
@@ -15,6 +15,16 @@
     font-family: Ubuntu;
     font-weight: normal;
     font-size: 1.2em; }
+  .article .info {
+    font-family: Ubuntu;
+    font-size: 1.4em; }
+    .article .info div {
+      float: left;
+      padding-right: 10px; }
+  .article .teaser {
+    font-family: Ubuntu;
+    font-size: 1.6em;
+    font-style: italic; }
 
 .resource_links, .active_category {
   display: block;
@@ -32,3 +42,8 @@
       text-decoration: underline; }
   .resource_links form, .resource_links div, .active_category form, .active_category div {
     display: inline; }
+
+.active_category {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  font-size: 1.6em; }

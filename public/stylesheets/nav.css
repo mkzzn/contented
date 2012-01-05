@@ -24,6 +24,16 @@
   #navigation .section {
     padding: 8px;
     float: left;
+    /* &.home */
+    /*   a.title */
+    /*     :color black */
+    /*     &.active, &:hover */
+    /*       :border-bottom 2px solid black */
+    /* &.categories */
+    /*   a.title */
+    /*     :color #8F0000 */
+    /*     &:hover, &.active */
+    /*       :border-bottom 2px solid #8F0000 */
     /* TODO */
     /* &.session */
     /*   :float right */
@@ -41,18 +51,10 @@
     /*       :border-bottom 2px solid #007736 */ }
     #navigation .section.home a.title, #navigation .section.articles a.title, #navigation .section.categories a.title {
       border-bottom: 2px solid white; }
-    #navigation .section.home a.title {
-      color: black; }
-      #navigation .section.home a.title.active, #navigation .section.home a.title:hover {
-        border-bottom: 2px solid black; }
-    #navigation .section.articles a.title {
+    #navigation .section.nav_item a.title, #navigation .section.home a.title, #navigation .section.articles a.title, #navigation .section.categories a.title, #navigation .section.writers a.title {
       color: #0065ba; }
-      #navigation .section.articles a.title:hover, #navigation .section.articles a.title.active {
+      #navigation .section.nav_item a.title:hover, #navigation .section.nav_item a.title.active, #navigation .section.home a.title:hover, #navigation .section.home a.title.active, #navigation .section.articles a.title:hover, #navigation .section.articles a.title.active, #navigation .section.categories a.title:hover, #navigation .section.categories a.title.active, #navigation .section.writers a.title:hover, #navigation .section.writers a.title.active {
         border-bottom: 2px solid #0065ba; }
-    #navigation .section.categories a.title {
-      color: #8f0000; }
-      #navigation .section.categories a.title:hover, #navigation .section.categories a.title.active {
-        border-bottom: 2px solid #8f0000; }
     #navigation .section.session {
       float: right; }
       #navigation .section.session a.title {

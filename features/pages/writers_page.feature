@@ -17,6 +17,11 @@ Feature: Writers Page
     Then I shouldn't see user "steve@bates.com"
     But I should see user "jeff@carlson.com"
 
+  Scenario: Reader clicks on writer page link
+    Given I am on the homepage
+    When I click the link for the writers page
+    Then I should be on the writers page
+
   @wip
   Scenario: Writers are sorted by article count
     When I go to the writers page

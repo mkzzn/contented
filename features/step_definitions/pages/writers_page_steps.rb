@@ -46,3 +46,7 @@ Given /^writer (user "[\w\@\.]+") has name "([^"]*)"$/ do |user, name|
   first_name, last_name = name.split
   user.update_attributes :first_name => first_name, :last_name => last_name
 end
+
+Given /^I click the link for the writers page$/ do
+  click_link "Writers"
+end

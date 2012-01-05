@@ -51,3 +51,15 @@ Feature: Publishing
     And I am logged in as a confirmed admin user
     When I view article "jenkins"
     Then I should be viewing article "jenkins"
+
+  Scenario: Author sees whether an article is published or not
+    Given published article "jenkins"
+    And I am logged in as a confirmed admin user
+    When I view article "jenkins"
+    Then I should see that article "jenkins" is not published
+
+  Scenario: Reader cannot see whether an article is published or not
+    Given published article "jenkins"
+    And I am logged in as a confirmed reader user
+    When I view article "jenkins"
+    Then I should not see that article "jenkins" is not published

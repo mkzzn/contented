@@ -11,6 +11,9 @@
   - if can? :create, Category
     = link_to "New", new_category_path, :class => "new_category"
 
+.section.writers
+  = link_to "Writers", writers_page_path, :class => active_on("writers title", :writers => true)
+
 .section.session
   = link_to "Atom/RSS", feed_path
   - if user_signed_in?

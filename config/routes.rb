@@ -2,7 +2,7 @@ Contented::Application.routes.draw do
   devise_for :users
   resources :users
   match '/writers/:id' => "users#show", :as => 'writer'
-  match '/writers' => "pages#writers"
+  match '/writers' => "pages#writers", :as => 'writers_page'
 
   resources :articles do
     resources :comments
