@@ -52,8 +52,9 @@
     #navigation .section.home a.title, #navigation .section.articles a.title, #navigation .section.categories a.title {
       border-bottom: 2px solid white; }
     #navigation .section.nav_item a.title, #navigation .section.home a.title, #navigation .section.articles a.title, #navigation .section.categories a.title, #navigation .section.writers a.title {
-      color: #0065ba; }
+      color: #789bc3; }
       #navigation .section.nav_item a.title:hover, #navigation .section.nav_item a.title.active, #navigation .section.home a.title:hover, #navigation .section.home a.title.active, #navigation .section.articles a.title:hover, #navigation .section.articles a.title.active, #navigation .section.categories a.title:hover, #navigation .section.categories a.title.active, #navigation .section.writers a.title:hover, #navigation .section.writers a.title.active {
+        color: #0065ba;
         border-bottom: 2px solid #0065ba; }
     #navigation .section.search {
       float: right; }

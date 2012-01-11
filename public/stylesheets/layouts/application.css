@@ -46,23 +46,54 @@ body {
   color: black;
   font-size: 62.5%; }
 
-#header {
+#sidebar {
   padding: 0;
-  margin-bottom: 20px; }
-  #header a#branding {
+  float: left;
+  margin-bottom: 20px;
+  color: black;
+  background: #a5bae8;
+  /* background: -moz-linear-gradient(left, #376deb 0%, #1b4dc0 100%) */
+  /* background: -webkit-gradient(linear, left top, right top, color-stop(0%,#376deb), color-stop(100%,#1b4dc0)) */
+  /* background: -webkit-linear-gradient(left, #376deb 0%,#1b4dc0 100%) */
+  /* background: -o-linear-gradient(left, #376deb 0%,#1b4dc0 100%) */
+  /* background: -ms-linear-gradient(left, #376deb 0%,#1b4dc0 100%) */
+  /* background: linear-gradient(left, #376deb 0%,#1b4dc0 100%) */
+  /* filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#376deb', endColorstr='#1b4dc0',GradientType=1 ) */
+  border-right: 10px solid #dee4f0;
+  height: 100%; }
+  #sidebar a#branding {
     display: block;
-    padding: 0 18px;
+    padding: 18px 18px 30px 18px;
     text-decoration: none;
     margin-top: -8px;
-    color: black; }
-    #header a#branding .title {
+    color: white;
+    background: #417bff; }
+    #sidebar a#branding .title {
       font-size: 7.2em;
       font-family: Ubuntu;
       font-weight: bold; }
-    #header a#branding .subtitle {
+    #sidebar a#branding .subtitle {
       font-size: 2.4em;
       font-family: "Gauntlet Classic";
       margin: -6px 0 0 6px; }
+  #sidebar #categories {
+    float: left;
+    padding: 20px 5%;
+    width: 90%;
+    font-family: Ubuntu;
+    font-size: 1.8em; }
+    #sidebar #categories h5 {
+      text-align: center;
+      font-size: 1.8em;
+      margin: 0; }
+    #sidebar #categories .title {
+      font-size: 2.2em;
+      margin-top: 8px; }
+    #sidebar #categories ul {
+      list-style-type: none;
+      padding: 0 0 0 12px; }
+      #sidebar #categories ul li {
+        margin-bottom: 12px; }
 
 #content {
   width: 80%;
@@ -86,32 +117,18 @@ body {
     font-size: 2.1em; }
   #content h5 {
     font-size: 1.6em; }
-  #content #primary, #content #sidebar {
+  #content #primary {
     float: left;
     padding: 20px 2%; }
   #content #primary {
     width: 60%; }
     #content #primary #articles, #content #primary #testimonials {
       width: 100%; }
-  #content #sidebar {
-    width: 20%;
-    background: #efefef;
-    border-left: 2px solid #aaaaaa;
-    font-family: Ubuntu;
-    font-size: 1.2em; }
-    #content #sidebar .title {
-      font-size: 1.4em;
-      margin-top: 8px; }
-    #content #sidebar ul {
-      list-style-type: none;
-      padding: 0 0 0 12px; }
-      #content #sidebar ul li {
-        margin-bottom: 12px; }
 
 #categories a.category {
   font-family: Ubuntu, Nevis, Sans;
   text-decoration: none;
-  color: #0065ba;
+  color: white;
   margin: 4px 0;
   font-size: 1.2em;
   display: block; }

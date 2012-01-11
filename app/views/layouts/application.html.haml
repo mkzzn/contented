@@ -16,13 +16,12 @@
     = csrf_meta_tag
   %body
     = auto_discovery_link_tag :atom, feed_path
-    #header
+    #sidebar
       %a#branding{:href => "/"}
         .title Contented
         .subtitle Keep your content Happy.
-    #flash!= show_flash
+      #categories= render :partial => "categories/sidebar"
     #navigation= render :partial => "nav/primary"
+    #flash!= show_flash
     #content
       #primary= yield
-      #sidebar
-        #categories= render :partial => "categories/sidebar"
