@@ -42,15 +42,27 @@
     /*     :color #8F0000
     /*     &:hover, &.active
     /*       :border-bottom 2px solid #8F0000
-    &.session
+    &.search
       :float right
-      a.title
+    &.session, &.feeds
+      :float right
+      :padding 0
+      :margin 0
+      a
+        :margin-right 8px
+        :font-weight bold
         :color black
-        &.title
-          :padding-top 16px
-          :font-size 1.4em
-          &:hover
-            text-decoration: underline
+        :padding-top 11px
+        :font-size 1.4em
+        &:hover
+          text-decoration: underline
+
+    &.feeds
+      a 
+        :color white
+        :padding-top 6px
+        :margin-top 5px
+        :background #ff7531
 
 
     /* TODO

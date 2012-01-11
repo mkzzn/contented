@@ -55,12 +55,22 @@
       color: #0065ba; }
       #navigation .section.nav_item a.title:hover, #navigation .section.nav_item a.title.active, #navigation .section.home a.title:hover, #navigation .section.home a.title.active, #navigation .section.articles a.title:hover, #navigation .section.articles a.title.active, #navigation .section.categories a.title:hover, #navigation .section.categories a.title.active, #navigation .section.writers a.title:hover, #navigation .section.writers a.title.active {
         border-bottom: 2px solid #0065ba; }
-    #navigation .section.session {
+    #navigation .section.search {
       float: right; }
-      #navigation .section.session a.title {
-        color: black; }
-        #navigation .section.session a.title.title {
-          padding-top: 16px;
-          font-size: 1.4em; }
-          #navigation .section.session a.title.title:hover {
-            text-decoration: underline; }
+    #navigation .section.session, #navigation .section.feeds {
+      float: right;
+      padding: 0;
+      margin: 0; }
+      #navigation .section.session a, #navigation .section.feeds a {
+        margin-right: 8px;
+        font-weight: bold;
+        color: black;
+        padding-top: 11px;
+        font-size: 1.4em; }
+        #navigation .section.session a:hover, #navigation .section.feeds a:hover {
+          text-decoration: underline; }
+    #navigation .section.feeds a {
+      color: white;
+      padding-top: 6px;
+      margin-top: 5px;
+      background: #ff7531; }

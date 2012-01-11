@@ -14,14 +14,25 @@
 .section.writers
   = link_to "Writers", writers_page_path, :class => active_on("writers title", :writers => true)
 
-.section.session
+
+.section.search#search
+  = form_tag search_path do
+    = text_field_tag "keyword"
+    = submit_tag "Search"
+
+.section.feeds
   = link_to "Atom/RSS", feed_path
+
+.section.session
   - if user_signed_in?
     = link_to "My Account (#{current_user[:email]})", edit_user_registration_path, :class => "title"
     = link_to "Sign Out", destroy_user_session_path, :class => "title"
   - else
     = link_to "Sign In", new_user_session_path, :class => "title"
     = link_to "Register", new_user_registration_path, :class => "title"
+
+
+
 
 -# .section.testimonials
 -#   = link_to "Testimonials", testimonials_path, :class => active_on("testimonials title", :testimonials => true)

@@ -1,5 +1,7 @@
 .article {
-  margin-bottom: 48px; }
+  margin-bottom: 48px;
+  border-bottom: #bbbbbb dashed 1px;
+  padding-bottom: 24px; }
   .article a.title {
     font-family: Ubuntu;
     font-size: 3.2em;
@@ -20,7 +22,15 @@
     font-size: 1.4em; }
     .article .info div {
       float: left;
-      padding-right: 10px; }
+      padding-right: 4px;
+      color: #666666; }
+    .article .info div.comments {
+      float: right; }
+      .article .info div.comments a {
+        color: #0065ba;
+        text-decoration: none; }
+      .article .info div.comments a:hover {
+        text-decoration: underline; }
   .article .teaser {
     font-family: Ubuntu;
     font-size: 1.6em;
@@ -30,7 +40,6 @@
   display: block;
   margin-bottom: 20px; }
   .resource_links a, .resource_links input, .active_category a, .active_category input {
-    background: white;
     color: #666666;
     font-weight: normal;
     border: none;
@@ -46,4 +55,4 @@
 .active_category {
   margin-bottom: 0;
   padding-bottom: 0;
-  font-size: 1.6em; }
+  font-size: 1.5em; }

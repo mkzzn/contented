@@ -8,9 +8,10 @@
     .info
       - if can? :edit, article
         .published= article.published_state
-      .author= article.author_name
-      .date= article.created_date
+      .author= "published by #{article.author_name}"
+      .date= "on #{article.created_date}"
       .comments= comments_link(article)
     - if article.featured_image
       .featured_image= image_tag article.featured_image.asset.large.url
     .teaser= markdown(article.teaser)
+    .clear
