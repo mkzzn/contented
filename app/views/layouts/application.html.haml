@@ -20,6 +20,9 @@
       %a#branding{:href => "/"}
         .title Contented
         .subtitle Keep your content Happy.
+      = render :partial => "layouts/search"
+      = render :partial => "layouts/session"
+      = render :partial => "layouts/feeds"
       #categories= render :partial => "categories/sidebar"
     #navigation= render :partial => "nav/primary"
     #flash!= show_flash

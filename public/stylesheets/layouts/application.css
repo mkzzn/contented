@@ -67,7 +67,7 @@ body {
     text-decoration: none;
     margin-top: -8px;
     color: white;
-    background: #417bff; }
+    background: #1a47a2; }
     #sidebar a#branding .title {
       font-size: 7.2em;
       font-family: Ubuntu;
@@ -128,7 +128,7 @@ body {
 #categories a.category {
   font-family: Ubuntu, Nevis, Sans;
   text-decoration: none;
-  color: white;
+  color: black;
   margin: 4px 0;
   font-size: 1.2em;
   display: block; }

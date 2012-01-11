@@ -1,0 +1,7 @@
+#session
+  - if user_signed_in?
+    = link_to "My Account (#{current_user[:email]})", edit_user_registration_path, :class => "title"
+    = link_to "Sign Out", destroy_user_session_path, :class => "title"
+  - else
+    = link_to "Sign In", new_user_session_path, :class => "title"
+    = link_to "Register", new_user_registration_path, :class => "title"

@@ -23,32 +23,7 @@
       text-decoration: underline; }
   #navigation .section {
     padding: 8px;
-    float: left;
-    /* &.home */
-    /*   a.title */
-    /*     :color black */
-    /*     &.active, &:hover */
-    /*       :border-bottom 2px solid black */
-    /* &.categories */
-    /*   a.title */
-    /*     :color #8F0000 */
-    /*     &:hover, &.active */
-    /*       :border-bottom 2px solid #8F0000 */
-    /* TODO */
-    /* &.session */
-    /*   :float right */
-    /*   a.title */
-    /*     :color black */
-    /*     &.title */
-    /*       :padding-top 16px */
-    /*       :font-size 1.4em */
-    /*       &:hover */
-    /*         text-decoration: underline */
-    /* &.links */
-    /*   a.title */
-    /*     :color #007736 */
-    /*     &:hover, &.active */
-    /*       :border-bottom 2px solid #007736 */ }
+    float: left; }
     #navigation .section.home a.title, #navigation .section.articles a.title, #navigation .section.categories a.title {
       border-bottom: 2px solid white; }
     #navigation .section.nav_item a.title, #navigation .section.home a.title, #navigation .section.articles a.title, #navigation .section.categories a.title, #navigation .section.writers a.title {
@@ -56,22 +31,3 @@
       #navigation .section.nav_item a.title:hover, #navigation .section.nav_item a.title.active, #navigation .section.home a.title:hover, #navigation .section.home a.title.active, #navigation .section.articles a.title:hover, #navigation .section.articles a.title.active, #navigation .section.categories a.title:hover, #navigation .section.categories a.title.active, #navigation .section.writers a.title:hover, #navigation .section.writers a.title.active {
         color: #0065ba;
         border-bottom: 2px solid #0065ba; }
-    #navigation .section.search {
-      float: right; }
-    #navigation .section.session, #navigation .section.feeds {
-      float: right;
-      padding: 0;
-      margin: 0; }
-      #navigation .section.session a, #navigation .section.feeds a {
-        margin-right: 8px;
-        font-weight: bold;
-        color: black;
-        padding-top: 11px;
-        font-size: 1.4em; }
-        #navigation .section.session a:hover, #navigation .section.feeds a:hover {
-          text-decoration: underline; }
-    #navigation .section.feeds a {
-      color: white;
-      padding-top: 6px;
-      margin-top: 5px;
-      background: #ff7531; }

@@ -1,0 +1,41 @@
+#search {
+  background: #ff7531;
+  padding: 4px 8px 4px 12px;
+  height: 34px; }
+  #search input[type=text] {
+    width: 78%;
+    background: #fddbb5;
+    border: 1px solid #fdeede;
+    padding: 6px 8px;
+    font-size: 1.4em; }
+  #search input[type=submit] {
+    background: #7a5a4b;
+    color: white;
+    border: 1px solid #55433a;
+    padding: 6px 8px;
+    font-family: Ubuntu, Absolut; }
+
+#session, #feeds {
+  float: left;
+  text-align: center;
+  padding: 8px 0;
+  margin: 0 0 0 12px; }
+  #session a, #feeds a {
+    font-family: Absolut;
+    margin-right: 8px;
+    font-weight: bold;
+    color: black;
+    font-size: 1.6em;
+    text-decoration: none; }
+    #session a:hover, #feeds a:hover {
+      text-decoration: underline; }
+
+#feeds {
+  float: right; }
+  #feeds a {
+    background: #1e3f83;
+    margin-right: 0;
+    color: white;
+    padding: 4px 8px;
+    font-family: Ubuntu;
+    font-size: 1.4em; }
