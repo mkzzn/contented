@@ -1,6 +1,6 @@
-%div[category]
+%div[category]{:class => cycle("odd", "even", :name => "categories")}
   .title= link_to category.title, category
   - if can? :edit, category
     .resource_links= link_to "Edit", edit_category_path(category), :class => "edit"
   .description= category.description
-  .articles= render :partial => "articles/article", :collection => category.recent_articles
+  .articles= render :partial => "categories/article", :collection => category.recent_articles

@@ -1,34 +1,63 @@
 #content .category {
   margin-top: 40px; }
-  #content .category .title {
+  #content .category .title a {
     margin-top: 12px;
-    font-family: Nevis;
-    font-size: 2.8em;
+    font-family: Ubuntu;
+    font-font-weight: bold;
+    font-size: 3.6em;
     color: black;
-    text-transform: uppercase;
     text-decoration: none;
     margin: 0;
     padding: 0; }
-    #content .category .title:hover {
+    #content .category .title a:hover {
       text-decoration: underline; }
   #content .category .description {
-    padding: 0;
+    padding: 0 0 8px 0;
     margin: 0;
     font-family: Ubuntu;
     font-weight: normal;
-    font-size: 1.6em; }
+    font-size: 1.2em;
+    font-style: italic;
+    border-bottom: 1px dotted #333333; }
   #content .category .article {
-    margin-top: 16px; }
+    padding: 16px;
+    margin: 0;
+    border-bottom: 1px solid #bbbbbb; }
+    #content .category .article.even {
+      background: #efefff; }
     #content .category .article a {
-      font-family: Nevis;
-      font-size: 1.6em;
       color: black;
-      text-transform: uppercase;
       text-decoration: none;
       margin: 0;
       padding: 0; }
       #content .category .article a:hover {
         text-decoration: underline; }
+    #content .category .article a.category {
+      font-size: 1.3em; }
+    #content .category .article a.title {
+      font-size: 2.3em; }
+    #content .category .article .teaser {
+      font-size: 1.4em;
+      color: #222222;
+      font-style: italic;
+      font-family: Ubuntu, Nevis; }
+      #content .category .article .teaser p {
+        margin: 0;
+        padding: 0; }
+    #content .category .article .info {
+      font-family: Ubuntu;
+      font-size: 1.1em; }
+      #content .category .article .info div {
+        float: left;
+        padding-right: 4px;
+        color: #444444; }
+      #content .category .article .info div.comments {
+        float: right; }
+        #content .category .article .info div.comments a {
+          color: #0065ba;
+          text-decoration: none; }
+        #content .category .article .info div.comments a:hover {
+          text-decoration: underline; }
   #content .category .body {
     padding: 0;
     margin: 0;

@@ -1,0 +1,9 @@
+- if can? :view, article
+  %div[article]{:class => cycle("odd", "even", :name => "articles")}
+    = link_to article.title, article_path(article), :class => "title"
+    .teaser= markdown(article.teaser)
+    .info
+      .author= "published by #{article.author_name}"
+      .date= "on #{article.created_date}"
+      .comments= comments_link(article)
+    .clear
