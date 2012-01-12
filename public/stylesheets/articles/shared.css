@@ -1,11 +1,11 @@
 .article {
-  padding: 24px 36px 30px 36px;
+  padding: 24px 36px;
   border-bottom: 1px solid #b5c4de; }
   .article.even {
     background: #eceff4; }
   .article a.title {
-    font-family: Ubuntu;
-    font-size: 2.1em;
+    font-family: "Brawler", Serif;
+    font-size: 2.7em;
     color: black;
     text-decoration: none;
     margin: 0;
@@ -19,44 +19,51 @@
     font-weight: normal;
     font-size: 1.6em; }
   .article .info {
-    font-family: Ubuntu;
+    font-family: "Brawler", Serif;
     font-size: 1.4em; }
     .article .info div {
       float: left;
       padding-right: 4px;
-      color: #666666; }
-    .article .info div.comments {
-      float: right; }
-      .article .info div.comments a {
-        color: #0065ba;
-        text-decoration: none; }
-      .article .info div.comments a:hover {
-        text-decoration: underline; }
+      color: #444444; }
+  .article div.comments {
+    float: right;
+    padding-right: 4px;
+    color: #444444;
+    font-family: "Brawler", Serif;
+    font-size: 1.5em;
+    font-weight: bold; }
+    .article div.comments a {
+      color: #0065ba;
+      text-decoration: none; }
+    .article div.comments a:hover {
+      text-decoration: underline; }
   .article .teaser {
     font-family: Ubuntu;
     font-size: 1.6em;
     font-style: italic; }
 
-.resource_links, .active_category {
+.resource_links {
   display: block;
   margin-bottom: 20px; }
-  .resource_links a, .resource_links input, .active_category a, .active_category input {
+  .resource_links a, .resource_links input {
     color: #666666;
     font-weight: normal;
     border: none;
     cursor: pointer;
     text-decoration: none;
-    font-family: Absolut;
-    font-size: 1.6em; }
-    .resource_links a:hover, .resource_links input:hover, .active_category a:hover, .active_category input:hover {
-      text-decoration: underline; }
-  .resource_links form, .resource_links div, .active_category form, .active_category div {
+    font-family: "Ubuntu", Serif;
+    font-size: 1.2em; }
+  .resource_links form, .resource_links div {
     display: inline; }
 
 .active_category {
   margin-bottom: 0;
-  padding-bottom: 0;
-  font-size: 1.5em; }
+  padding-bottom: 0; }
+  .active_category a {
+    color: #0065ba;
+    text-decoration: none; }
+    .active_category a:hover {
+      text-decoration: underline; }
 
 #comments {
   margin-top: 24px; }

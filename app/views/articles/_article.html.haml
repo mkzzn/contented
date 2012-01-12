@@ -1,16 +1,12 @@
 - if can? :view, article
   %div[article]{:class => cycle("odd", "even", :name => "articles")}
-    - if article.categorized?
-      .active_category= link_to article.category_name, article.category
-    - else
-      .active_category= link_to "Uncategorized", uncategorized_articles_path
     = link_to article.title, article_path(article), :class => "title"
     .info
       - if can? :edit, article
         .published= article.published_state
-      .author= "published by #{article.author_name}"
-      .date= "on #{article.created_date}"
-      .comments= comments_link(article)
+      .author.date.active_category!= "published by #{article.author_name} in category #{category_link(article)} on #{article.created_date}"
+    .clear
+    .comments= comments_link(article)
     - if article.featured_image
       .featured_image= image_tag article.featured_image.asset.large.url
     .teaser= markdown(article.teaser)

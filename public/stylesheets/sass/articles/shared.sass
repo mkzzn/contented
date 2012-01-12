@@ -1,12 +1,12 @@
 .article
-  :padding 24px 36px 30px 36px
+  :padding 24px 36px
   border-bottom: 1px solid #B5C4DE
   &.even
     background: #ECEFF4
   a.title
     font:
-      family: Ubuntu
-      size: 2.1em
+      family: 'Brawler', Serif
+      size: 2.7em
     color: black
     text-decoration: none
     margin: 0
@@ -24,18 +24,25 @@
     div
       float: left
       padding-right: 4px
-      :color #666
-    div.comments
-
-      float: right
-      a
-        :color #0065BA
-        :text-decoration none
-      a:hover
-        :text-decoration underline
+      :color #444
     font:
-      family: Ubuntu
+      family: 'Brawler', Serif
       size: 1.4em
+
+  div.comments
+    float: right
+    padding-right: 4px
+    :color #444
+    font:
+      family: 'Brawler', Serif
+      size: 1.5em
+
+    font-weight: bold
+    a
+      :color #0065BA
+      :text-decoration none
+    a:hover
+      :text-decoration underline
 
 
   .teaser
@@ -44,7 +51,7 @@
       size: 1.6em
     font-style: italic
 
-.resource_links, .active_category
+.resource_links
   :display block
   :margin-bottom 20px
   a, input
@@ -53,17 +60,20 @@
     :border none
     :cursor pointer
     :text-decoration none
-    :font-family Absolut
-    :font-size 1.6em
-    &:hover
-      :text-decoration underline
+    :font-family 'Ubuntu', Serif
+    :font-size 1.2em
   form, div
     display: inline
 
 .active_category
   :margin-bottom 0
   :padding-bottom 0
-  :font-size 1.5em  
+  a
+    :color #0065BA
+    :text-decoration none
+    &:hover
+      :text-decoration underline
+
 
 #comments
   margin-top: 24px
