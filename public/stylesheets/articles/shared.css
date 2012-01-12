@@ -1,5 +1,5 @@
 .article {
-  padding: 36px;
+  padding: 24px 36px 30px 36px;
   border-bottom: 1px solid #b5c4de; }
   .article.even {
     background: #eceff4; }

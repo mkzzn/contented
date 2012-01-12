@@ -97,16 +97,17 @@ body {
 
 #content {
   width: 80%;
-  padding: 24px 10%; }
+  padding: 0 10% 24px 10%; }
   #content h1 {
     font-family: "Absolut Pro";
     margin-top: 20px;
     font-size: 6em; }
   #content h2, #content h3 {
-    font-family: Nevis;
+    font-family: Nevis, Ubuntu;
     margin: 0; }
   #content h2 {
-    font-size: 4em; }
+    font-size: 4em;
+    margin-top: 20px; }
   #content h3 {
     font-size: 2.8em; }
   #content h4, #content h5 {
@@ -119,7 +120,7 @@ body {
     font-size: 1.6em; }
   #content #primary {
     float: left;
-    padding: 20px 2%;
+    padding: 0 2%;
     width: 60%; }
     #content #primary #articles, #content #primary #testimonials {
       width: 100%; }
