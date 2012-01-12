@@ -119,8 +119,7 @@ body {
     font-size: 1.6em; }
   #content #primary {
     float: left;
-    padding: 20px 2%; }
-  #content #primary {
+    padding: 20px 2%;
     width: 60%; }
     #content #primary #articles, #content #primary #testimonials {
       width: 100%; }

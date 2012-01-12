@@ -1,5 +1,5 @@
 - if can? :view, article
-  %div[article]
+  %div[article]{:class => cycle("odd", "even", :name => "articles")}
     - if article.categorized?
       .active_category= link_to article.category_name, article.category
     - else

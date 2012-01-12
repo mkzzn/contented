@@ -1,17 +1,17 @@
 #search {
-  background: #ff7531;
+  background: #666666;
   padding: 4px 8px 4px 12px;
   height: 34px; }
   #search input[type=text] {
     width: 78%;
-    background: #fddbb5;
-    border: 1px solid #fdeede;
+    background: #aaaaaa;
+    border: 1px solid #bbbbbb;
     padding: 6px 8px;
     font-size: 1.4em; }
   #search input[type=submit] {
-    background: #7a5a4b;
+    background: #333333;
     color: white;
-    border: 1px solid #55433a;
+    border: 1px solid #222222;
     padding: 6px 8px;
     font-family: Ubuntu, Absolut; }
 
@@ -33,7 +33,7 @@
 #feeds {
   float: right; }
   #feeds a {
-    background: #1e3f83;
+    background: #d64d1d;
     margin-right: 0;
     color: white;
     padding: 4px 8px;

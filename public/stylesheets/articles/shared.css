@@ -1,7 +1,8 @@
 .article {
-  margin-bottom: 48px;
-  border-bottom: #bbbbbb dashed 1px;
-  padding-bottom: 24px; }
+  padding: 36px;
+  border-bottom: 1px solid #b5c4de; }
+  .article.even {
+    background: #eceff4; }
   .article a.title {
     font-family: Ubuntu;
     font-size: 3.2em;
@@ -11,12 +12,12 @@
     padding: 0; }
     .article a.title:hover {
       text-decoration: underline; }
-  .article p.body {
+  .article .body {
     padding-top: 0;
     margin-top: 0;
-    font-family: Ubuntu;
+    font-family: Serif, Georgia;
     font-weight: normal;
-    font-size: 1.2em; }
+    font-size: 1.6em; }
   .article .info {
     font-family: Ubuntu;
     font-size: 1.4em; }
@@ -56,3 +57,6 @@
   margin-bottom: 0;
   padding-bottom: 0;
   font-size: 1.5em; }
+
+#comments {
+  margin-top: 24px; }

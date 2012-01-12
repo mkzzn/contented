@@ -1,7 +1,8 @@
 .article
-  :margin-bottom 48px
-  :border-bottom #bbb dashed 1px
-  :padding-bottom 24px
+  :padding 36px
+  border-bottom: 1px solid #B5C4DE
+  &.even
+    background: #ECEFF4
   a.title
     font:
       family: Ubuntu
@@ -12,12 +13,12 @@
     padding: 0
     &:hover
       text-decoration: underline
-  p.body
+  .body
     :padding-top 0
     :margin-top 0
-    :font-family Ubuntu
+    :font-family Serif, Georgia
     :font-weight normal
-    :font-size 1.2em
+    :font-size 1.6em
 
   .info
     div
@@ -25,6 +26,7 @@
       padding-right: 4px
       :color #666
     div.comments
+
       float: right
       a
         :color #0065BA
@@ -62,3 +64,6 @@
   :margin-bottom 0
   :padding-bottom 0
   :font-size 1.5em  
+
+#comments
+  margin-top: 24px
