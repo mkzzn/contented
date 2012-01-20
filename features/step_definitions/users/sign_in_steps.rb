@@ -11,11 +11,11 @@ Given /^I sign in with email "([^"]*)" and password "([^"]*)"$/ do |email, passw
 end
 
 Then /^I should see that I am not signed in$/ do
-  page.should have_xpath("//div[@class='section session']//a[@class='title'][contains(.,'Sign In')]")
+  page.should have_xpath("//div[@id='session']//a[@class='title'][contains(.,'Sign In')]")
 end
 
 Then /^I should see that I am signed in as user "([^"]*)"$/ do |email|
-  page.should have_xpath("//div[@class='section session']//a[@class='title'][contains(.,'#{email}')]")
+  page.should have_xpath("//div[@id='session']//a[@class='title'][contains(.,'#{email}')]")
 end
 
 Then /^I should see a notice saying that I was signed in successfully$/ do

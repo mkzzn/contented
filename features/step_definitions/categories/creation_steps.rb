@@ -7,7 +7,7 @@ When /^I submit the category$/ do
 end
 
 Then /^I should see category "([^"]*)"$/ do |title|
-  page.should have_xpath("//div[@class='category'][contains(., '#{title}')]")
+  page.should have_xpath("//div[contains(@class, 'category')][contains(., '#{title}')]")
 end
 
 Given /^I enter an empty category title$/ do

@@ -3,7 +3,7 @@ Given /^(article "\w+") was written on "([^"]*)"$/ do |article, unparsed_date|
 end
 
 Then /^I should see that (article "\w+") was created on "([^"]*)"$/ do |article, date|
-  page.should have_xpath("//div[@id=\"article_#{article[:id]}\"]//div[@class=\"date\"][contains(., \"#{date}\")]")
+  page.should have_xpath("//div[@id=\"article_#{article[:id]}\"]//div[contains(@class,'date')][contains(., \"#{date}\")]")
 end
 
 Given /^(article "\w+") was written by "([^"]*)"$/ do |article, author_name|
@@ -14,7 +14,7 @@ end
 
 When /^I should see that (article "\w+") was written by "([^"]*)"$/ do |article, author_name|
   first_name, last_name = author_name.split
-  page.should have_xpath("//div[@class='author'][contains(.,'#{author_name}')]")
+  page.should have_xpath("//div[contains(@class,'author')][contains(.,'#{author_name}')]")
 end
 
 Given /^(article "\w+") has (\d+) comments$/ do |article, count|

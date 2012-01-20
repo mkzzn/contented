@@ -15,6 +15,7 @@ Feature: Homepage Articles
   Scenario: User sees article author
     Given article "grandy" was written by "Albert Plankman"
     When I go to the homepage
+    Then show me the page
     And I should see that article "grandy" was written by "Albert Plankman"
     
   Scenario: User sees article date

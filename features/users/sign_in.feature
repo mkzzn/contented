@@ -8,6 +8,7 @@ Feature: User Login
     And I am on the user sign-in page
     When I sign in with email "snake@berry.net" and password "multipass"
     Then I should be on the homepage
+    Then show me the page
     And I should see that I am signed in as user "snake@berry.net"
     And I should see a notice saying that I was signed in successfully
 
@@ -16,6 +17,7 @@ Feature: User Login
     And I am on the user sign-in page
     When I sign in with email "dogma@berry.net" and password "multipass"
     Then I should be on the user sign-in page
+    Then show me the page
     And I should see that I am not signed in
     And I should see an alert saying that my account is not confirmed 
 
@@ -23,6 +25,7 @@ Feature: User Login
     Given confirmed user with email "snake@berry.net" and password "multipass"
     And I am on the user sign-in page
     When I sign in with email "wafflehorse" and password "mutantlarvae"
-    Then I should be on the user sign-in page
+    Then I should be on the user sign-in page 
+    Then show me the page
     And I should see that I am not signed in
     And I should see an alert saying that I was not signed in

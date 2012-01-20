@@ -7,11 +7,11 @@ Given /^(category "\w+") contains (article "\w+")$/ do |category, article|
 end
 
 Then /^I should see article "([^"]*)" within (category "\w+")$/ do |article, category|
-  page.should have_xpath("//div[@id='category_#{category[:id]}']//div[@class='article']//a[@class='title'][contains(.,'#{article}')]")
+  page.should have_xpath("//div[@id='category_#{category[:id]}']//div[contains(@class, 'article')]//a[@class='title'][contains(.,'#{article}')]")
 end
 
 Then /^I should not see article "([^"]*)" within category "([^"]*)"$/ do |article, category|
-  page.should_not have_xpath("//div[@class='category']//div[@class='article']//div[@class='title'][contains(.,'#{article}')]")
+  page.should_not have_xpath("//div[@class='category']//div[contains(@class,'article')]//div[@class='title'][contains(.,'#{article}')]")
 end
 
 When /^I click to visit article "([^"]*)"$/ do |article|

@@ -16,11 +16,11 @@ Then /^I should be viewing the categories index page$/ do
 end
 
 Then /^I should see category "([^"]*)" with description "([^"]*)"$/ do |category, description|
-  page.should have_xpath("//div[@class='category']//div[@class='description'][contains(.,'#{description}')]")
+  page.should have_xpath("//div[contains(@class,'category')]//div[@class='description'][contains(.,'#{description}')]")
 end
 
 Then /^I should not see category "([^"]*)"$/ do |category|
-  page.should_not have_xpath("//div[@class='category']//div[@class='description'][contains(.,'#{category}')]")
+  page.should_not have_xpath("//div[contains(@class,'category')]//div[@class='description'][contains(.,'#{category}')]")
 end
 
 Given /^I clear the category title$/ do
